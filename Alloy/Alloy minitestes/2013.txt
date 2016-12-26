@@ -1,0 +1,5 @@
+1. b)
+2. d)
+3. 
+
+all r:A->B | some x:univ | r.~r = ~r.r

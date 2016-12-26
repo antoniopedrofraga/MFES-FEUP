@@ -1,0 +1,21 @@
+1. c)
+2. a)
+3. c)
+4. c)
+5. c)
+6. b)
+8. c)
+
+
+2.
+
+some
+set
+Account set -> one Int
+Account one -> set Transactions
+
+pred invariants[c: Client] {
+	all a: c.balance.Int | a > 0
+
+	all 
+}
