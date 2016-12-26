@@ -1,0 +1,21 @@
+class Feature
+types
+			public string = seq of char;
+values
+-- TODO Define values here
+instance variables
+			public name: string;
+			private mandatory: bool;
+			private orParent: bool := false;
+			private xorParent: bool := false;
+			inv not (orParent and xorParent);
+			
+operations
+			public Feature: nat ==> Feature
+			Feature(n, m) == (name := n; mandatory := m; return self;)
+			post mandatory = m and name = n;
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Feature
