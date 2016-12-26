@@ -1,6 +1,10 @@
-class Model
+class Utilities
 types
--- TODO Define types here
+			public string = seq of char;
+			public pair = map string to int |
+										map string to string |
+										map string to json;
+			public json = set of pair;
 values
 -- TODO Define values here
 instance variables
@@ -11,4 +15,4 @@ functions
 -- TODO Define functiones here
 traces
 -- TODO Define Combinatorial Test Traces here
-end Model
+end Utilities

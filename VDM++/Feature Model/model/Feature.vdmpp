@@ -1,0 +1,21 @@
+class Feature
+types
+			public string = Utilities`string;
+values
+-- TODO Define values here
+instance variables
+			protected name: string;
+			protected mandatory: bool := true;
+operations
+			public Feature: string ==> Feature
+			Feature(n) == (name := n; return self;)
+			post name = n;
+			public setOptional: () ==> ()
+			setOptional() == mandatory := false;
+			public nodeCount: () ==> int
+			nodeCount() == return 1;
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Feature

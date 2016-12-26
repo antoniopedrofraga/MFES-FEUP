@@ -1,0 +1,10 @@
+class Model
+instance variables
+			protected root: Feature;
+operations
+			public Model: Feature ==> Model
+			Model(r) == (root := r; return self;)
+			post root = r;
+			public nodeCount: () ==> int
+			nodeCount() == return root.nodeCount();
+end Model
