@@ -15,6 +15,7 @@ operations
 			setXor() == xorParent := true;
 			public setOr: () ==> ()
 			setOr() == orParent := true;
+			
 functions
 -- TODO Define functiones here
 traces
