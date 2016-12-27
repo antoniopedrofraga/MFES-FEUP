@@ -1,6 +1,7 @@
 class Feature
 types
 			public string = Utilities`string;
+			public config = Utilities`config;
 values
 -- TODO Define values here
 instance variables
@@ -8,12 +9,21 @@ instance variables
 			protected mandatory: bool := true;
 operations
 			public Feature: string ==> Feature
-			Feature(n) == (name := n; return self;)
-			post name = n;
+							Feature(n) == (name := n; return self;)
+							post name = n;
 			public setOptional: () ==> ()
-			setOptional() == mandatory := false;
+							setOptional() == mandatory := false;
+			public features: () ==> set of string
+							features() == return {name};
 			public nodeCount: () ==> int
-			nodeCount() == return 1;
+							nodeCount() == return 1;
+			public isValidConfiguration: config ==> bool
+							isValidConfiguration(c) == 
+							(
+							if mandatory then 
+										return ({name} <: c = { name |-> true});
+							return true;
+							);
 functions
 -- TODO Define functiones here
 traces

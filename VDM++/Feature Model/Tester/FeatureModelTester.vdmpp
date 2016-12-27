@@ -1,15 +1,8 @@
 class FeatureModelTester
+types
+			public config = Utilities`config;
 instance variables
-			root : Parent := new Parent("E-Shop");
-			catalogue : Feature := new Feature("Catalogue");
-			payment : Parent := new Parent("Payment");
-			security : Parent := new Parent("Security");
-			search : Feature := new Feature("Search");
-			bankTransfer : Feature := new Feature("Bank Transfer");
-			creditCard : Feature := new Feature("CreditCard");
-			high : Feature := new Feature("High");
-			standard : Feature := new Feature("Standard");
-			model : Model := new Model(root);
+			model : Model := new Model();
 operations
 			private assertTrue: bool ==> ()
                 assertTrue(cond) == return
@@ -21,6 +14,17 @@ operations
 			private createFeatureModel: () ==> ()
                 createFeatureModel() ==
                 (
+                			-- nodes declaration
+                			dcl root : Parent := new Parent("e-shop");
+											dcl catalogue : Feature := new Feature("catalogue");
+											dcl payment : Parent := new Parent("payment");
+											dcl security : Parent := new Parent("security");
+											dcl search : Feature := new Feature("search");
+											dcl bankTransfer : Feature := new Feature("bank transfer");
+											dcl creditCard : Feature := new Feature("credit card");
+											dcl high : Feature := new Feature("high");
+											dcl standard : Feature := new Feature("standard");
+											-- model creation
                 			payment.setOrParent();
                 			payment.setSubFeatures([bankTransfer, creditCard]);
                 			security.setXorParent();
@@ -28,17 +32,27 @@ operations
                 			root.setSubFeatures(
                 			[catalogue, payment, security, search]
                 			);
+                			model.setRoot(root);
+                			-- tests
                 			assertTrue(root.subFeaturesLen() = 4);
                 			assertTrue(payment.subFeaturesLen() = 2);
                 			assertTrue(security.subFeaturesLen() = 2);
                 			assertTrue(model.nodeCount() = 9);
+                );
+        private testConfiguration: config ==> ()
+                testConfiguration(c) ==
+                (
+                		assertTrue(model.isValidConfiguration(c));
                 );
       public static main: () ==> ()
                 main() ==
                 (	
                 				dcl tester : FeatureModelTester := new FeatureModelTester();
                         tester.createFeatureModel();
-                        
+                        tester.testConfiguration({"e-shop" |-> true, "catalogue" |-> true,
+                        						"payment" |-> true, "security" |-> true, "search" |-> true,
+                        						"bank transfer" |-> true, "credit card" |-> false, "high" |-> true,
+                        						"standard" |-> false});
                 );
 functions
 -- TODO Define functiones here
