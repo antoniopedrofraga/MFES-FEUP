@@ -29,9 +29,9 @@ operations
                 			payment.setSubFeatures([bankTransfer, creditCard]);
                 			security.setXorParent();
                 			security.setSubFeatures([high, standard]);
-                			root.setSubFeatures(
-                			[catalogue, payment, security, search]
-                			);
+                			creditCard.setRequirements([high]);
+                			search.setOptional();
+                			root.setSubFeatures([catalogue, payment, security, search]);
                 			model.setRoot(root);
                 			-- tests
                 			assertTrue(root.subFeaturesLen() = 4);
@@ -50,7 +50,7 @@ operations
                 				dcl tester : FeatureModelTester := new FeatureModelTester();
                         tester.createFeatureModel();
                         tester.testConfiguration({"e-shop" |-> true, "catalogue" |-> true,
-                        						"payment" |-> true, "security" |-> true, "search" |-> true,
+                        						"payment" |-> true, "security" |-> true, "search" |-> false,
                         						"bank transfer" |-> true, "credit card" |-> false, "high" |-> true,
                         						"standard" |-> false});
                 );

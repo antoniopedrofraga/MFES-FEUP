@@ -1,8 +1,4 @@
 class Parent is subclass of Feature
-types
--- TODO
-values
--- TODO Define values here
 instance variables
 			private subFeatures: seq of Feature := [];
 			private orParent: bool := false;
@@ -13,11 +9,21 @@ operations
 							Parent(n) == (name := n; return self;)
 							post name = n;
 			public setXorParent: () ==> ()
-							setXorParent() == xorParent := true;
+							setXorParent() == 
+							(xorParent := true; if not orParent then setSubFeaturesOptional());
 			public setOrParent: () ==> ()
-							setOrParent() == orParent := true;
+							setOrParent() == 
+							(orParent := true; if not xorParent then setSubFeaturesOptional());
 			public setSubFeatures: seq of Feature ==> ()
-							setSubFeatures(s) == subFeatures := s;
+							setSubFeatures(s) == 
+							(
+								subFeatures := s;
+								if (orParent or xorParent) then
+									 setSubFeaturesOptional();
+							);
+			public setSubFeaturesOptional: () ==> ()
+							setSubFeaturesOptional() ==
+							for subFeature in subFeatures do subFeature.setOptional();
 			public getSubFeatures: () ==> seq of Feature
 							getSubFeatures() == return subFeatures;
 			public subFeaturesLen: () ==> int
@@ -36,7 +42,7 @@ operations
 							isValidConfiguration(c) == 
 							(
 							dcl configuredSubFeatures : int := 0;
-							if mandatory then return (isNameConfigured(name, c));
+							if mandatory and not isNameConfigured(name, c) then return false;
 							for subFeature in subFeatures do
 									(
 										if (isNameConfigured(subFeature.name, c)) then
@@ -46,10 +52,6 @@ operations
 									);
 							if (orParent and configuredSubFeatures = 0) then return false;
 							if (xorParent and not configuredSubFeatures = 1) then return false;
-							return true;
+							return isRespectingReqAndExc(c);
 							);
-functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
 end Parent
