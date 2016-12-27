@@ -5311,3 +5311,779 @@ org.eclipse.core.internal.resources.ResourceException: Marker id 4049 not found.
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-27 03:12:30.574
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:28:56.149
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4246 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:28:56.149
+!MESSAGE Marker id 4246 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:30:32.554
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4287 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:30:32.554
+!MESSAGE Marker id 4287 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:31:37.265
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4294 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:31:37.265
+!MESSAGE Marker id 4294 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:32:00.379
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4303 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:203)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:32:00.379
+!MESSAGE Marker id 4303 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:32:01.395
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4313 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:32:01.396
+!MESSAGE Marker id 4313 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:32:01.397
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4316 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:175)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:32:01.397
+!MESSAGE Marker id 4316 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:34:37.332
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4346 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:34:37.333
+!MESSAGE Marker id 4346 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:35:08.964
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4359 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:35:08.964
+!MESSAGE Marker id 4359 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:35:08.964
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4361 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:35:08.965
+!MESSAGE Marker id 4361 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:35:17.029
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4373 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:203)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:35:17.029
+!MESSAGE Marker id 4373 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:43:53.112
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4424 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:203)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:43:53.112
+!MESSAGE Marker id 4424 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:01.147
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4429 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:203)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:01.147
+!MESSAGE Marker id 4429 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:10.166
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4434 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:10.166
+!MESSAGE Marker id 4434 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:28.245
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4442 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:28.246
+!MESSAGE Marker id 4442 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:28.246
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4445 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:28.246
+!MESSAGE Marker id 4445 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:36.795
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4452 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:203)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:36.795
+!MESSAGE Marker id 4452 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:36.796
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4455 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:36.796
+!MESSAGE Marker id 4455 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:42.329
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4463 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:42.329
+!MESSAGE Marker id 4463 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:42.330
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4467 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:42.330
+!MESSAGE Marker id 4467 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:46.338
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4474 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:46.338
+!MESSAGE Marker id 4474 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:46.339
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4476 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:181)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:46.339
+!MESSAGE Marker id 4476 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:44:57.379
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4481 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:44:57.379
+!MESSAGE Marker id 4481 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:45:14.947
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4487 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:45:14.948
+!MESSAGE Marker id 4487 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:45:37.028
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4498 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:45:37.028
+!MESSAGE Marker id 4498 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:50:39.046
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4661 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:50:39.046
+!MESSAGE Marker id 4661 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:50:39.047
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4662 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:50:39.047
+!MESSAGE Marker id 4662 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:55:13.943
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4760 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:55:13.943
+!MESSAGE Marker id 4760 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:55:13.944
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4761 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:181)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:55:13.944
+!MESSAGE Marker id 4761 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:55:26.457
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4764 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:55:26.457
+!MESSAGE Marker id 4764 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:55:26.458
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4767 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:55:26.458
+!MESSAGE Marker id 4767 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:55:53.979
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4777 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:55:53.979
+!MESSAGE Marker id 4777 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:55:53.980
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4782 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:175)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:55:53.980
+!MESSAGE Marker id 4782 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:03.980
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4829 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:03.980
+!MESSAGE Marker id 4829 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:21.062
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4833 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:21.062
+!MESSAGE Marker id 4833 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:27.087
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4839 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:27.087
+!MESSAGE Marker id 4839 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:49.729
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4857 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:49.729
+!MESSAGE Marker id 4857 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:49.730
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4860 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:176)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:49.730
+!MESSAGE Marker id 4860 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:56.746
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4872 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:56.746
+!MESSAGE Marker id 4872 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:56.747
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4874 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:56.747
+!MESSAGE Marker id 4874 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:59.263
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4876 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:59.263
+!MESSAGE Marker id 4876 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 03:59:59.264
+!MESSAGE FileUtility addMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4879 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:255)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:240)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:182)
+	at org.overture.ide.core.utility.FileUtility.addMarker(FileUtility.java:145)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:187)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 03:59:59.264
+!MESSAGE Marker id 4879 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:00:03.779
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4887 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:00:03.779
+!MESSAGE Marker id 4887 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:00:45.398
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4901 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:00:45.398
+!MESSAGE Marker id 4901 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:06:40.749
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4954 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:06:40.749
+!MESSAGE Marker id 4954 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:06:42.766
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4958 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:06:42.766
+!MESSAGE Marker id 4958 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:06:54.331
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4966 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:06:54.332
+!MESSAGE Marker id 4966 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:07:17.388
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 4975 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:203)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:07:17.388
+!MESSAGE Marker id 4975 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:08:33.732
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 5002 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:08:33.732
+!MESSAGE Marker id 5002 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:41:06.983
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 5031 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:41:06.985
+!MESSAGE Marker id 5031 not found.
+
+!ENTRY org.overture.ide.core 4 0 2016-12-27 04:44:07.357
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 5041 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:202)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-27 04:44:07.357
+!MESSAGE Marker id 5041 not found.

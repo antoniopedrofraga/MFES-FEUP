@@ -7,25 +7,39 @@ values
 instance variables
 			protected name: string;
 			protected mandatory: bool := true;
+			protected requirements: set of Feature := {};
+			protected exclusions: set of Feature := {};
 operations
 			public Feature: string ==> Feature
 							Feature(n) == (name := n; return self;)
 							post name = n;
 			public setOptional: () ==> ()
 							setOptional() == mandatory := false;
+			public setRequirements: set of Feature ==> ()
+							setRequirements(fs) == requirements := fs;
+			public setExclusions: set of Feature ==> ()
+							setExclusions(fs) == exclusions := fs;	
 			public features: () ==> set of string
 							features() == return {name};
 			public nodeCount: () ==> int
 							nodeCount() == return 1;
+			public isRespectingReqAndExc: config ==> bool
+						isRespectingReqAndExc(c) == 
+						(
+						dcl configuredFeatures : set of string := dom (c :> {true});
+						return true;
+						--return card (requirements`name inter configuredFeatures) = card configuredFeatures
+										--and card (exclusions`name inter configuredFeatures) = 0;
+						);
 			public isValidConfiguration: config ==> bool
 							isValidConfiguration(c) == 
 							(
-							if mandatory then 
-										return ({name} <: c = { name |-> true});
+							if mandatory then return (isNameConfigured(name, c));
 							return true;
 							);
 functions
--- TODO Define functiones here
+			public isNameConfigured: string * config -> bool
+			isNameConfigured(n, c) == ({n} <: c = {n |-> true});	
 traces
 -- TODO Define Combinatorial Test Traces here
 end Feature
