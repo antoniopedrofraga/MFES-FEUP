@@ -3,7 +3,7 @@ types
 			public string = Utilities`string;
 			public config = Utilities`config;
 instance variables
-			protected name: string;
+			public name: string;
 			protected mandatory: bool := true;
 			protected requirements: seq of Feature := [];
 			protected exclusions: seq of Feature := [];

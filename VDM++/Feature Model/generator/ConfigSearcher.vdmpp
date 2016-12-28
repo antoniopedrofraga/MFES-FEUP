@@ -1,5 +1,6 @@
 class ConfigSearcher
 types
+		public string = Utilities`string;
 		public config = Utilities`config;
 values
 -- TODO Define values here
@@ -34,17 +35,13 @@ operations
 		  							);
   							);
   							if isofclass(Parent, feature) then
-  								if feature.isXorParent() then 
-  								(
-  									setXorParentConfigs(feature);
-  								)
-  								else if feature.isOrParent() then
-  								(
-  									setOrParentConfigs(feature);
-  								)
+  								if feature.isXorParent() then setXorParentConfigs(feature)
+  								else if feature.isOrParent() then setOrParentConfigs(feature)
   								else
+  								(
   									for subFeature in feature.getSubFeatures() do
   										searchFeatureTree(subFeature, false);
+  								)
   					);
   		public setXorParentConfigs: Parent ==> ()
   						setXorParentConfigs(parent) ==
@@ -71,6 +68,9 @@ operations
 		  public setOrParentConfigs: Parent ==> ()
   						setOrParentConfigs(parent) ==
   						(
+  							dcl subFeatures : set of string := parent.getSubFeaturesNames();
+  							--IO`println({v | v : string, el in seq subFeatures & v = el.getName()});
+  							IO`println({[b1, b2] | b1 in set subFeatures, b2 in set {true, false}});
   							return;
   						);
 functions
