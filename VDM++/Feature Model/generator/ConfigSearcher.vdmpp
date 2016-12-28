@@ -69,12 +69,35 @@ operations
   						setOrParentConfigs(parent) ==
   						(
   							dcl subFeatures : set of string := parent.getSubFeaturesNames();
-  							--IO`println({v | v : string, el in seq subFeatures & v = el.getName()});
-  							IO`println({[b1, b2] | b1 in set subFeatures, b2 in set {true, false}});
-  							return;
+  							dcl possibilities : seq of set of config := [];
+  							dcl validPossibilities : seq of config := [];
+  							for all subFeature in set subFeatures do
+  							 		possibilities := possibilities ^ [{{subFeature |-> b2} | b2 in set {true, false}}];
+  							for element in consumeXorPossibilities(possibilities, len possibilities) do
+  									for validConfig in validConfigs do
+  											validPossibilities := validPossibilities ^ [validConfig munion element];
+  							validConfigs := validPossibilities;
   						);
-functions
--- TODO Define functiones here
+  		public consumeXorPossibilities: seq of set of config * int ==> seq of config
+  						consumeXorPossibilities(possibilities, originalLength) ==
+  						(
+  								dcl validPossibilities : seq of config := [];
+  								if len possibilities = 1 then 
+  										for all possibility in set possibilities(1) do (
+  												validPossibilities := validPossibilities ^ [possibility];
+  										)
+  								else if len possibilities > 1 then 
+		  								for all possibility in set possibilities(1) do (
+				  								for element in consumeXorPossibilities(tl possibilities, originalLength) do (
+				  										dcl conf : config := possibility munion element;
+				  										if not (len possibilities = originalLength and rng conf = {false}) then
+				  												validPossibilities := validPossibilities ^ [possibility munion element];
+				  								);
+		  								);
+		  							
+  								return validPossibilities;
+  								
+  						);
 traces
 -- TODO Define Combinatorial Test Traces here
 end ConfigSearcher

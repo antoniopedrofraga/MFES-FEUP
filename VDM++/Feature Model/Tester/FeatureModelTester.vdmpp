@@ -22,13 +22,12 @@ operations
 											dcl security : Parent := new Parent("security");
 											dcl search : Feature := new Feature("search");
 											dcl bankTransfer : Feature := new Feature("bank transfer");
-											dcl check : Feature := new Feature("check");
 											dcl creditCard : Feature := new Feature("credit card");
 											dcl high : Feature := new Feature("high");
 											dcl standard : Feature := new Feature("standard");
 											-- model creation
                 			payment.setOrParent();
-                			payment.setSubFeatures([bankTransfer, check, creditCard]);
+                			payment.setSubFeatures([bankTransfer, creditCard]);
                 			security.setXorParent();
                 			security.setSubFeatures([high, standard]);
                 			creditCard.setRequirements([high]);
@@ -37,9 +36,9 @@ operations
                 			model.setRoot(root);
                 			-- tests
                 			assertTrue(root.subFeaturesLen() = 4);
-                			assertTrue(payment.subFeaturesLen() = 3);
+                			assertTrue(payment.subFeaturesLen() = 2);
                 			assertTrue(security.subFeaturesLen() = 2);
-                			assertTrue(model.nodeCount() = 10);
+                			assertTrue(model.nodeCount() = 9);
                 );
         private testConfiguration: config ==> ()
                 testConfiguration(c) ==
@@ -54,7 +53,7 @@ operations
                         tester.createFeatureModel();
                         tester.testConfiguration({"e-shop" |-> true, "catalogue" |-> true,
                         						"payment" |-> true, "security" |-> true, "search" |-> false,
-                        						"bank transfer" |-> true, "credit card" |-> false, "check" |-> false, 
+                        						"bank transfer" |-> true, "credit card" |-> false, 
                         						"high" |-> true, "standard" |-> false});
                 );
 traces

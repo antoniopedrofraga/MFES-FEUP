@@ -6557,3 +6557,44 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-28 15:40:17.525
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 15:58:43.044
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.ui 4 0 2016-12-28 17:50:37.093
+!MESSAGE Faild to check marker attribute SEVERITY
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 9792 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.ui.navigator.ProblemLabelDecorator.containsSeverity(ProblemLabelDecorator.java:92)
+	at org.overture.ide.ui.navigator.ProblemLabelDecorator.decorate(ProblemLabelDecorator.java:60)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:260)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:100)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:383)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:367)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:327)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-28 17:50:37.103
+!MESSAGE Marker id 9792 not found.
+
+!ENTRY org.overture.ide.ui 4 0 2016-12-28 17:50:37.104
+!MESSAGE Faild to check marker attribute SEVERITY
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 9792 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.ui.navigator.ProblemLabelDecorator.containsSeverity(ProblemLabelDecorator.java:92)
+	at org.overture.ide.ui.navigator.ProblemLabelDecorator.decorate(ProblemLabelDecorator.java:64)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:260)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:100)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:383)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:367)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:327)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-28 17:50:37.104
+!MESSAGE Marker id 9792 not found.
