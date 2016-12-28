@@ -2,6 +2,7 @@ class FeatureModelTester
 types
 			public config = Utilities`config;
 instance variables
+			generator : ConfigGenerator := new ConfigGenerator();
 			model : Model := new Model();
 operations
 			private assertTrue: bool ==> ()
@@ -43,6 +44,7 @@ operations
                 testConfiguration(c) ==
                 (
                 		assertTrue(model.isValidConfiguration(c));
+                		generator.generateValidConfigs(model);
                 );
       public static main: () ==> ()
                 main() ==
@@ -54,8 +56,6 @@ operations
                         						"bank transfer" |-> true, "credit card" |-> false, "high" |-> true,
                         						"standard" |-> false});
                 );
-functions
--- TODO Define functiones here
 traces
 -- TODO Define Combinatorial Test Traces here
 end FeatureModelTester

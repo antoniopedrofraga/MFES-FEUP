@@ -1,0 +1,80 @@
+class ConfigSearcher
+types
+		public config = Utilities`config;
+values
+-- TODO Define values here
+instance variables
+		private root : Feature;
+		private nodeCount : int;
+		public validConfigs : seq of config := [];
+operations
+  	public ConfigSearcher: Feature ==> ConfigSearcher
+  						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); return self;);
+  	public searchConfigs: () ==> () 
+  					searchConfigs() == (
+  						searchFeatureTree(root, false);
+  						for validConfig in validConfigs do 
+  								IO`println(validConfig);
+  					);
+  	public searchFeatureTree: (Feature | Parent) * bool ==> ()
+  					searchFeatureTree(feature, hasOrParent) == 
+  					(
+  							if not hasOrParent then
+  							(
+		  							dcl possibilities : seq of config := [];
+		  							if feature.isMandatory() then possibilities := [{feature.getName() |-> true}]
+		  							else possibilities := [{feature.getName() |-> true},  {feature.getName() |-> false}];
+		  							if (len validConfigs = 0) then (validConfigs := possibilities)
+		  							else ( 
+		  							dcl newValidConfigs : seq of config := [];
+		  							for validConfig in validConfigs do 
+		  								for possibility in possibilities do
+		  										newValidConfigs := newValidConfigs ^ [validConfig munion possibility];
+		  							validConfigs := newValidConfigs;
+		  							);
+  							);
+  							if isofclass(Parent, feature) then
+  								if feature.isXorParent() then 
+  								(
+  									setXorParentConfigs(feature);
+  								)
+  								else if feature.isOrParent() then
+  								(
+  									setOrParentConfigs(feature);
+  								)
+  								else
+  									for subFeature in feature.getSubFeatures() do
+  										searchFeatureTree(subFeature, false);
+  					);
+  		public setXorParentConfigs: Parent ==> ()
+  						setXorParentConfigs(parent) ==
+  						(
+  							dcl subFeaturesLength : int := parent.subFeaturesLen();
+  							dcl subFeatures : seq of Feature := parent.getSubFeatures();
+  							dcl newValidConfigs : seq of config := [];
+  							for validConfig in validConfigs do
+  									for	i = 1 to subFeaturesLength do 
+  									(
+  										dcl elements : config := {|->};
+  												for j = 1 to subFeaturesLength do 
+		  										(
+				  										dcl subFeature : Feature := subFeatures(j);
+				  										dcl element : config := {subFeature.getName() |-> false };
+				  										if (i = j) then element := {subFeature.getName() |-> true };
+				  										elements := elements munion element;
+		  										);
+		  								newValidConfigs := newValidConfigs ^ [validConfig munion elements];
+						  				validConfigs := newValidConfigs;
+						  				searchFeatureTree(subFeatures(i), true);
+		  								);
+		  				);
+		  public setOrParentConfigs: Parent ==> ()
+  						setOrParentConfigs(parent) ==
+  						(
+  							return;
+  						);
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end ConfigSearcher

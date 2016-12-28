@@ -11,6 +11,8 @@ operations
 							post root = r;
 			public setRoot: Feature ==> ()
 							setRoot(r) == (root := r; setFeatures(););
+			public getRoot: () ==> Feature
+							getRoot() == (return root;);
 			public nodeCount: () ==> int
 							nodeCount() == return root.nodeCount();
 			public setFeatures: () ==> ()

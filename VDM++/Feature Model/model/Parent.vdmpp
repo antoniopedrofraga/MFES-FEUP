@@ -14,6 +14,10 @@ operations
 			public setOrParent: () ==> ()
 							setOrParent() == 
 							(orParent := true; if not xorParent then setSubFeaturesOptional());
+			public isXorParent: () ==> bool
+							isXorParent() == return xorParent;
+			public isOrParent: () ==> bool
+							isOrParent() == return orParent;
 			public setSubFeatures: seq of Feature ==> ()
 							setSubFeatures(s) == 
 							(

@@ -6099,3 +6099,371 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-27 15:25:08.765
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 17:57:48.715
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+!SESSION 2016-12-27 19:09:03.674 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-12-27 23:05:29.487
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2016-12-27 23:21:33.203 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-12-27 23:21:39.143
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-27 23:23:35.652
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:23:35.708
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:23:35.709
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:23:36.504
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-27 23:23:49.084
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:23:49.090
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:23:49.092
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:23:50.065
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-27 23:24:00.851
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:24:00.856
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:24:00.858
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:24:01.830
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-27 23:24:23.196
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:24:23.201
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:24:23.203
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:24:24.176
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-27 23:24:35.976
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:24:35.981
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-27 23:24:35.982
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:24:36.957
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:30:10.537
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:30:16.992
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.eclipse.core.resources 4 376 2016-12-27 23:32:57.199
+!MESSAGE Marker id 7852 not found.
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-27 23:33:01.710
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view

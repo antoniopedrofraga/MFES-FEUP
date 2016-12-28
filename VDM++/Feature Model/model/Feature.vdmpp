@@ -17,10 +17,14 @@ operations
 							setRequirements(fs) == requirements := fs;
 			public setExclusions: seq of Feature ==> ()
 							setExclusions(fs) == exclusions := fs;	
+			public getName: () ==> string
+							getName() == return name;
 			public features: () ==> set of string
 							features() == return {name};
 			public nodeCount: () ==> int
 							nodeCount() == return 1;
+			public isMandatory: () ==> bool
+							isMandatory() == return mandatory;
 			public isRespectingReqAndExc: config ==> bool
 							isRespectingReqAndExc(c) == 
 							(
