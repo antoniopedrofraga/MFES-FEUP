@@ -6598,3 +6598,43 @@ org.eclipse.core.internal.resources.ResourceException: Marker id 9792 not found.
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 !SUBENTRY 1 org.eclipse.core.resources 4 376 2016-12-28 17:50:37.104
 !MESSAGE Marker id 9792 not found.
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 20:45:23.506
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-28 22:44:24.750
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Feature.vdmpp:29
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 22:59:56.488
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 23:00:05.438
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 23:08:08.475
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 23:08:29.630
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-28 23:14:30.597
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-29 00:57:21.767
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view

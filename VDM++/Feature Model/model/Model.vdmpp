@@ -19,6 +19,8 @@ operations
 							setFeatures() == (
 									features := root.features();
 							);
+			public getInvalidSubsets: () ==> seq of config
+							getInvalidSubsets() == return root.invalidSubsets();
 			public isValidConfiguration: config ==> bool
 							isValidConfiguration(config) == 
 								(

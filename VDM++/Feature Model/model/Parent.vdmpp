@@ -41,6 +41,19 @@ operations
 										for subFeature in subFeatures do
 												parentFeatures := parentFeatures union subFeature.features();
 							return parentFeatures;);
+			public invalidSubsets: () ==> seq of config
+							invalidSubsets() == 
+							(
+							dcl restrictions : seq of config := [];
+							if (len requirements + len exclusions > 0) then
+							(
+									for requirement in requirements do restrictions := restrictions ^ [{name |-> true} munion {requirement.getName() |-> false}];
+									for exclusion in exclusions do restrictions := restrictions ^ [{name |-> true} munion {exclusion.getName() |-> true}];
+							);
+							for subFeature in subFeatures do
+										restrictions := restrictions ^ subFeature.invalidSubsets();
+							return restrictions;
+			);
 			public nodeCount: () ==> int
 							nodeCount() == (dcl childNodeCount : int := 1; 
 										for subFeature in subFeatures do

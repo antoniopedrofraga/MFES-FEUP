@@ -10,17 +10,30 @@ instance variables
 operations
 			public Feature: string ==> Feature
 							Feature(n) == (name := n; return self;)
+							pre not n = ""
 							post name = n;
 			public setOptional: () ==> ()
 							setOptional() == mandatory := false;
 			public setRequirements: seq of Feature ==> ()
 							setRequirements(fs) == requirements := fs;
 			public setExclusions: seq of Feature ==> ()
-							setExclusions(fs) == exclusions := fs;	
+							setExclusions(fs) == exclusions := fs
+							post {} = {element | element in seq exclusions & element.mandatory};
 			public getName: () ==> string
 							getName() == return name;
 			public features: () ==> set of string
 							features() == return {name};
+			public invalidSubsets: () ==> seq of config
+							invalidSubsets() == 
+							(
+							dcl restrictions : seq of config := [];
+							if (len requirements + len exclusions > 0) then
+							(
+									for requirement in requirements do restrictions := restrictions ^ [{name |-> true} munion {requirement.getName() |-> false}];
+									for exclusion in exclusions do restrictions := restrictions ^ [{name |-> true} munion {exclusion.getName() |-> true}];
+							);
+							return restrictions;
+			);
 			public nodeCount: () ==> int
 							nodeCount() == return 1;
 			public isMandatory: () ==> bool

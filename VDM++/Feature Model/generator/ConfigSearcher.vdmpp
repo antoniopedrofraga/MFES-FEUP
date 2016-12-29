@@ -2,38 +2,34 @@ class ConfigSearcher
 types
 		public string = Utilities`string;
 		public config = Utilities`config;
-values
--- TODO Define values here
 instance variables
 		private root : Feature;
 		private nodeCount : int;
+		private restrictedInvalidSubsets : seq of config;
 		public validConfigs : seq of config := [];
 operations
   	public ConfigSearcher: Feature ==> ConfigSearcher
-  						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); return self;);
+  						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); restrictedInvalidSubsets := root.invalidSubsets(); return self;);
   	public searchConfigs: () ==> () 
   					searchConfigs() == (
   						searchFeatureTree(root, false);
-  						for validConfig in validConfigs do 
-  								IO`println(validConfig);
+  						applyRestrictions();
   					);
+  	public applyRestrictions: () ==> ()
+  					applyRestrictions() ==
+  					(
+  							dcl newValidConfigs : seq of config := [];
+  							for invalidSubSet in restrictedInvalidSubsets do
+  								newValidConfigs := newValidConfigs ^ [elem | elem in seq validConfigs & not Utilities`mapToSet(invalidSubSet) subset Utilities`mapToSet(elem)];
+  							if newValidConfigs <> [] then validConfigs := newValidConfigs;
+  					);
+  	public printConfigs: () ==> ()
+  					printConfigs() == for validConfig in validConfigs do IO`println(validConfig);
+  					
   	public searchFeatureTree: (Feature | Parent) * bool ==> ()
   					searchFeatureTree(feature, hasOrParent) == 
   					(
-  							if not hasOrParent then
-  							(
-		  							dcl possibilities : seq of config := [];
-		  							if feature.isMandatory() then possibilities := [{feature.getName() |-> true}]
-		  							else possibilities := [{feature.getName() |-> true},  {feature.getName() |-> false}];
-		  							if (len validConfigs = 0) then (validConfigs := possibilities)
-		  							else ( 
-		  							dcl newValidConfigs : seq of config := [];
-		  							for validConfig in validConfigs do 
-		  								for possibility in possibilities do
-		  										newValidConfigs := newValidConfigs ^ [validConfig munion possibility];
-		  							validConfigs := newValidConfigs;
-		  							);
-  							);
+  							if not hasOrParent then notOrParentConfigs(feature);
   							if isofclass(Parent, feature) then
   								if feature.isXorParent() then setXorParentConfigs(feature)
   								else if feature.isOrParent() then setOrParentConfigs(feature)
@@ -43,6 +39,21 @@ operations
   										searchFeatureTree(subFeature, false);
   								)
   					);
+  		public notOrParentConfigs: Feature | Parent ==> ()
+  						notOrParentConfigs(feature) ==
+  						(
+  							dcl possibilities : seq of config := [];
+  							if feature.isMandatory() then possibilities := [{feature.getName() |-> true}]
+  							else possibilities := [{feature.getName() |-> true},  {feature.getName() |-> false}];
+  							if (len validConfigs = 0) then (validConfigs := possibilities)
+  							else ( 
+  							dcl newValidConfigs : seq of config := [];
+  							for validConfig in validConfigs do 
+  								for possibility in possibilities do
+  										newValidConfigs := newValidConfigs ^ [validConfig munion possibility];
+  							validConfigs := newValidConfigs;
+  							);
+  						);
   		public setXorParentConfigs: Parent ==> ()
   						setXorParentConfigs(parent) ==
   						(

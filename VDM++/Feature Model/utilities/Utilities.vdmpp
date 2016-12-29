@@ -2,4 +2,7 @@ class Utilities
 types
 			public string = seq of char;
 			public config = map string to bool;
+functions
+			public mapToSet : config -> set of config
+							mapToSet(c) == {{a |-> b} | a in set dom c, b in set rng c & b = c(a) }
 end Utilities
