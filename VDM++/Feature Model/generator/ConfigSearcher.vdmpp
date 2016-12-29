@@ -18,9 +18,12 @@ operations
   	public applyRestrictions: () ==> ()
   					applyRestrictions() ==
   					(
+  							-- dcl newValidConfigs : set of config := {elem | elem in seq validConfigs, invalidSubset in seq restrictedInvalidSubsets 
+  																											--& not Utilities`mapToSet(invalidSubset) subset Utilities`mapToSet(elem)};
   							dcl newValidConfigs : seq of config := [];
-  							for invalidSubSet in restrictedInvalidSubsets do
-  								newValidConfigs := newValidConfigs ^ [elem | elem in seq validConfigs & not Utilities`mapToSet(invalidSubSet) subset Utilities`mapToSet(elem)];
+  							for invalidSubset in restrictedInvalidSubsets do (
+  								newValidConfigs := newValidConfigs ^ [elem | elem in seq validConfigs & not Utilities`mapToSet(invalidSubset) subset Utilities`mapToSet(elem)];
+  								);
   							if newValidConfigs <> [] then validConfigs := newValidConfigs;
   					);
   	public printConfigs: () ==> ()

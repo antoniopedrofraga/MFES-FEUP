@@ -27,11 +27,12 @@ operations
 											dcl standard : Feature := new Feature("standard");
 											-- model creation
                 			payment.setOrParent();
+                			search.setOptional();
                 			payment.setSubFeatures([bankTransfer, creditCard]);
                 			security.setXorParent();
                 			security.setSubFeatures([high, standard]);
                 			creditCard.setRequirements([high]);
-                			search.setOptional();
+                			--standard.setExclusions([search]);
                 			root.setSubFeatures([catalogue, payment, security, search]);
                 			model.setRoot(root);
                 			-- tests

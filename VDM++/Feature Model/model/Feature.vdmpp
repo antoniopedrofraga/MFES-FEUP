@@ -51,10 +51,7 @@ operations
 			public isValidConfiguration: config ==> bool
 							isValidConfiguration(c) == 
 							(
-							if mandatory and not isNameConfigured(name, c) then return false;
+							if mandatory and not Utilities`isNameConfigured(name, c) then return false;
 							return isRespectingReqAndExc(c);
 							);
-functions
-			public isNameConfigured: string * config -> bool
-			isNameConfigured(n, c) == ({n} <: c = {n |-> true});	
 end Feature
