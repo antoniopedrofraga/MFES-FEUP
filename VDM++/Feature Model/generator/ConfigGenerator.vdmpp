@@ -8,6 +8,6 @@ operations
 							dcl root : Feature := model.getRoot();
 							dcl searcher : ConfigSearcher := new ConfigSearcher(root);
 							searcher.searchConfigs();
-							searcher.printConfigs();
+							--searcher.printConfigs();
 						);
 end ConfigGenerator
