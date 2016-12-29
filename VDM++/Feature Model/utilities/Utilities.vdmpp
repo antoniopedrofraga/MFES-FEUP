@@ -6,5 +6,5 @@ functions
 			public mapToSet : config -> set of config
 							mapToSet(c) == {{a |-> b} | a in set dom c, b in set rng c & b = c(a)};
 			public isNameConfigured: string * config -> bool
-							isNameConfigured(n, c) == ({n} <: c = {n |-> true});	
+							isNameConfigured(n, c) == ({n} <: c = {n |-> true});
 end Utilities

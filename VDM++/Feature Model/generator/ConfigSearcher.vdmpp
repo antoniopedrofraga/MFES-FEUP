@@ -23,15 +23,14 @@ operations
   									if i = 1 then newValidConfigs := { elem | elem in seq validConfigs & not Utilities`mapToSet(restrictedInvalidSubsets(i)) subset Utilities`mapToSet(elem) }
   									else newValidConfigs := newValidConfigs inter { elem | elem in seq validConfigs & not Utilities`mapToSet(restrictedInvalidSubsets(i)) subset Utilities`mapToSet(elem) }
   							);
-  							for all validConfig in set newValidConfigs do (
-  									IO`println(validConfig);
-  							);
-  							--dcl newValidConfigs : seq of config := [];
-  							--for invalidSubset in restrictedInvalidSubsets do (
-  								--newValidConfigs := newValidConfigs ^ [elem | elem in seq validConfigs & not Utilities`mapToSet(invalidSubset) subset Utilities`mapToSet(elem)];
-  								--);
-  							--if newValidConfigs <> [] then validConfigs := newValidConfigs;
+  							if newValidConfigs <> {} then validConfigs := setToSeq(newValidConfigs);
   					);
+  	public setToSeq: set of config ==> seq of config
+							setToSeq(s) == (
+													dcl sequence : seq of config := [];
+													for all e in set s do sequence := sequence ^ [e];
+													return sequence;
+													);
   	public printConfigs: () ==> ()
   					printConfigs() == for validConfig in validConfigs do IO`println(validConfig);
   					
