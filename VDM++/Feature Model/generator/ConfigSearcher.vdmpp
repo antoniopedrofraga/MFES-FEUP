@@ -2,6 +2,7 @@ class ConfigSearcher
 types
 		public string = Utilities`string;
 		public config = Utilities`config;
+		public featureType = <orParent> | <xorParent> | <normalParent>;
 instance variables
 		private root : Feature;
 		private nodeCount : int;
