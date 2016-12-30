@@ -7149,3 +7149,634 @@ org.eclipse.swt.SWTException: Invalid thread access
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-29 14:48:41.701
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+!SESSION 2016-12-29 19:29:02.298 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 01:19:29.712
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 01:19:29.791
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 01:19:29.795
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 01:19:29.797
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 01:19:30.637
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 01:19:35.362
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 01:19:35.378
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 01:19:35.383
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 01:19:35.384
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 01:19:36.360
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 01:19:45.043
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 01:19:52.329
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:25:37.238
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:31:17.355
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:41:16.689
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:43:30.291
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:45:27.851
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:46:23.991
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:47:40.180
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:48:56.440
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:51:43.797
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:52:54.049
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:54:47.961
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 02:55:23.257
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:03:14.837
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:03:14.894
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpOpertionCanceledException: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:126)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.InterruptedException: responsePacketWaiterTerminated
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver$ResponcePacketWaiter.waitPacket(DbgpPacketReceiver.java:88)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketReceiver.getResponsePacket(DbgpPacketReceiver.java:211)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.getResponsePacket(DbgpDebugingEngine.java:126)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.receiveResponse(DbgpDebuggingEngineCommunicator.java:57)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:87)
+	... 11 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 03:03:14.899
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Socket closed
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Socket closed
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 03:03:14.901
+!MESSAGE internalErrorLoggedFromVdmDebugPluginOutput Stream is closed
+!STACK 0
+java.io.IOException: Output Stream is closed
+	at org.eclipse.ui.console.IOConsoleOutputStream.encodedWrite(IOConsoleOutputStream.java:231)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:197)
+	at org.eclipse.ui.console.IOConsoleOutputStream.write(IOConsoleOutputStream.java:208)
+	at org.overture.ide.debug.ui.VdmStreamProxy.write(VdmStreamProxy.java:173)
+	at org.overture.ide.debug.ui.VdmStreamProxy.writeStderr(VdmStreamProxy.java:164)
+	at org.overture.ide.debug.core.model.internal.VdmThread.handleTermination(VdmThread.java:150)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.setTerminated(VdmThreadStateManager.java:140)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.handleStatus(VdmThreadStateManager.java:75)
+	at org.overture.ide.debug.core.model.internal.VdmThreadStateManager.endResume(VdmThreadStateManager.java:292)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpDebugger$5.finish(DbgpDebugger.java:96)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 03:03:15.824
+!MESSAGE errDebuggingEngineNotInitialized
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:03:34.596
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:05:06.946
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:32:00.871
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:35:03.432
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 2 120 2016-12-30 03:36:00.652
+!MESSAGE ErrorSetupDeferredBreakpoints
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 200: breakpoint could not be set (for some reason the breakpoint could not be set due to problems registering it)
+Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature Model\model\Model.vdmpp:25
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setBreakpoint(DbgpBreakpointCommands.java:132)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpBreakpointCommands.setLineBreakpoint(DbgpBreakpointCommands.java:143)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.setLineBreakpoint(DbgpCoreCommands.java:138)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.addBreakpoint(VdmBreakpointManager.java:166)
+	at org.overture.ide.debug.core.model.internal.VdmBreakpointManager.initializeSession(VdmBreakpointManager.java:538)
+	at org.overture.ide.debug.core.model.internal.VdmThreadManager.acceptDbgpThread(VdmThreadManager.java:336)
+	at org.overture.ide.debug.core.launching.DebugSessionAcceptor.acceptDbgpThread(DebugSessionAcceptor.java:226)
+	at org.overture.ide.debug.core.model.internal.DbgpService.clientConnected(DbgpService.java:200)
+	at org.overture.ide.debug.core.dbgp.DbgpServer$DbgpSessionJob.run(DbgpServer.java:176)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 03:40:00.207
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 03:40:33.339
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view

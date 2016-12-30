@@ -3,7 +3,8 @@ types
 			public config = Utilities`config;
 instance variables
 			generator : ConfigGenerator := new ConfigGenerator();
-			model : Model := new Model();
+			eshopModel : Model := new Model();
+			mobilePhoneModel: Model := new Model();
 operations
 			private assertTrue: bool ==> ()
                 assertTrue(cond) == return
@@ -12,11 +13,11 @@ operations
                 assertFalse(cond) == return
                 pre not cond;
                 
-			private createFeatureModel: () ==> ()
-                createFeatureModel() ==
+			private createEshopModel: () ==> ()
+                createEshopModel() ==
                 (
                 			-- nodes declaration
-                			dcl root : Parent := new Parent("e-shop");
+                			dcl eshop : Parent := new Parent("e-shop");
 											dcl catalogue : Feature := new Feature("catalogue");
 											dcl payment : Parent := new Parent("payment");
 											dcl security : Parent := new Parent("security");
@@ -32,31 +33,70 @@ operations
                 			security.setXorParent();
                 			security.setSubFeatures([high, standard]);
                 			creditCard.setRequirements([high]);
-                			--standard.setExclusions([search]);
-                			root.setSubFeatures([catalogue, payment, security, search]);
-                			model.setRoot(root);
-                			-- tests
-                			assertTrue(root.subFeaturesLen() = 4);
+                			standard.setExclusions([search]);
+                			eshop.setSubFeatures([catalogue, payment, security, search]);
+                			eshopModel.setRoot(eshop);
+                			-- assertions
+                			assertTrue(eshop.subFeaturesLen() = 4);
                 			assertTrue(payment.subFeaturesLen() = 2);
                 			assertTrue(security.subFeaturesLen() = 2);
-                			assertTrue(model.nodeCount() = 9);
+                			assertTrue(eshopModel.nodeCount() = 9);
                 );
-        private testConfiguration: config ==> ()
-                testConfiguration(c) ==
+         	private createMobilePhoneModel: () ==> ()
+                createMobilePhoneModel() ==
                 (
-                		assertTrue(model.isValidConfiguration(c));
-                		generator.generateValidConfigs(model);
+                			-- nodes declaration
+                			dcl mobilePhone : Parent := new Parent("mobile phone");
+											dcl calls : Feature := new Feature("calls");
+											dcl gps : Feature := new Feature("gps");
+											dcl screen : Parent := new Parent("screen");
+											dcl media : Parent := new Parent("media");
+											dcl basic : Feature := new Feature("basic");
+											dcl colour : Feature := new Feature("colour");
+											dcl highResolution : Feature := new Feature("high resolution");
+											dcl camera : Feature := new Feature("camera");
+											dcl mp3 : Feature := new Feature("mp3");
+											-- model creation
+											gps.setOptional();
+											media.setOptional();
+											screen.setSubFeatures([basic, colour, highResolution]);
+											screen.setXorParent();
+											media.setSubFeatures([camera, mp3]);
+											media.setOrParent();
+											gps.setExclusions([basic]);
+											camera.setRequirements([highResolution]);
+											mobilePhone.setSubFeatures([media, calls, gps, screen]);
+											mobilePhoneModel.setRoot(mobilePhone);
+                			-- assertions
+                			assertTrue(mobilePhone.subFeaturesLen() = 4);
+                			assertTrue(screen.subFeaturesLen() = 3);
+                			assertTrue(media.subFeaturesLen() = 2);
+                			assertTrue(mobilePhoneModel.nodeCount() = 10);
                 );
-      public static main: () ==> ()
+        private testEshopConfiguration:config ==> ()
+                testEshopConfiguration(config) ==
+                (
+                		if config <> {|->} then assertTrue(eshopModel.isValidConfiguration(config));
+                		generator.generateValidConfigs(eshopModel);
+                );
+        private testMobilePhoneConfiguration:config ==> ()
+                testMobilePhoneConfiguration(config) ==
+                (
+                		if config <> {|->} then assertTrue(mobilePhoneModel.isValidConfiguration(config));
+                		generator.generateValidConfigs(mobilePhoneModel);
+                );
+      	public static main: () ==> ()
                 main() ==
                 (	
-                				dcl tester : FeatureModelTester := new FeatureModelTester();
-                        tester.createFeatureModel();
-                        tester.testConfiguration({"e-shop" |-> true, "catalogue" |-> true,
-                        						"payment" |-> true, "security" |-> true, "search" |-> false,
-                        						"bank transfer" |-> true, "credit card" |-> false, 
-                        						"high" |-> true, "standard" |-> false});
+                		dcl tester : FeatureModelTester := new FeatureModelTester();
+                  	--tester.createEshopModel();
+         						--tester.testEshopConfiguration({"e-shop" |-> true, "catalogue" |-> true,
+                        						--"payment" |-> true, "security" |-> true, "search" |-> false,
+                        						--"bank transfer" |-> true, "credit card" |-> false, 
+                        						--"high" |-> true, "standard" |-> false});
+                    tester.createMobilePhoneModel();
+                    tester.testMobilePhoneConfiguration({|->});
                 );
 traces
--- TODO Define Combinatorial Test Traces here
+			
 end FeatureModelTester

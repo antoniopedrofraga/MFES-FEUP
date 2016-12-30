@@ -6,7 +6,7 @@ instance variables
 		private root : Feature;
 		private nodeCount : int;
 		private restrictedInvalidSubsets : seq of config;
-		private validConfigs : seq of config := [];
+		public validConfigs : seq of config := [];
 operations
   	public ConfigSearcher: Feature ==> ConfigSearcher
   						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); restrictedInvalidSubsets := root.invalidSubsets(); return self;);
@@ -38,7 +38,7 @@ operations
   					searchFeatureTree(feature, hasOrParent) == 
   					(
   							if not hasOrParent then notOrParentConfigs(feature);
-  							if isofclass(Parent, feature) then (
+  							if isofclass(Parent, feature) then
   								if feature.isXorParent() then setXorParentConfigs(feature)
   								else if feature.isOrParent() then setOrParentConfigs(feature)
   								else
@@ -46,9 +46,8 @@ operations
   									for subFeature in feature.getSubFeatures() do
   										searchFeatureTree(subFeature, false);
   								)
-  							);
   					);
-  		public notOrParentConfigs: (Feature | Parent) ==> ()
+  		public notOrParentConfigs: Feature | Parent ==> ()
   						notOrParentConfigs(feature) ==
   						(
   							dcl possibilities : seq of config := [];
@@ -60,7 +59,7 @@ operations
   							for validConfig in validConfigs do 
   								for possibility in possibilities do
   										newValidConfigs := newValidConfigs ^ [validConfig munion possibility];
-  							validConfigs := newValidConfigs;		
+  							validConfigs := newValidConfigs;
   							);
   						);
   		public setXorParentConfigs: Parent ==> ()
@@ -81,7 +80,7 @@ operations
 				  										elements := elements munion element;
 		  										);
 		  								newValidConfigs := newValidConfigs ^ [validConfig munion elements];
-		  								validConfigs := newValidConfigs;
+						  				validConfigs := newValidConfigs;
 						  				searchFeatureTree(subFeatures(i), true);
 		  								);
 		  				);
@@ -91,14 +90,12 @@ operations
   							dcl subFeatures : set of string := parent.getSubFeaturesNames();
   							dcl possibilities : seq of set of config := [];
   							dcl validPossibilities : seq of config := [];
-  							for all subFeature in set subFeatures do 
+  							for all subFeature in set subFeatures do
   							 		possibilities := possibilities ^ [{{subFeature |-> b2} | b2 in set {true, false}}];
   							for element in consumeXorPossibilities(possibilities, len possibilities) do
   									for validConfig in validConfigs do
   											validPossibilities := validPossibilities ^ [validConfig munion element];
   							validConfigs := validPossibilities;
-  							for subFeature in parent.getSubFeatures() do
-  									searchFeatureTree(subFeature, true);
   						);
   		public consumeXorPossibilities: seq of set of config * int ==> seq of config
   						consumeXorPossibilities(possibilities, originalLength) ==
@@ -117,6 +114,7 @@ operations
 				  								);
 		  								);
 		  							
-  								return validPossibilities;				
+  								return validPossibilities;
+  								
   						);
 end ConfigSearcher

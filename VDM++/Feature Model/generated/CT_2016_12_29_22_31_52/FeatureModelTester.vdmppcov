@@ -1,0 +1,63 @@
+class FeatureModelTester
+types
+			public config = Utilities`config;
+instance variables
+			generator : ConfigGenerator := new ConfigGenerator();
+			model : Model := new Model();
+			tester : FeatureModelTester := new FeatureModelTester();
+operations
+			private assertTrue: bool ==> ()
+                assertTrue(cond) == return
+                pre cond;
+      private assertFalse: bool ==> ()
+                assertFalse(cond) == return
+                pre not cond;
+                
+			private createFeatureModel: () ==> ()
+                createFeatureModel() ==
+                (
+                			-- nodes declaration
+                			dcl root : Parent := new Parent("e-shop");
+											dcl catalogue : Feature := new Feature("catalogue");
+											dcl payment : Parent := new Parent("payment");
+											dcl security : Parent := new Parent("security");
+											dcl search : Feature := new Feature("search");
+											dcl bankTransfer : Feature := new Feature("bank transfer");
+											dcl creditCard : Feature := new Feature("credit card");
+											dcl high : Feature := new Feature("high");
+											dcl standard : Feature := new Feature("standard");
+											-- model creation
+                			payment.setOrParent();
+                			search.setOptional();
+                			payment.setSubFeatures([bankTransfer, creditCard]);
+                			security.setXorParent();
+                			security.setSubFeatures([high, standard]);
+                			creditCard.setRequirements([high]);
+                			standard.setExclusions([search]);
+                			root.setSubFeatures([catalogue, payment, security, search]);
+                			model.setRoot(root);
+                			-- tests
+                			assertTrue(root.subFeaturesLen() = 4);
+                			assertTrue(payment.subFeaturesLen() = 2);
+                			assertTrue(security.subFeaturesLen() = 2);
+                			assertTrue(model.nodeCount() = 9);
+                );
+        private testConfiguration: config ==> ()
+                testConfiguration(c) ==
+                (
+                		assertTrue(model.isValidConfiguration(c));
+                		generator.generateValidConfigs(model);
+                );
+      public static main: () ==> ()
+                main() ==
+                (	
+                  	return;     
+                );
+traces
+			testModel:
+					tester.createFeatureModel();
+          tester.testConfiguration({"e-shop" |-> true, "catalogue" |-> true,
+                        						"payment" |-> true, "security" |-> true, "search" |-> false,
+                        						"bank transfer" |-> true, "credit card" |-> false, 
+                        						"high" |-> true, "standard" |-> false});
+end FeatureModelTester

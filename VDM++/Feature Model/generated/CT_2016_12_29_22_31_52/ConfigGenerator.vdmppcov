@@ -5,9 +5,9 @@ operations
 		public generateValidConfigs: Model ==> () 
 						generateValidConfigs(model) == 
 						(
-								dcl root : Feature := model.getRoot();
-								dcl searcher : ConfigSearcher := new ConfigSearcher(root);
-								searcher.searchConfigs();
-								searcher.printConfigs();
+							dcl root : Feature := model.getRoot();
+							dcl searcher : ConfigSearcher := new ConfigSearcher(root);
+							searcher.searchConfigs();
+							--searcher.printConfigs();
 						);
 end ConfigGenerator
