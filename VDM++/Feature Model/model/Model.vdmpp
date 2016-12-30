@@ -8,9 +8,10 @@ instance variables
 operations
 			public Model: Feature ==> Model
 							Model(r) == (root := r; setFeatures(); return self;)
-							post root = r;
+							post root = r and card features <> 1;
 			public setRoot: Feature ==> ()
-							setRoot(r) == (root := r; setFeatures(););
+							setRoot(r) == (root := r; setFeatures();)
+							post root = r and card features <> 1;
 			public getRoot: () ==> Feature
 							getRoot() == (return root;);
 			public nodeCount: () ==> int

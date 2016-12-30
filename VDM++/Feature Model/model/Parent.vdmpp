@@ -20,6 +20,8 @@ operations
 							isXorParent() == return xorParent;
 			public isOrParent: () ==> bool
 							isOrParent() == return orParent;
+			public isDefaultParent: () ==> bool
+							isDefaultParent() == return not (orParent or xorParent);
 			public setSubFeatures: seq of Feature ==> ()
 							setSubFeatures(s) == 
 							(

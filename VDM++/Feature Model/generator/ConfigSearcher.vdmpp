@@ -2,9 +2,8 @@ class ConfigSearcher
 types
 		public string = Utilities`string;
 		public config = Utilities`config;
-		public featureType = <orParent> | <xorParent> | <normalParent>;
 instance variables
-		private root : Feature;
+		private root : Parent;
 		private nodeCount : int;
 		private restrictedInvalidSubsets : seq of config;
 		private validConfigs : seq of config := [];
@@ -13,7 +12,7 @@ operations
   						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); restrictedInvalidSubsets := root.invalidSubsets(); return self;);
   	public searchConfigs: () ==> () 
   					searchConfigs() == (
-  						searchFeatureTree(root, false);
+  						searchFeatureTree(root, true, []);
   						applyRestrictions();
   					);
   	public applyRestrictions: () ==> ()
@@ -35,22 +34,22 @@ operations
   	public printConfigs: () ==> ()
   					printConfigs() == for validConfig in validConfigs do IO`println(validConfig);
   					
-  	public searchFeatureTree: (Feature | Parent) * bool ==> ()
-  					searchFeatureTree(feature, hasOrParent) == 
+  	public searchFeatureTree: (Feature | Parent) * bool * seq of string ==> ()
+  					searchFeatureTree(feature, hasDefaultParent, optionalParents) == 
   					(
-  							if not hasOrParent then notOrParentConfigs(feature);
+  							if hasDefaultParent then defaultParentConfigs(feature);
+  							checkOptionalParents(feature, optionalParents);
   							if isofclass(Parent, feature) then (
-  								if feature.isXorParent() then setXorParentConfigs(feature)
-  								else if feature.isOrParent() then setOrParentConfigs(feature)
-  								else
-  								(
-  									for subFeature in feature.getSubFeatures() do
-  										searchFeatureTree(subFeature, false);
-  								)
+  								dcl newOptionalParents : seq of string := optionalParents;
+  								if feature.isXorParent() then xorParentConfigs(feature)
+  								else if feature.isOrParent() then orParentConfigs(feature);
+  								if not feature.isMandatory() then newOptionalParents := newOptionalParents ^ [feature.getName()];
+  								for subFeature in feature.getSubFeatures() do
+  									searchFeatureTree(subFeature, feature.isDefaultParent(), newOptionalParents);
   							);
   					);
-  		public notOrParentConfigs: (Feature | Parent) ==> ()
-  						notOrParentConfigs(feature) ==
+  		public defaultParentConfigs: (Feature | Parent) ==> ()
+  						defaultParentConfigs(feature) ==
   						(
   							dcl possibilities : seq of config := [];
   							if feature.isMandatory() then possibilities := [{feature.getName() |-> true}]
@@ -64,13 +63,13 @@ operations
   							validConfigs := newValidConfigs;		
   							);
   						);
-  		public setXorParentConfigs: Parent ==> ()
-  						setXorParentConfigs(parent) ==
+  		public xorParentConfigs: Parent ==> ()
+  						xorParentConfigs(parent) ==
   						(
   							dcl subFeaturesLength : int := parent.subFeaturesLen();
   							dcl subFeatures : seq of Feature := parent.getSubFeatures();
   							dcl newValidConfigs : seq of config := [];
-  							for validConfig in validConfigs do
+  							for validConfig in validConfigs do (
   									for	i = 1 to subFeaturesLength do 
   									(
   										dcl elements : config := {|->};
@@ -82,27 +81,33 @@ operations
 				  										elements := elements munion element;
 		  										);
 		  								newValidConfigs := newValidConfigs ^ [validConfig munion elements];
-		  								validConfigs := newValidConfigs;
-						  				searchFeatureTree(subFeatures(i), true);
 		  								);
+		  								if not parent.isMandatory() and 
+		  								Utilities`mapToSet({parent.getName() |-> false}) subset Utilities`mapToSet(validConfig) then
+					  					 (
+					  					 dcl elements : config := {|->};
+					  					 for subFeature in subFeatures do
+					  								elements := elements munion {subFeature.getName() |-> false};
+					  					 newValidConfigs := newValidConfigs ^ [validConfig munion elements];
+					  					 );
+		  					);
+		  					validConfigs := newValidConfigs;
 		  				);
-		  public setOrParentConfigs: Parent ==> ()
-  						setOrParentConfigs(parent) ==
+		  public orParentConfigs: Parent ==> ()
+  						orParentConfigs(parent) ==
   						(
   							dcl subFeatures : set of string := parent.getSubFeaturesNames();
   							dcl possibilities : seq of set of config := [];
   							dcl validPossibilities : seq of config := [];
   							for all subFeature in set subFeatures do 
   							 		possibilities := possibilities ^ [{{subFeature |-> b2} | b2 in set {true, false}}];
-  							for element in consumeXorPossibilities(possibilities, len possibilities) do
+  							for element in consumeOrPossibilities(parent, possibilities, len possibilities) do
   									for validConfig in validConfigs do
   											validPossibilities := validPossibilities ^ [validConfig munion element];
   							validConfigs := validPossibilities;
-  							for subFeature in parent.getSubFeatures() do
-  									searchFeatureTree(subFeature, true);
   						);
-  		public consumeXorPossibilities: seq of set of config * int ==> seq of config
-  						consumeXorPossibilities(possibilities, originalLength) ==
+  		public consumeOrPossibilities: Feature * seq of set of config * int ==> seq of config
+  						consumeOrPossibilities(parent, possibilities, originalLength) ==
   						(
   								dcl validPossibilities : seq of config := [];
   								if len possibilities = 1 then 
@@ -111,13 +116,26 @@ operations
   										)
   								else if len possibilities > 1 then 
 		  								for all possibility in set possibilities(1) do (
-				  								for element in consumeXorPossibilities(tl possibilities, originalLength) do (
+				  								for element in consumeOrPossibilities(parent, tl possibilities, originalLength) do (
 				  										dcl conf : config := possibility munion element;
-				  										if not (len possibilities = originalLength and rng conf = {false}) then
+				  										if not (len possibilities = originalLength and rng conf = {false} and parent.isMandatory()) then
 				  												validPossibilities := validPossibilities ^ [possibility munion element];
 				  								);
 		  								);
 		  							
   								return validPossibilities;				
+  						);
+  		public checkOptionalParents: Feature * seq of string ==> ()
+  						checkOptionalParents(feature, optionalParents) == 
+  						(	
+  								dcl newValidConfigs : set of config := {};
+  								for i = 1 to len optionalParents do (
+  									dcl invalidConfig : config := {optionalParents(i) |-> false, feature.getName() |-> true};
+  									IO`println(invalidConfig);
+  									if i = 1 then newValidConfigs := { elem | elem in seq validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
+  									else newValidConfigs := newValidConfigs inter { elem | elem in seq validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
+  								);
+  							if newValidConfigs <> {} then validConfigs := setToSeq(newValidConfigs);
+  												
   						);
 end ConfigSearcher
