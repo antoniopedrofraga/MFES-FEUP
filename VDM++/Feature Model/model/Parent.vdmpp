@@ -46,12 +46,7 @@ operations
 			public invalidSubsets: () ==> seq of config
 							invalidSubsets() == 
 							(
-							dcl restrictions : seq of config := [];
-							if (len requirements + len exclusions > 0) then
-							(
-									for requirement in requirements do restrictions := restrictions ^ [{name |-> true} munion {requirement.getName() |-> false}];
-									for exclusion in exclusions do restrictions := restrictions ^ [{name |-> true} munion {exclusion.getName() |-> true}];
-							);
+							dcl restrictions : seq of config := checkRequirements();
 							for subFeature in subFeatures do
 										restrictions := restrictions ^ subFeature.invalidSubsets();
 							return restrictions;

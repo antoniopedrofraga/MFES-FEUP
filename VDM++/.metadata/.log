@@ -8377,3 +8377,9 @@ Caused by: java.lang.IndexOutOfBoundsException: Index: 1, Size: 2
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-31 04:32:17.457
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-31 04:57:42.602
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-31 04:58:01.770
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view

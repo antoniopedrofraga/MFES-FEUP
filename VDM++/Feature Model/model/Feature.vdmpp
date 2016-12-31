@@ -31,6 +31,12 @@ operations
 			public invalidSubsets: () ==> seq of config
 							invalidSubsets() == 
 							(
+							dcl restrictions : seq of config := checkRequirements();
+							return restrictions;
+							);
+			public checkRequirements: () ==> seq of config
+							checkRequirements() ==
+							(
 							dcl restrictions : seq of config := [];
 							if (len requirements + len exclusions > 0) then
 							(
@@ -38,7 +44,7 @@ operations
 									for exclusion in exclusions do restrictions := restrictions ^ [{name |-> true} munion {exclusion.getName() |-> true}];
 							);
 							return restrictions;
-			);
+							);
 			public nodeCount: () ==> int
 							nodeCount() == return 1;
 			public isMandatory: () ==> bool
