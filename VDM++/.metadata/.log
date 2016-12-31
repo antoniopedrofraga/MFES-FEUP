@@ -8383,3 +8383,12 @@ Caused by: java.lang.IndexOutOfBoundsException: Index: 1, Size: 2
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-31 04:58:01.770
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+!SESSION 2016-12-31 16:40:15.200 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 4 376 2016-12-31 18:05:49.562
+!MESSAGE Marker id 23810 not found.

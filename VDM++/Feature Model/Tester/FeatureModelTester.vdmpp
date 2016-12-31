@@ -76,7 +76,20 @@ operations
       private testModelRoot: Model * Parent ==> ()
       					testModelRoot(model, root) == assertTrue(model.getRoot() = root); 
       					
-      
+     -- INVALID invariants and pre/post conditions
+     -- warning: Run one function at a time
+      private testRequirementAndExclusions: () ==> ()
+      					testRequirementAndExclusions() ==	
+      					(
+
+      						let feature1 = new Feature("feature1"),
+      								feature2 = new Feature("feature2") in
+      								(feature1.setRequirements([feature2]);
+      								feature1.setExclusions([feature2]);
+      								);
+      								
+      					);
+      					
 			private testEshopModel: () ==> ()
                 testEshopModel() ==
                 (
@@ -161,7 +174,7 @@ operations
                 			validModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> true,
                         						"payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, 
                         						"security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false });
-                      invalidModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> true,
+                      invalidModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> false,
                         						"payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, 
                         						"security" |-> true, "high" |-> true, "standard" |-> true, "search" |-> false });
                 			testGeneratedValidConfigs(eshopModel, Utilities`eshopValidConfigs());
@@ -259,7 +272,7 @@ operations
                      															"media" |-> true, "camera" |-> true, "mp3" |-> true});
                       invalidModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> false, "gps" |-> true,
                      															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true,
-                     															"media" |-> true, "camera" |-> true, "mp3" |-> true});
+                     															"media" |-> true, "camera" |-> true, "mp3" |-> true, "3g" |-> true});
                 			testGeneratedValidConfigs(mobilePhoneModel, Utilities`mobilePhoneValidConfigs());
                 );
         private testCarModel: () ==> ()
@@ -363,7 +376,7 @@ operations
               			validModelConfig(carModel, {"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
               																"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
               																"engine" |-> true, "electric" |-> true, "gasoline" |-> true});
-                    invalidModelConfig(carModel, {"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
+                    invalidModelConfig(carModel, {"car" |-> false, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
               																"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
               																"engine" |-> true, "electric" |-> false, "gasoline" |-> false});
               			testGeneratedValidConfigs(carModel, Utilities`carValidConfigs());
