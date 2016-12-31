@@ -12,14 +12,18 @@ operations
 							Feature(n) == (name := n; return self;)
 							pre not n = ""
 							post name = n;
-			public setOptional: () ==> ()
-							setOptional() == mandatory := false;
+			public setMandatory: bool ==> ()
+							setMandatory(b) == mandatory := b;
 			public setRequirements: seq of Feature ==> ()
 							setRequirements(fs) == (requirements := fs;)
 							post elems requirements inter elems exclusions = {};
 			public setExclusions: seq of Feature ==> ()
 							setExclusions(fs) == exclusions := fs
 							post {} = {element | element in seq exclusions & element.mandatory} and elems requirements inter elems exclusions = {};
+			public getRequirements: () ==> seq of Feature
+						getRequirements() == return requirements;
+			public getExclusions: () ==> seq of Feature
+						getExclusions() == return exclusions;
 			public getName: () ==> string
 							getName() == return name;
 			public features: () ==> set of string

@@ -2,9 +2,48 @@ class Utilities
 types
 			public string = seq of char;
 			public config = map string to bool;
+			public parentType = <orParent> | <xorParent> | <defaultParent>;
 functions
 			public mapToSet : config -> set of config
 							mapToSet(c) == {{a |-> b} | a in set dom c, b in set rng c & b = c(a)};
+			public seqToSet : seq of config -> set of config
+							seqToSet(c) == {a | a in seq c};
 			public isNameConfigured: string * config -> bool
 							isNameConfigured(n, c) == ({n} <: c = {n |-> true});
+			public eshopValidConfigs: () -> set of config
+							eshopValidConfigs() == {{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> true},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true}};
+			public mobilePhoneValidConfigs: () -> set of config
+							mobilePhoneValidConfigs() == {{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true}};
+			
 end Utilities

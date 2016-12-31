@@ -10,10 +10,11 @@ instance variables
 operations
   	public ConfigSearcher: Feature ==> ConfigSearcher
   						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); restrictedInvalidSubsets := root.invalidSubsets(); return self;);
-  	public searchConfigs: () ==> () 
-  					searchConfigs() == (
+  	public getValidConfigs: () ==> seq of config 
+  					getValidConfigs() == (
   						searchFeatureTree(root, true, []);
   						applyRestrictions();
+  						return validConfigs;
   					);
   	public applyRestrictions: () ==> ()
   					applyRestrictions() ==
@@ -30,10 +31,7 @@ operations
 													dcl sequence : seq of config := [];
 													for all e in set s do sequence := sequence ^ [e];
 													return sequence;
-													);
-  	public printConfigs: () ==> ()
-  					printConfigs() == for validConfig in validConfigs do IO`println(validConfig);
-  					
+													);			
   	public searchFeatureTree: (Feature | Parent) * bool * seq of string ==> ()
   					searchFeatureTree(feature, hasDefaultParent, optionalParents) == 
   					(

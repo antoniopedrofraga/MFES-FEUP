@@ -8,7 +8,7 @@ instance variables
 operations
 			public Model: Feature ==> Model
 							Model(r) == (root := r; setFeatures(); return self;)
-							post root = r and card features <> 1;
+							post root = r;
 			public setRoot: Feature ==> ()
 							setRoot(r) == (root := r; setFeatures();)
 							post root = r and card features <> 1;
@@ -20,6 +20,8 @@ operations
 							setFeatures() == (
 									features := root.features();
 							);
+			public getFeatures: () ==> set of string
+							getFeatures() == return features;
 			public getInvalidSubsets: () ==> seq of config
 							getInvalidSubsets() == return root.invalidSubsets();
 			public isValidConfiguration: config ==> bool
@@ -29,5 +31,7 @@ operations
 								if not (root.isValidConfiguration(config)) then return false;
 								return true;
 								);
+			public generateValidConfigs: () ==> seq of config
+							generateValidConfigs() == return new ConfigGenerator().generateValidConfigs(self);
 								
 end Model

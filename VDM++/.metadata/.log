@@ -7894,3 +7894,486 @@ Detailed Message: C:\Users\Pedro Fraga\Documents\GitHub\MFES-FEUP\VDM++\Feature 
 
 !ENTRY org.overture.ide.debug 4 0 2016-12-30 05:28:46.985
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+!SESSION 2016-12-30 16:22:08.233 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui.console 4 2 2016-12-30 16:23:01.932
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.console".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleOutputStream.setColor(IOConsoleOutputStream.java:139)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:186)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:164)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-12-30 16:23:01.951
+!MESSAGE Exception occurred during console property change notification.
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleOutputStream.setColor(IOConsoleOutputStream.java:139)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:186)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:164)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.console 4 2 2016-12-30 16:23:01.952
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.console".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleInputStream.setColor(IOConsoleInputStream.java:248)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:170)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.console 4 120 2016-12-30 16:23:01.952
+!MESSAGE Exception occurred during console property change notification.
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleInputStream.setColor(IOConsoleInputStream.java:248)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:170)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 16:25:48.155
+!MESSAGE internalErrorLoggedFromVdmDebugPlugin206: Error evaluating code
+Detailed Message: internal error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 206: Error evaluating code
+Detailed Message: internal error
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 16:26:09.782
+!MESSAGE internalErrorLoggedFromVdmDebugPlugin206: Error evaluating code
+Detailed Message: internal error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 206: Error evaluating code
+Detailed Message: internal error
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 16:34:15.597
+!MESSAGE internalErrorLoggedFromVdmDebugPlugin206: Error evaluating code
+Detailed Message: internal error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 206: Error evaluating code
+Detailed Message: internal error
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 16:34:58.630
+!MESSAGE internalErrorLoggedFromVdmDebugPlugin206: Error evaluating code
+Detailed Message: internal error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 206: Error evaluating code
+Detailed Message: internal error
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 16:35:16.016
+!MESSAGE internalErrorLoggedFromVdmDebugPlugin206: Error evaluating code
+Detailed Message: internal error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 206: Error evaluating code
+Detailed Message: internal error
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 16:35:30.088
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug.core 4 120 2016-12-30 16:35:41.055
+!MESSAGE internalErrorLoggedFromVdmDebugPlugin206: Error evaluating code
+Detailed Message: internal error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpDebuggingEngineException: 206: Error evaluating code
+Detailed Message: internal error
+	at org.overture.ide.debug.core.dbgp.internal.utils.DbgpXmlParser.checkError(DbgpXmlParser.java:150)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:117)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.run(DbgpContinuationCommands.java:58)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.run(DbgpCoreCommands.java:166)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpResumeOperation.process(DbgpResumeOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-12-30 19:36:26.634 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.overture.ide.plugins.combinatorialtesting 4 0 2016-12-30 19:41:40.444
+!MESSAGE TracesPlugin
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.overture.ide.plugins.combinatorialtesting.TracesXmlStoreReader.parse(TracesXmlStoreReader.java:233)
+	at org.overture.ide.plugins.combinatorialtesting.TracesXmlStoreReader.getTraceTestResults(TracesXmlStoreReader.java:249)
+	at org.overture.ide.plugins.combinatorialtesting.store.StorageManager.getTraceTests(StorageManager.java:101)
+	at org.overture.ide.plugins.combinatorialtesting.views.treeView.TraceTreeNode.loadTests(TraceTreeNode.java:192)
+	at org.overture.ide.plugins.combinatorialtesting.views.TracesTreeView$10.treeExpanded(TracesTreeView.java:539)
+	at org.eclipse.jface.viewers.AbstractTreeViewer$2.run(AbstractTreeViewer.java:1120)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.fireTreeExpanded(AbstractTreeViewer.java:1117)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.handleTreeExpand(AbstractTreeViewer.java:1495)
+	at org.eclipse.jface.viewers.TreeViewer.handleTreeExpand(TreeViewer.java:882)
+	at org.eclipse.jface.viewers.AbstractTreeViewer$3.treeExpanded(AbstractTreeViewer.java:1505)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:133)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Tree.wmNotifyChild(Tree.java:7705)
+	at org.eclipse.swt.widgets.Control.wmNotify(Control.java:5817)
+	at org.eclipse.swt.widgets.Composite.wmNotify(Composite.java:2033)
+	at org.eclipse.swt.widgets.Control.WM_NOTIFY(Control.java:5371)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4847)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5102)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(OS.java:2446)
+	at org.eclipse.swt.widgets.Tree.callWindowProc(Tree.java:1552)
+	at org.eclipse.swt.widgets.Tree.WM_LBUTTONDOWN(Tree.java:6559)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4827)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:6074)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5102)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3814)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.ui 4 0 2016-12-30 21:50:56.940
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at org.overture.ide.plugins.combinatorialtesting.store.StorageManager.getCtOutputFolder(StorageManager.java:57)
+	at org.overture.ide.plugins.combinatorialtesting.store.StorageManager.initialize(StorageManager.java:62)
+	at org.overture.ide.plugins.combinatorialtesting.store.StorageManager.<init>(StorageManager.java:52)
+	at org.overture.ide.plugins.combinatorialtesting.views.treeView.TraceTreeNode.<init>(TraceTreeNode.java:54)
+	at org.overture.ide.plugins.combinatorialtesting.views.ViewContentProvider.getChildren(ViewContentProvider.java:135)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getRawChildren(AbstractTreeViewer.java:1372)
+	at org.eclipse.jface.viewers.TreeViewer.getRawChildren(TreeViewer.java:341)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:907)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getSortedChildren(AbstractTreeViewer.java:621)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.lambda$0(AbstractTreeViewer.java:817)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:795)
+	at org.eclipse.jface.viewers.TreeViewer.createChildren(TreeViewer.java:596)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:766)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.handleTreeExpand(AbstractTreeViewer.java:1493)
+	at org.eclipse.jface.viewers.TreeViewer.handleTreeExpand(TreeViewer.java:882)
+	at org.eclipse.jface.viewers.AbstractTreeViewer$3.treeExpanded(AbstractTreeViewer.java:1505)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:133)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Tree.wmNotifyChild(Tree.java:7705)
+	at org.eclipse.swt.widgets.Control.wmNotify(Control.java:5817)
+	at org.eclipse.swt.widgets.Composite.wmNotify(Composite.java:2033)
+	at org.eclipse.swt.widgets.Control.WM_NOTIFY(Control.java:5371)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4847)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5102)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(OS.java:2446)
+	at org.eclipse.swt.widgets.Tree.callWindowProc(Tree.java:1552)
+	at org.eclipse.swt.widgets.Tree.WM_LBUTTONDOWN(Tree.java:6559)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4827)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:6074)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5102)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3814)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 22:34:48.646
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-30 23:33:29.210
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-31 01:50:26.134
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+!SESSION 2016-12-31 02:33:34.823 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 4 0 2016-12-31 03:28:57.705
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.swt.SWTException: Failed to execute runnable (java.lang.IndexOutOfBoundsException: Index: 1, Size: 2)
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4203)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3819)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: java.lang.IndexOutOfBoundsException: Index: 1, Size: 2
+	at java.util.LinkedList.checkElementIndex(Unknown Source)
+	at java.util.LinkedList.get(Unknown Source)
+	at org.overture.ast.util.Utils.listToString(Utils.java:59)
+	at org.overture.ast.util.Utils.listToString(Utils.java:43)
+	at org.overture.ast.types.AOperationType.toString(AOperationType.java:185)
+	at java.lang.String.valueOf(Unknown Source)
+	at java.lang.StringBuilder.append(Unknown Source)
+	at org.overture.ast.util.ToStringUtil.getExplicitOperationString(ToStringUtil.java:139)
+	at org.overture.ast.definitions.AExplicitOperationDefinition.toString(AExplicitOperationDefinition.java:240)
+	at org.overture.ast.definitions.AExplicitOperationDefinition.equals(AExplicitOperationDefinition.java:120)
+	at org.eclipse.jface.viewers.StructuredViewer.equals(StructuredViewer.java:714)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updatePlus(AbstractTreeViewer.java:2853)
+	at org.eclipse.jface.viewers.TreeViewer.updatePlus(TreeViewer.java:786)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createTreeItem(AbstractTreeViewer.java:844)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.lambda$0(AbstractTreeViewer.java:820)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:795)
+	at org.eclipse.jface.viewers.TreeViewer.createChildren(TreeViewer.java:596)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpandToLevel(AbstractTreeViewer.java:1760)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpandToLevel(AbstractTreeViewer.java:1770)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalInitializeTree(AbstractTreeViewer.java:1539)
+	at org.eclipse.jface.viewers.TreeViewer.internalInitializeTree(TreeViewer.java:772)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.lambda$1(AbstractTreeViewer.java:1523)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1458)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:354)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1419)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.inputChanged(AbstractTreeViewer.java:1517)
+	at org.eclipse.jface.viewers.ContentViewer.setInput(ContentViewer.java:286)
+	at org.eclipse.jface.viewers.StructuredViewer.setInput(StructuredViewer.java:1696)
+	at org.overture.ide.ui.outline.VdmContentOutlinePage$ElementChangedListener$1.run(VdmContentOutlinePage.java:92)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	... 23 more
+
+!ENTRY org.overture.ide.debug 4 0 2016-12-31 04:32:17.457
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view

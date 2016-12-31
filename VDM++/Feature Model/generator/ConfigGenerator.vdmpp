@@ -1,13 +1,13 @@
 class ConfigGenerator
 types
 			public string = Utilities`string;
+			public config = Utilities`config;
 operations
-		public generateValidConfigs: Model ==> () 
+		public generateValidConfigs: Model ==> seq of config 
 						generateValidConfigs(model) == 
 						(
 								dcl root : Feature := model.getRoot();
 								dcl searcher : ConfigSearcher := new ConfigSearcher(root);
-								searcher.searchConfigs();
-								searcher.printConfigs();
+								return searcher.getValidConfigs();
 						);
 end ConfigGenerator
