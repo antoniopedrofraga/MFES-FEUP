@@ -1,0 +1,107 @@
+class CarModelTester is subclass of FeatureModelTester
+instance variables
+				car : Parent := new Parent("car");
+  			body : Feature := new Feature("body");
+				transmission : Parent := new Parent("transmission");
+				automatic : Feature := new Feature("automatic");
+				manual : Feature := new Feature("manual");
+				pullsTrailler : Parent := new Parent("pullsTrailler");
+				heavyTrailler : Parent := new Parent("heavyTrailler");
+				armor : Feature := new Feature("armor");
+				lightTrailler : Feature := new Feature("lightTrailler");
+				engine : Parent := new Parent("engine");
+				gasoline : Feature := new Feature("gasoline");
+				electric : Feature := new Feature("electric");
+				carModel: Model := new Model(car); 
+operations
+        public testModel: () ==> ()
+          testModel() ==
+          (	
+							-- Parent type tests
+								
+							pullsTrailler.setParentType(<xorParent>);
+							transmission.setParentType(<xorParent>);
+							engine.setParentType(<orParent>);
+							
+							testParentType(pullsTrailler, <xorParent>);
+							testParentType(transmission, <xorParent>);
+							testParentType(engine, <orParent>);
+        			testParentType(car, <defaultParent>);
+        			testParentType(heavyTrailler, <defaultParent>);
+        			
+        			-- Sub features tests
+          			
+        			car.setSubFeatures([body, transmission, pullsTrailler, engine]);
+							transmission.setSubFeatures([automatic, manual]);
+							engine.setSubFeatures([gasoline, electric]);
+							pullsTrailler.setSubFeatures([lightTrailler, heavyTrailler]);
+							heavyTrailler.setSubFeatures([armor]);
+							
+							testSubFeatures(car, [body, transmission, pullsTrailler, engine]);
+							testSubFeatures(transmission, [automatic, manual]);
+        			testSubFeatures(engine, [gasoline, electric]);
+        			testSubFeatures(pullsTrailler, [lightTrailler, heavyTrailler]);
+        			testSubFeatures(heavyTrailler, [armor]);
+        			
+        			-- Mandatory and optional features tests
+							-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
+							
+							pullsTrailler.setMandatory(false);
+							armor.setMandatory(false);
+							
+							testMandatoryFeature(car, true);
+        			testMandatoryFeature(body, true);
+        			testMandatoryFeature(transmission, true);
+        			testMandatoryFeature(automatic, false);
+        			testMandatoryFeature(manual, false);
+        			testMandatoryFeature(pullsTrailler, false);
+        			testMandatoryFeature(heavyTrailler, false);
+        			testMandatoryFeature(lightTrailler, false);
+        			testMandatoryFeature(armor, false);
+        			testMandatoryFeature(engine, true);
+        			testMandatoryFeature(gasoline, false);
+        			testMandatoryFeature(electric, false);
+        			
+        			-- Requirements tests
+							
+							testRequirements(car, []);
+        			testRequirements(body, []);
+        			testRequirements(transmission, []);
+        			testRequirements(automatic, []);
+        			testRequirements(manual, []);
+        			testRequirements(pullsTrailler, []);
+        			testRequirements(heavyTrailler, []);
+        			testRequirements(lightTrailler, []);
+        			testRequirements(armor, []);
+        			testRequirements(engine, []);
+        			testRequirements(gasoline, []);
+        			testRequirements(electric, []);
+							
+							-- Exclusions tests
+							
+        			testExclusions(car, []);
+        			testExclusions(body, []);
+        			testExclusions(transmission, []);
+        			testExclusions(automatic, []);
+        			testExclusions(manual, []);
+        			testExclusions(pullsTrailler, []);
+        			testExclusions(heavyTrailler, []);
+        			testExclusions(lightTrailler, []);
+        			testExclusions(armor, []);
+        			testExclusions(engine, []);
+        			testExclusions(gasoline, []);
+        			testExclusions(electric, []);
+        			
+        			-- Model tests
+        			
+        			testModelRoot(carModel, car);
+        			testModelFeaturesCount(carModel, 12);
+        			validModelConfig(carModel, {"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
+        																"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
+        																"engine" |-> true, "electric" |-> true, "gasoline" |-> true});
+              invalidModelConfig(carModel, {"car" |-> false, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
+        																"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
+        																"engine" |-> true, "electric" |-> false, "gasoline" |-> false});
+        			testGeneratedValidConfigs(carModel, Utilities`carValidConfigs());
+          );
+end CarModelTester

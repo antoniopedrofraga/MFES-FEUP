@@ -1,0 +1,97 @@
+class MobilePhoneModelTester is subclass of FeatureModelTester
+instance variables
+    			mobilePhone : Parent := new Parent("mobile phone");
+					calls : Feature := new Feature("calls");
+					gps : Feature := new Feature("gps");
+					screen : Parent := new Parent("screen");
+					media : Parent := new Parent("media");
+					basic : Feature := new Feature("basic");
+					colour : Feature := new Feature("colour");
+					highResolution : Feature := new Feature("high resolution");
+					camera : Feature := new Feature("camera");
+					mp3 : Feature := new Feature("mp3");
+					mobilePhoneModel: Model := new Model(mobilePhone);  
+operations
+public testModel: () ==> ()
+                testModel() ==
+                (
+											-- Parent type tests
+											
+											media.setParentType(<orParent>);
+											screen.setParentType(<xorParent>);
+											
+											testParentType(media, <orParent>);
+                			testParentType(screen, <xorParent>);
+                			testParentType(mobilePhone, <defaultParent>);
+                			
+                			-- Sub features tests
+                			
+                			screen.setSubFeatures([basic, colour, highResolution]);
+											media.setSubFeatures([camera, mp3]);
+											mobilePhone.setSubFeatures([media, calls, gps, screen]);
+											
+											testSubFeatures(screen, [basic, colour, highResolution]);
+                			testSubFeatures(media, [camera, mp3]);
+                			testSubFeatures(mobilePhone, [media, calls, gps, screen]);
+											
+											-- Mandatory and optional features tests
+											-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
+											
+											gps.setMandatory(false);
+											media.setMandatory(false);
+											screen.setMandatory(false);
+											
+											testMandatoryFeature(mobilePhone, true);
+                			testMandatoryFeature(calls, true);
+                			testMandatoryFeature(gps, false);
+                			testMandatoryFeature(screen, false);
+                			testMandatoryFeature(media, false);
+                			testMandatoryFeature(basic, false);
+                			testMandatoryFeature(colour, false);
+                			testMandatoryFeature(highResolution, false);
+                			testMandatoryFeature(camera, false);
+                			testMandatoryFeature(mp3, false);
+											
+											-- Requirements tests
+											
+											camera.setRequirements([highResolution]);
+											
+											testRequirements(mobilePhone, []);
+                			testRequirements(calls, []);
+                			testRequirements(gps, []);
+                			testRequirements(screen, []);
+                			testRequirements(media, []);
+                			testRequirements(basic, []);
+                			testRequirements(colour, []);
+                			testRequirements(highResolution, []);
+                			testRequirements(camera, [highResolution]);
+                			testRequirements(mp3, []);
+											
+											-- Exclusions tests
+											
+											gps.setExclusions([basic]);
+											
+											testExclusions(mobilePhone, []);
+                			testExclusions(calls, []);
+                			testExclusions(gps, [basic]);
+                			testExclusions(screen, []);
+                			testExclusions(media, []);
+                			testExclusions(basic, []);
+                			testExclusions(colour, []);
+                			testExclusions(highResolution, []);
+                			testExclusions(camera, []);
+                			testExclusions(mp3, []);
+                			
+                			-- Model tests
+                			
+                			testModelRoot(mobilePhoneModel, mobilePhone);
+                			testModelFeaturesCount(mobilePhoneModel, 10);
+                			validModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> true, "gps" |-> true,
+                     															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true,
+                     															"media" |-> true, "camera" |-> true, "mp3" |-> true});
+                      invalidModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> false, "gps" |-> true,
+                     															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true,
+                     															"media" |-> true, "camera" |-> true, "mp3" |-> true, "3g" |-> true});
+                			testGeneratedValidConfigs(mobilePhoneModel, Utilities`mobilePhoneValidConfigs());
+                );
+end MobilePhoneModelTester

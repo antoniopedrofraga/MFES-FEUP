@@ -8392,3 +8392,174 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.core.resources 4 376 2016-12-31 18:05:49.562
 !MESSAGE Marker id 23810 not found.
+!SESSION 2017-01-02 11:12:23.887 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.overture.ide.core 4 0 2017-01-02 11:27:44.206
+!MESSAGE FileUtility deleteMarker
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 24891 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.overture.ide.core.utility.FileUtility.deleteMarker(FileUtility.java:201)
+	at org.overture.ide.core.parser.AbstractParserParticipant.setFileMarkers(AbstractParserParticipant.java:169)
+	at org.overture.ide.core.parser.AbstractParserParticipant.parse(AbstractParserParticipant.java:108)
+	at org.overture.ide.ui.editor.core.VdmReconcilingStrategy.reconcile(VdmReconcilingStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2017-01-02 11:27:44.258
+!MESSAGE Marker id 24891 not found.
+
+!ENTRY org.eclipse.ui.console 4 2 2017-01-02 11:30:18.008
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.console".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleOutputStream.setColor(IOConsoleOutputStream.java:139)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:186)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:164)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.console 4 120 2017-01-02 11:30:18.009
+!MESSAGE Exception occurred during console property change notification.
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleOutputStream.setColor(IOConsoleOutputStream.java:139)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:186)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:164)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.console 4 2 2017-01-02 11:30:18.009
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.console".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleInputStream.setColor(IOConsoleInputStream.java:248)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:170)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui.console 4 120 2017-01-02 11:30:18.010
+!MESSAGE Exception occurred during console property change notification.
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:482)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:373)
+	at org.eclipse.swt.widgets.Control.redraw(Control.java:2411)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7539)
+	at org.eclipse.ui.console.TextConsolePage.propertyChange(TextConsolePage.java:262)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:96)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:111)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:229)
+	at org.eclipse.ui.console.IOConsoleInputStream.setColor(IOConsoleInputStream.java:248)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:170)
+	at org.overture.ide.debug.ui.VdmDebugConsole.connect(VdmDebugConsole.java:147)
+	at org.overture.ide.debug.ui.DebugConsoleManager.launchesChanged(DebugConsoleManager.java:272)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:311)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:266)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1054)
+	at org.eclipse.debug.core.Launch.fireChanged(Launch.java:394)
+	at org.eclipse.debug.core.Launch.addProcess(Launch.java:355)
+	at org.eclipse.debug.core.model.RuntimeProcess.<init>(RuntimeProcess.java:126)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:787)
+	at org.eclipse.debug.core.DebugPlugin.newProcess(DebugPlugin.java:736)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launchExternalProcess(VdmLaunchConfigurationDelegate.java:571)
+	at org.overture.ide.debug.core.launching.VdmLaunchConfigurationDelegate.launch(VdmLaunchConfigurationDelegate.java:105)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
