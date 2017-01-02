@@ -8563,3 +8563,9 @@ org.eclipse.swt.SWTException: Invalid thread access
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.overture.ide.debug 4 0 2017-01-02 14:18:44.201
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+
+!ENTRY org.overture.ide.debug 4 0 2017-01-02 14:18:55.337
+!MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view

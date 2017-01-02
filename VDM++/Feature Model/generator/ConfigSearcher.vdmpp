@@ -1,3 +1,4 @@
+-- ConfigSearcher Class
 class ConfigSearcher
 types
 		public string = Utilities`string;
@@ -8,14 +9,22 @@ instance variables
 		private restrictedInvalidSubsets : seq of config;
 		private validConfigs : seq of config := [];
 operations
+
+		-- ConfigSearcher Constructor
+		-- 1st arg: Root feature of the model to be tested
   	public ConfigSearcher: Feature ==> ConfigSearcher
   						ConfigSearcher(r) == (root := r; nodeCount := root.nodeCount(); restrictedInvalidSubsets := root.invalidSubsets(); return self;);
+  						
+  	-- Gets all valid configurations of the root associated with this ConfigSearcher
+		-- Return: Sequence of configs as all valid configurations
   	public getValidConfigs: () ==> seq of config 
   					getValidConfigs() == (
   						searchFeatureTree(root, true, []);
   						applyRestrictions();
   						return validConfigs;
   					);
+  					
+  	-- Applies all restrictions related with the model to be tested
   	public applyRestrictions: () ==> ()
   					applyRestrictions() ==
   					(
@@ -26,12 +35,21 @@ operations
   							);
   							if newValidConfigs <> {} then validConfigs := setToSeq(newValidConfigs);
   					);
+  	
+  	-- Converts a set of configs into a sequence of configs
+  	-- 1st arg: Set of configs to be converted
+  	-- Return: Sequence of converted configs
   	public setToSeq: set of config ==> seq of config
 							setToSeq(s) == (
 													dcl sequence : seq of config := [];
 													for all e in set s do sequence := sequence ^ [e];
 													return sequence;
-													);			
+													);
+													
+		-- Searchs Feature tree in order to generate valid configurations
+		-- 1st arg: Feature to be searched
+		-- 2nd arg: Boolean indicated if the feature parent is a <xorParent> or an <orParent>
+		-- 3rd arg: Sequence of optional <orParent> or <xorParent>
   	public searchFeatureTree: (Feature | Parent) * bool * seq of string ==> ()
   					searchFeatureTree(feature, hasDefaultParent, optionalParents) == 
   					(
@@ -46,6 +64,9 @@ operations
   									searchFeatureTree(subFeature, feature.isDefaultParent(), newOptionalParents);
   							);
   					);
+  		
+  		-- Generates valid configurations of a feature with a <defaultParent>
+  		-- 1st arg: Feature related with valid configurations
   		public defaultParentConfigs: (Feature | Parent) ==> ()
   						defaultParentConfigs(feature) ==
   						(
@@ -61,6 +82,9 @@ operations
   							validConfigs := newValidConfigs;		
   							);
   						);
+  		
+  		-- Generates valid configurations of a feature with a <xorParent>
+  		-- 1st arg: Feature related with valid configurations
   		public xorParentConfigs: Parent ==> ()
   						xorParentConfigs(parent) ==
   						(
@@ -91,6 +115,9 @@ operations
 		  					);
 		  					validConfigs := newValidConfigs;
 		  				);
+		  
+		  -- Generates valid configurations of a feature with an <orParent>
+  		-- 1st arg: Feature related with valid configurations
 		  public orParentConfigs: Parent ==> ()
   						orParentConfigs(parent) ==
   						(
@@ -104,6 +131,12 @@ operations
   											validPossibilities := validPossibilities ^ [validConfig munion element];
   							validConfigs := validPossibilities;
   						);
+  						
+  		-- Helper to generate valid configurations of a feature with an <orParent>
+  		-- 1st arg: Feature related with valid configurations
+  		-- 2nd arg: Sequence of Set of possibilities
+  		-- 3rd arg: Integer with the possibilities original length
+  		-- Return: Sequence of configs as valid configurations
   		public consumeOrPossibilities: Feature * seq of set of config * int ==> seq of config
   						consumeOrPossibilities(parent, possibilities, originalLength) ==
   						(
@@ -123,6 +156,10 @@ operations
 		  							
   								return validPossibilities;				
   						);
+  						
+  		-- Checks if there are optional parents so far, used to generate valid configuratios with optional parents
+  		-- 1st arg: Feature as the related feature
+  		-- 2nd arg: Sequence of strings as optional parents identified so far
   		public checkOptionalParents: Feature * seq of string ==> ()
   						checkOptionalParents(feature, optionalParents) == 
   						(	

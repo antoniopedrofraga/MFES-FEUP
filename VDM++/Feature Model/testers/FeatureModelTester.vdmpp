@@ -17,55 +17,55 @@ operations
                 
       -- tests parent type
       -- 1st arg: Parent to be tested
-      -- 2nd arg: Type to be tested
+      -- 2nd arg: Type to be tested 
       protected testParentType: Parent * parentType ==> ()
       				testParentType(parent, type) == assertTrue(parent.getParentType() = type);
       				
       -- tests mandatory and optional features
       -- 1st arg: Feature to be tested
-      -- 2nd arg: Mandatory status 
+      -- 2nd arg: Mandatory status       
       protected testMandatoryFeature: Feature * bool ==> ()
       					testMandatoryFeature(feature, isMandatory) == assertTrue(feature.isMandatory() = isMandatory);
       					
       -- tests parents sub features
       -- 1st arg: Parent to be tested
-      -- 2nd arg: Expected sub features
+      -- 2nd arg: Expected sub features     
       protected testSubFeatures: Parent * seq of Feature ==> ()
       					testSubFeatures(parent, subFeatures) == assertTrue(parent.getSubFeatures() = subFeatures);
       					
       -- tests feature requirements
       -- 1st arg: Feature to be tested
-      -- 2nd arg: Expected requirements
+      -- 2nd arg: Expected requirements    
       protected testRequirements: Feature * seq of Feature ==> ()
       					testRequirements(feature, requirements) == assertTrue(feature.getRequirements() = requirements);
       
       -- tests feature exclusions
       -- 1st arg: Feature to be tested
-      -- 2nd arg: Expected exclusions
+      -- 2nd arg: Expected exclusions    
       protected testExclusions: Feature * seq of Feature ==> ()
       					testExclusions(feature, exclusions) == assertTrue(feature.getExclusions() = exclusions); 
       									
       -- tests model features count
       -- 1st arg: Model to be tested
-      -- 2nd arg: Expected features count
+      -- 2nd arg: Expected features count   
       protected testModelFeaturesCount: Model * nat ==> ()
       					testModelFeaturesCount(model, count) == assertTrue(model.nodeCount() = count);
       					
       -- tests a model valid config
       -- 1st arg: Model to be tested
-      -- 2nd arg: Valid config to be tested
+      -- 2nd arg: Valid config to be tested  
       protected validModelConfig: Model * config ==> ()
       					validModelConfig(model, config) == assertTrue(model.isValidConfiguration(config));
       					
       -- tests a model invalid config
       -- 1st arg: Model to be tested
-      -- 2nd arg: Invalid config to be tested
+      -- 2nd arg: Invalid config to be tested    
       protected invalidModelConfig: Model * config ==> ()
       					invalidModelConfig(model, config) == assertFalse(model.isValidConfiguration(config));
       
       -- tests the valid configs generation of a given model
       -- 1st arg: Model to be tested
-      -- 2nd arg: Set of possible configs
+      -- 2nd arg: Set of possible configs   
       protected testGeneratedValidConfigs: Model * set of config ==> ()
       				 testGeneratedValidConfigs(model, validSet) == 
       				 (
@@ -75,14 +75,14 @@ operations
       					
       -- tests model root
       -- 1st arg: Model to be tested
-      -- 2nd arg: Expected root
+      -- 2nd arg: Expected root     
       protected testModelRoot: Model * Parent ==> ()
       					testModelRoot(model, root) == assertTrue(model.getRoot() = root); 
       					
      -- INVALID invariants and pre/post conditions
      -- warning: Run one function at a time
      
-     -- tests the same requirements and exclusions post condition
+     -- tests the same requirements and exclusions post condition   
       protected testRequirementsBeforeExclusions: () ==> ()
       					testRequirementsBeforeExclusions() ==	
       					(
@@ -94,7 +94,7 @@ operations
       								);	
       					);
       					
-      -- tests the same exclusions and requirements post condition
+      -- tests the same exclusions and requirements post condition   
       protected testExclusionsBeforeRequirements: () ==> ()
       					testExclusionsBeforeRequirements() ==	
       					(
@@ -105,6 +105,7 @@ operations
       								feature1.setRequirements([feature2]);
       								);	
       					);
+      					
       public static main: () ==> ()
                 main() ==
                 (	

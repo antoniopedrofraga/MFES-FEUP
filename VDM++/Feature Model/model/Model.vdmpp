@@ -1,3 +1,4 @@
+-- Class Model, conatining the root feature
 class Model
 types
 			public config = Utilities`config;
@@ -6,17 +7,32 @@ instance variables
 			protected root: Feature;
 			private features : set of string := {};
 operations
+
+			-- Model constructor
+			-- 1st arg: Root feature
 			public Model: Feature ==> Model
 							Model(r) == (root := r; return self;)
 							post root = r;
+							
+			-- Gets model root
+			-- Return: Root feature
 			public getRoot: () ==> Feature
 							getRoot() == (return root;);
+			
+			-- Gets node count of model tree
+			-- Return: Integer with node count
 			public nodeCount: () ==> int
 							nodeCount() == return root.nodeCount();
+							
+			-- Gets tree features name 
 			public setFeatures: () ==> ()
 							setFeatures() == (
 									features := root.features();
 							);
+							
+			-- Checks if a config is valid
+			-- 1st arg: Config to be tested
+			-- Return: Boolean with validation status
 			public isValidConfiguration: config ==> bool
 							isValidConfiguration(config) == 
 								(
@@ -25,6 +41,9 @@ operations
 								if not (root.isValidConfiguration(config)) then return false;
 								return true;
 								);
+								
+			-- Generates all valid configurations
+			-- Return: Sequence of configs
 			public generateValidConfigs: () ==> seq of config
 							generateValidConfigs() == (setFeatures(); return new ConfigGenerator().generateValidConfigs(self));
 								

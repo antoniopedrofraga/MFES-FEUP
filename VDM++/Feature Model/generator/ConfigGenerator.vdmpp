@@ -1,8 +1,13 @@
+-- Config Generator Class
 class ConfigGenerator
 types
 			public string = Utilities`string;
 			public config = Utilities`config;
 operations
+
+		-- Generates valid configurations of a model
+		-- 1st arg: Given model
+		-- Return: Sequence of all valid configurations
 		public generateValidConfigs: Model ==> seq of config 
 						generateValidConfigs(model) == 
 						(

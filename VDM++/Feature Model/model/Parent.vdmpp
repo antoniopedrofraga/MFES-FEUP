@@ -1,3 +1,4 @@
+-- Class Parent, a subclass of Feature
 class Parent is subclass of Feature
 types
 			public parentType = Utilities`parentType;
@@ -5,23 +6,44 @@ instance variables
 			private subFeatures: seq of Feature := [];
 			private type: parentType := <defaultParent>;
 operations
+
+			-- Parent constructor 
+			-- 1st arg: Name to be associated with the feature
 			public Parent: string ==> Parent
 							Parent(n) == 
 							(name := n; return self;)
 							pre not n = ""
 							post name = n;
+							
+			-- Sets Parent type 
+			-- 1st arg: Custom type (<defaultParent>, <orParent>, <xorParent>)	
 			public setParentType: parentType ==> ()
 							setParentType(t) ==
 							(type := t; if t = <orParent> or t = <xorParent> then setSubFeaturesOptional())
 							pre type <> <orParent> and type <> <xorParent>;
+							
+			-- Gets Parent type
+			-- Return: Current Parent type	
 			public getParentType: () ==> parentType
 						getParentType() == return type;
+			
+			-- Checks if Parent is a xorParent
+			-- Return: Boolean with status		
 			public isXorParent: () ==> bool
 							isXorParent() == return type = <xorParent>;
+							
+			-- Checks if Parent is an orParent
+			-- Return: Boolean with status		
 			public isOrParent: () ==> bool
 							isOrParent() == return type = <orParent>;
+							
+			-- Checks if Parent is a defaultParent
+			-- Return: Boolean with status		
 			public isDefaultParent: () ==> bool
 							isDefaultParent() == return type = <defaultParent>;
+							
+			-- Sets sub features of parent
+			-- 1st arg: Sequenece of Features			
 			public setSubFeatures: seq of Feature ==> ()
 							setSubFeatures(s) == 
 							(
@@ -29,33 +51,57 @@ operations
 								if (type = <orParent> or type = <xorParent>) then
 									 setSubFeaturesOptional();
 							);
+							
+			-- Sets sub features as optional features			
 			public setSubFeaturesOptional: () ==> ()
 							setSubFeaturesOptional() ==
 							for subFeature in subFeatures do subFeature.setMandatory(false);
+			
+			-- Gets sub features of a Parent
+			-- Return: Sequence of Features			
 			public getSubFeatures: () ==> seq of Feature
 							getSubFeatures() == return subFeatures;
+							
+							
+			-- Gets sub features name
+			-- Return: Set of strings			
 			public getSubFeaturesNames: () ==> set of string
 							getSubFeaturesNames() == return {el.getName() | el in seq subFeatures};
-			public subFeaturesLen: () ==> int
-							subFeaturesLen() == return len subFeatures;
+			
+			-- Gets sub features name (all features of this parent sub tree are included)
+			-- Return: Set of strings	
 			public features: () ==> set of string
 							features() == (dcl parentFeatures : set of string := {name}; 
 										for subFeature in subFeatures do
 												parentFeatures := parentFeatures union subFeature.features();
 							return parentFeatures;);
+							
+			-- Gets all invalid subsets of configs associated with this feature (all features of this parent sub tree are included)
+			-- Return: Sequence of configs
 			public invalidSubsets: () ==> seq of config
 							invalidSubsets() == 
 							(
-							dcl restrictions : seq of config := checkRequirements();
+							dcl restrictions : seq of config := getReqAndExcRestrictions();
 							for subFeature in subFeatures do
 										restrictions := restrictions ^ subFeature.invalidSubsets();
 							return restrictions;
 			);
+			
+			-- Gets sub features length
+			-- Return: Integer as length	
+			public subFeaturesLen: () ==> int
+							subFeaturesLen() == return len subFeatures;
+			
+			-- Gets sub all invalid subsets of configs associated with this feature (all features of this parent sub tree are included)
+			-- Return: Sequence of configs
 			public nodeCount: () ==> int
 							nodeCount() == (dcl childNodeCount : int := 1; 
 										for subFeature in subFeatures do
 												childNodeCount := childNodeCount + subFeature.nodeCount();
 							return childNodeCount;);
+			
+			-- Checks if a config is valid
+			-- Return: Boolean with valid status
 			public isValidConfiguration: config ==> bool
 							isValidConfiguration(c) == 
 							(

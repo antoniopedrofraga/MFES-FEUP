@@ -1,3 +1,4 @@
+-- Feature Class
 class Feature
 types
 			public string = Utilities`string;
@@ -8,34 +9,64 @@ instance variables
 			protected requirements: seq of Feature := [];
 			protected exclusions: seq of Feature := [];
 operations
+
+			-- Feature constructor 
+			-- 1st arg: Name to be associated with the feature
 			public Feature: string ==> Feature
 							Feature(n) == (name := n; return self;)
 							pre not n = ""
 							post name = n;
+			
+			-- Sets Feature as mandatory
+			-- 1st arg: Boolean with mandatory status (True as mandatory, False as optional)
 			public setMandatory: bool ==> ()
 							setMandatory(b) == mandatory := b;
+							
+			-- Sets Feature requirements
+			-- 1st arg: Sequence of features as requirements
 			public setRequirements: seq of Feature ==> ()
 							setRequirements(fs) == (requirements := fs;)
 							post elems requirements inter elems exclusions = {};
+			
+			-- Sets Feature exclusions
+			-- 1st arg: Sequence of features as exclusions
 			public setExclusions: seq of Feature ==> ()
 							setExclusions(fs) == exclusions := fs
 							post {} = {element | element in seq exclusions & element.mandatory} and elems requirements inter elems exclusions = {};
+							
+			-- Gets Feature Requirements
+			-- Return: Sequence of features as requirements
 			public getRequirements: () ==> seq of Feature
 						getRequirements() == return requirements;
+						
+			-- Gets Feature Exclusions
+			-- Return: Sequence of features as exclusions
 			public getExclusions: () ==> seq of Feature
 						getExclusions() == return exclusions;
+			
+			-- Gets Feature name
+			-- Return: String as feature name
 			public getName: () ==> string
 							getName() == return name;
+			
+			-- Gets sub features name (all features of this parent sub tree are included)
+			-- Return: Set of strings	
 			public features: () ==> set of string
 							features() == return {name};
+							
+			-- Gets all invalid subsets of configs associated with this feature (all features of this parent sub tree are included)
+			-- Return: Sequence of configs
 			public invalidSubsets: () ==> seq of config
 							invalidSubsets() == 
 							(
-							dcl restrictions : seq of config := checkRequirements();
+							dcl restrictions : seq of config := getReqAndExcRestrictions();
 							return restrictions;
 							);
-			public checkRequirements: () ==> seq of config
-							checkRequirements() ==
+			
+			-- Gets invalid subsets related with requirements and exclusions
+			-- Return: Sequence of config as invalid subsets
+			public getReqAndExcRestrictions: () ==> seq of config
+							getReqAndExcRestrictions() ==
 							(
 							dcl restrictions : seq of config := [];
 							if (len requirements + len exclusions > 0) then
@@ -45,10 +76,19 @@ operations
 							);
 							return restrictions;
 							);
+			
+			-- Gets feature node count (since there is no subfeatures its always 1, itself)
+			-- Return: Integer as node count
 			public nodeCount: () ==> int
 							nodeCount() == return 1;
+							
+			-- Checks if a feature is mandatory
+			-- Return: Boolean with mandatory status (True if mandatory, false if optional)
 			public isMandatory: () ==> bool
 							isMandatory() == return mandatory;
+							
+			-- Checks if a Requirement is an Exclusion at the same time
+			-- Return: Boolean related with mandatory status
 			public isRespectingReqAndExc: config ==> bool
 							isRespectingReqAndExc(c) == 
 							(
@@ -59,6 +99,9 @@ operations
 									if (exclusion.name in set configuredFeatures) then return false;
 							return true;
 							);
+			
+			-- Checks if a configuration is valid in this feature
+			-- Return: Boolean related with validation status
 			public isValidConfiguration: config ==> bool
 							isValidConfiguration(c) == 
 							(
