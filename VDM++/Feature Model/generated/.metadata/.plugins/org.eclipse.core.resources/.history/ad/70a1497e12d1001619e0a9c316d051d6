@@ -1,0 +1,23 @@
+package gui;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
+import org.overture.codegen.runtime.MapUtil;
+import org.overture.codegen.runtime.Maplet;
+
+public class InAppGUI {
+
+	public static void main(String[] args) {
+		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+		
+		Graph graph = new MultiGraph("Model Tester");
+		graph.addNode("Teste")
+		
+		Viewer viewer = graph.display();
+		// Let the layout work ...
+		viewer.disableAutoLayout();
+		// Do some work ...
+		viewer.enableAutoLayout();
+	}
+}

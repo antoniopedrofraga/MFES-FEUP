@@ -10,18 +10,38 @@ instance variables
 			creditCard : Feature := new Feature("credit card");
 			high : Feature := new Feature("high");
 			standard : Feature := new Feature("standard");
-			eshopModel : Model := new Model(eshop);
 operations
+			
+			-- Creates model and defines restrictions
+			-- Return: Model as new model
+			public createModel: () ==> Model
+							createModel() == 
+							(
+										payment.setParentType(<orParent>);
+                		security.setParentType(<xorParent>);
+                		
+                		payment.setSubFeatures([bankTransfer, creditCard]);
+                		security.setSubFeatures([high, standard]);
+                		eshop.setSubFeatures([catalogue, payment, security, search]);
+                		
+                		search.setMandatory(false);
+                		
+                		creditCard.setRequirements([high]);
+                		
+                		return new Model(eshop);
+							);
+							
 			-- Tests the E-shop Model
 			-- Note: The E-shop Model scheme is part of the report
 			public testModel: () ==> ()
                 testModel() ==
-                (										
+                (								
+                
+                			dcl eshopModel : Model := createModel();		
+                			
 											-- Parent type tests
 											-- description: Since the default operation is to set the parent as a <defaultParent>, eshop should have the <defaultParent> type
 											-- note: Only these 3 Features are Parents (a subclass of Feature)
-                			payment.setParentType(<orParent>);
-                			security.setParentType(<xorParent>);
                 			
                 			testParentType(payment, <orParent>);
                 			testParentType(security, <xorParent>);
@@ -29,9 +49,6 @@ operations
                 			
                 			-- Sub features tests
                 			-- description: Each parent should have the respective features as subFeatures
-                			payment.setSubFeatures([bankTransfer, creditCard]);
-                			security.setSubFeatures([high, standard]);
-                			eshop.setSubFeatures([catalogue, payment, security, search]);
                 			
                 			testSubFeatures(payment, [bankTransfer, creditCard]);
                 			testSubFeatures(security, [high, standard]);
@@ -39,7 +56,6 @@ operations
                 			
                 			-- Mandatory and optional features tests 
                 			-- description: The default operation is to set any feature as mandatory, the "search" and features with xor and or parents should be optional
-                			search.setMandatory(false);
                 			
                 			testMandatoryFeature(eshop, true);
                 			testMandatoryFeature(catalogue, true);
@@ -53,7 +69,6 @@ operations
                 			
                 			-- Requirements tests
                 			-- description: By default a Feature doesn't have requirements, so only the "creditCard" should have the "high" feature as requirement
-                			creditCard.setRequirements([high]);
                 			
                 			testRequirements(eshop, []);
                 			testRequirements(catalogue, []);

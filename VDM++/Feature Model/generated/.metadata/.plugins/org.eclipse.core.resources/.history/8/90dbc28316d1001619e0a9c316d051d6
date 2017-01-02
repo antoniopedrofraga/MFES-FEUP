@@ -1,0 +1,19 @@
+package gui;
+
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
+
+public class InAppGUI {
+
+	public static void main(String[] args) {
+		Graph graph = new MultiGraph("Bazinga!");
+		graph.addNode("Teste1")
+		Viewer viewer = graph.display();
+		// Let the layout work ...
+		viewer.disableAutoLayout();
+		// Do some work ...
+		viewer.enableAutoLayout();
+	}
+
+}

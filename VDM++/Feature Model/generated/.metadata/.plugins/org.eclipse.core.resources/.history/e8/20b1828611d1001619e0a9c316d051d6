@@ -1,0 +1,32 @@
+package gui;
+import org.graphstream.*;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
+import org.overture.codegen.runtime.MapUtil;
+import org.overture.codegen.runtime.Maplet;
+
+public class InAppGUI {
+
+	public static void main(String[] args) {
+		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+		
+		Graph graph = new MultiGraph("Bazinga!");
+		graph.addAttributes(MapUtil.map(
+            new Maplet("mobile phone", true),
+            new Maplet("calls", true),
+            new Maplet("gps", true),
+            new Maplet("screen", true),
+            new Maplet("basic", false),
+            new Maplet("colour", false),
+            new Maplet("high resolution", true),
+            new Maplet("media", true),
+            new Maplet("camera", true),
+            new Maplet("mp3", true)));
+		Viewer viewer = graph.display();
+		// Let the layout work ...
+		viewer.disableAutoLayout();
+		// Do some work ...
+		viewer.enableAutoLayout();
+	}
+}

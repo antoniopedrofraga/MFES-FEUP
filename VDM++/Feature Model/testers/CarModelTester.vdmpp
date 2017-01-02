@@ -13,18 +13,38 @@ instance variables
 				engine : Parent := new Parent("engine");
 				gasoline : Feature := new Feature("gasoline");
 				electric : Feature := new Feature("electric");
-				carModel: Model := new Model(car); 
 operations
+
+			-- Creates model and defines restrictions
+			-- Return: Model as new model
+			public createModel: () ==> Model
+							createModel() == 
+							(
+										pullsTrailler.setParentType(<xorParent>);
+										transmission.setParentType(<xorParent>);
+										engine.setParentType(<orParent>);
+                		
+                		car.setSubFeatures([body, transmission, pullsTrailler, engine]);
+										transmission.setSubFeatures([automatic, manual]);
+										engine.setSubFeatures([gasoline, electric]);
+										pullsTrailler.setSubFeatures([lightTrailler, heavyTrailler]);
+										heavyTrailler.setSubFeatures([armor]);
+                		
+                		pullsTrailler.setMandatory(false);
+										armor.setMandatory(false);
+                		
+                		return new Model(car);
+							);
+
 				-- Tests the Car Model
 				-- Note: The Car Model scheme is part of the report
         public testModel: () ==> ()
           testModel() ==
           (	
+          		
+          		dcl carModel : Model := createModel();
+          		
 							-- Parent type tests
-								
-							pullsTrailler.setParentType(<xorParent>);
-							transmission.setParentType(<xorParent>);
-							engine.setParentType(<orParent>);
 							
 							testParentType(pullsTrailler, <xorParent>);
 							testParentType(transmission, <xorParent>);
@@ -33,12 +53,6 @@ operations
         			testParentType(heavyTrailler, <defaultParent>);
         			
         			-- Sub features tests
-          			
-        			car.setSubFeatures([body, transmission, pullsTrailler, engine]);
-							transmission.setSubFeatures([automatic, manual]);
-							engine.setSubFeatures([gasoline, electric]);
-							pullsTrailler.setSubFeatures([lightTrailler, heavyTrailler]);
-							heavyTrailler.setSubFeatures([armor]);
 							
 							testSubFeatures(car, [body, transmission, pullsTrailler, engine]);
 							testSubFeatures(transmission, [automatic, manual]);
@@ -48,9 +62,6 @@ operations
         			
         			-- Mandatory and optional features tests
 							-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
-							
-							pullsTrailler.setMandatory(false);
-							armor.setMandatory(false);
 							
 							testMandatoryFeature(car, true);
         			testMandatoryFeature(body, true);

@@ -1,0 +1,15 @@
+package gui;
+import vdmpp.*;
+
+public class EshopModelLoader {
+	private Parent eshop = new Parent("e-shop");
+	private Feature catalogue = new Feature("catalogue");
+	private Parent payment = new Parent("payment");
+	private Parent security = new Parent("security");
+	private Feature search = new Feature("search");
+	private Feature bankTransfer = new Feature("bank transfer");
+	private Feature creditCard = new Feature("credit card");
+	private Feature high = new Feature("high");
+	private Feature standard = new Feature("standard");
+	private Model eshopModel = new Model(eshop);
+}

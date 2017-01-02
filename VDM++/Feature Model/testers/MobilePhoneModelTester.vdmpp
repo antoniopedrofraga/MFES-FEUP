@@ -11,27 +11,47 @@ instance variables
 					highResolution : Feature := new Feature("high resolution");
 					camera : Feature := new Feature("camera");
 					mp3 : Feature := new Feature("mp3");
-					mobilePhoneModel: Model := new Model(mobilePhone);  
 operations
+
+					-- Creates model and defines restrictions
+					-- Return: Model as new model
+					public createModel: () ==> Model
+									createModel() == 
+									(
+												media.setParentType(<orParent>);
+												screen.setParentType(<xorParent>);
+		                		
+		                		screen.setSubFeatures([basic, colour, highResolution]);
+												media.setSubFeatures([camera, mp3]);
+												mobilePhone.setSubFeatures([media, calls, gps, screen]);
+		                		
+		                		gps.setMandatory(false);
+												media.setMandatory(false);
+												screen.setMandatory(false);
+		                		
+		                		camera.setRequirements([highResolution]);
+		                		
+		                		gps.setExclusions([basic]);
+		                		
+		                		return new Model(mobilePhone);
+									);
+							
+							
 					-- Tests the Mobile Phone Model
 					-- Note: The Mobile Phone Model scheme is part of the report
 					public testModel: () ==> ()
                 testModel() ==
                 (
+                			
+                			dcl mobilePhoneModel: Model := createModel();  
+                			
 											-- Parent type tests
-											
-											media.setParentType(<orParent>);
-											screen.setParentType(<xorParent>);
 											
 											testParentType(media, <orParent>);
                 			testParentType(screen, <xorParent>);
                 			testParentType(mobilePhone, <defaultParent>);
                 			
                 			-- Sub features tests
-                			
-                			screen.setSubFeatures([basic, colour, highResolution]);
-											media.setSubFeatures([camera, mp3]);
-											mobilePhone.setSubFeatures([media, calls, gps, screen]);
 											
 											testSubFeatures(screen, [basic, colour, highResolution]);
                 			testSubFeatures(media, [camera, mp3]);
@@ -39,10 +59,6 @@ operations
 											
 											-- Mandatory and optional features tests
 											-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
-											
-											gps.setMandatory(false);
-											media.setMandatory(false);
-											screen.setMandatory(false);
 											
 											testMandatoryFeature(mobilePhone, true);
                 			testMandatoryFeature(calls, true);
@@ -57,8 +73,6 @@ operations
 											
 											-- Requirements tests
 											
-											camera.setRequirements([highResolution]);
-											
 											testRequirements(mobilePhone, []);
                 			testRequirements(calls, []);
                 			testRequirements(gps, []);
@@ -71,8 +85,6 @@ operations
                 			testRequirements(mp3, []);
 											
 											-- Exclusions tests
-											
-											gps.setExclusions([basic]);
 											
 											testExclusions(mobilePhone, []);
                 			testExclusions(calls, []);
