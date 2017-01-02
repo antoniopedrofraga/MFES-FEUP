@@ -1,3 +1,4 @@
+-- Class defined to test the Car Model
 class CarModelTester is subclass of FeatureModelTester
 instance variables
 				car : Parent := new Parent("car");
@@ -14,6 +15,8 @@ instance variables
 				electric : Feature := new Feature("electric");
 				carModel: Model := new Model(car); 
 operations
+				-- Tests the Car Model
+				-- Note: The Car Model scheme is part of the report
         public testModel: () ==> ()
           testModel() ==
           (	

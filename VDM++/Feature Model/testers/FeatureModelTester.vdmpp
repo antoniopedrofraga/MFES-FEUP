@@ -1,11 +1,16 @@
+-- Main class of Test related functions
 class FeatureModelTester
 types
 			public config = Utilities`config;
 			public parentType = Utilities`parentType;					
 operations
+
+			-- tests true conditions
 			private assertTrue: bool ==> ()
                 assertTrue(cond) == return
                 pre cond;
+                
+      -- tests false conditions
       private assertFalse: bool ==> ()
                 assertFalse(cond) == return
                 pre not cond;
@@ -76,16 +81,29 @@ operations
       					
      -- INVALID invariants and pre/post conditions
      -- warning: Run one function at a time
-      protected testRequirementAndExclusions: () ==> ()
-      					testRequirementAndExclusions() ==	
+     
+     -- tests the same requirements and exclusions post condition
+      protected testRequirementsBeforeExclusions: () ==> ()
+      					testRequirementsBeforeExclusions() ==	
       					(
 
       						let feature1 = new Feature("feature1"),
       								feature2 = new Feature("feature2") in
       								(feature1.setRequirements([feature2]);
       								feature1.setExclusions([feature2]);
-      								);
-      								
+      								);	
+      					);
+      					
+      -- tests the same exclusions and requirements post condition
+      protected testExclusionsBeforeRequirements: () ==> ()
+      					testExclusionsBeforeRequirements() ==	
+      					(
+
+      						let feature1 = new Feature("feature1"),
+      								feature2 = new Feature("feature2") in
+      								(feature1.setExclusions([feature2]);
+      								feature1.setRequirements([feature2]);
+      								);	
       					);
       public static main: () ==> ()
                 main() ==

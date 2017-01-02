@@ -1,3 +1,4 @@
+-- Class defined to test the Mobile Phone Model
 class MobilePhoneModelTester is subclass of FeatureModelTester
 instance variables
     			mobilePhone : Parent := new Parent("mobile phone");
@@ -12,7 +13,9 @@ instance variables
 					mp3 : Feature := new Feature("mp3");
 					mobilePhoneModel: Model := new Model(mobilePhone);  
 operations
-public testModel: () ==> ()
+					-- Tests the Mobile Phone Model
+					-- Note: The Mobile Phone Model scheme is part of the report
+					public testModel: () ==> ()
                 testModel() ==
                 (
 											-- Parent type tests

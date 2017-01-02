@@ -1,15 +1,32 @@
+-- Class containing utilities
 class Utilities
 types
 			public string = seq of char;
 			public config = map string to bool;
 			public parentType = <orParent> | <xorParent> | <defaultParent>;
 functions
+
+			-- Converts a Map of Configs into a Set of Configs
+			-- 1st arg: Map to be converted
+			-- Return: Converted Set
 			public mapToSet : config -> set of config
 							mapToSet(c) == {{a |-> b} | a in set dom c, b in set rng c & b = c(a)};
+							
+			-- Converts a Seq of Configs into a Set of Configs
+			-- 1st arg: Seq to be converted
+			-- Return: Converted Set
 			public seqToSet : seq of config -> set of config
 							seqToSet(c) == {a | a in seq c};
+							
+			-- Checks if a Feature is configured
+			-- 1st arg: Name to be checked
+			-- 2nd arg: Config to be checked
+			-- Return: Boolean result
 			public isNameConfigured: string * config -> bool
 							isNameConfigured(n, c) == ({n} <: c = {n |-> true});
+							
+			-- All Eshop Model valid configurations
+			-- Return: Set of Eshop Model valid configurations
 			public eshopValidConfigs: () -> set of config
 							eshopValidConfigs() == {{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
 																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
@@ -19,6 +36,9 @@ functions
 																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
 																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
 																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true}};
+			
+			-- All Mobile Phone Model valid configurations
+			-- Return: Set of Mobile Phone Model valid configurations
 			public mobilePhoneValidConfigs: () -> set of config
 							mobilePhoneValidConfigs() == {{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
 																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
@@ -45,6 +65,9 @@ functions
 																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
 																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
 																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true}};
+			
+			-- All Car Model valid configurations
+			-- Return: Set of Car Model valid configurations
 			public carValidConfigs: () -> set of config
 				carValidConfigs() ==	{{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
 																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
