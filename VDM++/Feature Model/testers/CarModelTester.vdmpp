@@ -20,20 +20,24 @@ operations
 			public createModel: () ==> Model
 							createModel() == 
 							(
+										dcl model : Model := new Model(car);
+										
 										pullsTrailler.setParentType(<xorParent>);
 										transmission.setParentType(<xorParent>);
 										engine.setParentType(<orParent>);
                 		
-                		car.setSubFeatures([body, transmission, pullsTrailler, engine]);
-										transmission.setSubFeatures([automatic, manual]);
-										engine.setSubFeatures([gasoline, electric]);
-										pullsTrailler.setSubFeatures([lightTrailler, heavyTrailler]);
-										heavyTrailler.setSubFeatures([armor]);
+                		car.setSubFeatures({body, transmission, pullsTrailler, engine});
+										transmission.setSubFeatures({automatic, manual});
+										engine.setSubFeatures({gasoline, electric});
+										pullsTrailler.setSubFeatures({lightTrailler, heavyTrailler});
+										heavyTrailler.setSubFeatures({armor});
                 		
                 		pullsTrailler.setMandatory(false);
 										armor.setMandatory(false);
-                		
-                		return new Model(car);
+										
+										model.setFeatures();
+										
+                		return model;
 							);
 
 				-- Tests the Car Model
@@ -54,11 +58,11 @@ operations
         			
         			-- Sub features tests
 							
-							testSubFeatures(car, [body, transmission, pullsTrailler, engine]);
-							testSubFeatures(transmission, [automatic, manual]);
-        			testSubFeatures(engine, [gasoline, electric]);
-        			testSubFeatures(pullsTrailler, [lightTrailler, heavyTrailler]);
-        			testSubFeatures(heavyTrailler, [armor]);
+							testSubFeatures(car, {body, transmission, pullsTrailler, engine});
+							testSubFeatures(transmission, {automatic, manual});
+        			testSubFeatures(engine, {gasoline, electric});
+        			testSubFeatures(pullsTrailler, {lightTrailler, heavyTrailler});
+        			testSubFeatures(heavyTrailler, {armor});
         			
         			-- Mandatory and optional features tests
 							-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
@@ -78,33 +82,33 @@ operations
         			
         			-- Requirements tests
 							
-							testRequirements(car, []);
-        			testRequirements(body, []);
-        			testRequirements(transmission, []);
-        			testRequirements(automatic, []);
-        			testRequirements(manual, []);
-        			testRequirements(pullsTrailler, []);
-        			testRequirements(heavyTrailler, []);
-        			testRequirements(lightTrailler, []);
-        			testRequirements(armor, []);
-        			testRequirements(engine, []);
-        			testRequirements(gasoline, []);
-        			testRequirements(electric, []);
+							testRequirements(car, {});
+        			testRequirements(body, {});
+        			testRequirements(transmission, {});
+        			testRequirements(automatic, {});
+        			testRequirements(manual, {});
+        			testRequirements(pullsTrailler, {});
+        			testRequirements(heavyTrailler, {});
+        			testRequirements(lightTrailler, {});
+        			testRequirements(armor, {});
+        			testRequirements(engine, {});
+        			testRequirements(gasoline, {});
+        			testRequirements(electric, {});
 							
 							-- Exclusions tests
 							
-        			testExclusions(car, []);
-        			testExclusions(body, []);
-        			testExclusions(transmission, []);
-        			testExclusions(automatic, []);
-        			testExclusions(manual, []);
-        			testExclusions(pullsTrailler, []);
-        			testExclusions(heavyTrailler, []);
-        			testExclusions(lightTrailler, []);
-        			testExclusions(armor, []);
-        			testExclusions(engine, []);
-        			testExclusions(gasoline, []);
-        			testExclusions(electric, []);
+        			testExclusions(car, {});
+        			testExclusions(body, {});
+        			testExclusions(transmission, {});
+        			testExclusions(automatic, {});
+        			testExclusions(manual, {});
+        			testExclusions(pullsTrailler, {});
+        			testExclusions(heavyTrailler, {});
+        			testExclusions(lightTrailler, {});
+        			testExclusions(armor, {});
+        			testExclusions(engine, {});
+        			testExclusions(gasoline, {});
+        			testExclusions(electric, {});
         			
         			-- Model tests
         			
@@ -116,6 +120,35 @@ operations
               invalidModelConfig(carModel, {"car" |-> false, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
         																"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
         																"engine" |-> true, "electric" |-> false, "gasoline" |-> false});
-        			testGeneratedValidConfigs(carModel, Utilities`carValidConfigs());
+        			testGeneratedValidConfigs(carModel, carValidConfigs());
           );
+
+functions
+			-- All Car Model valid configurations
+			-- Return: Set of Car Model valid configurations
+			public carValidConfigs: () -> set of config
+				carValidConfigs() ==	{{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> true, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> true, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> false, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> true, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> true, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> false},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> true, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> false, "manual" |-> true, "pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> false, "lightTrailler" |-> false, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> false, "heavyTrailler" |-> true, "armor" |-> true, "engine" |-> true, "electric" |-> true, "gasoline" |-> true},
+																			{"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false, "pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, "engine" |-> true, "electric" |-> true, "gasoline" |-> true}}
 end CarModelTester

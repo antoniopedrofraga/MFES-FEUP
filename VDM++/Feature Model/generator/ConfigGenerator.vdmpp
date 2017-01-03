@@ -7,12 +7,13 @@ operations
 
 		-- Generates valid configurations of a model
 		-- 1st arg: Given model
-		-- Return: Sequence of all valid configurations
-		public generateValidConfigs: Model ==> seq of config 
+		-- Return: Set of all valid configurations
+		public generateValidConfigs: Model ==> set of config 
 						generateValidConfigs(model) == 
 						(
 								dcl root : Feature := model.getRoot();
 								dcl searcher : ConfigSearcher := new ConfigSearcher(root);
-								return searcher.getValidConfigs();
-						);
+								dcl generatedValidConfigs : set of config := searcher.getValidConfigs();
+								return generatedValidConfigs;
+						)
 end ConfigGenerator

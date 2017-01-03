@@ -5,9 +5,9 @@ types
 		public config = Utilities`config;
 instance variables
 		private root : Parent;
-		private nodeCount : int;
-		private restrictedInvalidSubsets : seq of config;
-		private validConfigs : seq of config := [];
+		private nodeCount : nat;
+		private restrictedInvalidSubsets : set of config;
+		private validConfigs : set of config := {};
 operations
 
 		-- ConfigSearcher Constructor
@@ -17,7 +17,7 @@ operations
   						
   	-- Gets all valid configurations of the root associated with this ConfigSearcher
 		-- Return: Sequence of configs as all valid configurations
-  	public getValidConfigs: () ==> seq of config 
+  	public getValidConfigs: () ==> set of config 
   					getValidConfigs() == (
   						searchFeatureTree(root, true, []);
   						applyRestrictions();
@@ -29,22 +29,14 @@ operations
   					applyRestrictions() ==
   					(
   							dcl newValidConfigs : set of config := {};
-  							for i = 1 to len restrictedInvalidSubsets do (
-  									if i = 1 then newValidConfigs := { elem | elem in seq validConfigs & not Utilities`mapToSet(restrictedInvalidSubsets(i)) subset Utilities`mapToSet(elem) }
-  									else newValidConfigs := newValidConfigs inter { elem | elem in seq validConfigs & not Utilities`mapToSet(restrictedInvalidSubsets(i)) subset Utilities`mapToSet(elem) }
+  							dcl firstIteration : bool := true;
+  							for all restrictedInvalidSubset in set restrictedInvalidSubsets do (
+  									if firstIteration then (newValidConfigs := { elem | elem in set validConfigs & not  Utilities`mapToSet(restrictedInvalidSubset) subset Utilities`mapToSet(elem) }; firstIteration := false;)
+  									else newValidConfigs := newValidConfigs inter { elem | elem in set validConfigs & not Utilities`mapToSet(restrictedInvalidSubset) subset Utilities`mapToSet(elem) }
   							);
-  							if newValidConfigs <> {} then validConfigs := setToSeq(newValidConfigs);
+  							if newValidConfigs <> {} then validConfigs := newValidConfigs;
   					);
   	
-  	-- Converts a set of configs into a sequence of configs
-  	-- 1st arg: Set of configs to be converted
-  	-- Return: Sequence of converted configs
-  	public setToSeq: set of config ==> seq of config
-							setToSeq(s) == (
-													dcl sequence : seq of config := [];
-													for all e in set s do sequence := sequence ^ [e];
-													return sequence;
-													);
 													
 		-- Searchs Feature tree in order to generate valid configurations
 		-- 1st arg: Feature to be searched
@@ -60,7 +52,7 @@ operations
   								if feature.isXorParent() then xorParentConfigs(feature)
   								else if feature.isOrParent() then orParentConfigs(feature);
   								if not feature.isMandatory() then newOptionalParents := newOptionalParents ^ [feature.getName()];
-  								for subFeature in feature.getSubFeatures() do
+  								for all subFeature in set feature.getSubFeatures() do
   									searchFeatureTree(subFeature, feature.isDefaultParent(), newOptionalParents);
   							);
   					);
@@ -70,15 +62,15 @@ operations
   		public defaultParentConfigs: (Feature | Parent) ==> ()
   						defaultParentConfigs(feature) ==
   						(
-  							dcl possibilities : seq of config := [];
-  							if feature.isMandatory() then possibilities := [{feature.getName() |-> true}]
-  							else possibilities := [{feature.getName() |-> true},  {feature.getName() |-> false}];
-  							if (len validConfigs = 0) then (validConfigs := possibilities)
+  							dcl possibilities : set of config := {};
+  							if feature.isMandatory() then possibilities := {{feature.getName() |-> true}}
+  							else possibilities := {{feature.getName() |-> true},  {feature.getName() |-> false}};
+  							if (card validConfigs = 0) then (validConfigs := possibilities)
   							else ( 
-  							dcl newValidConfigs : seq of config := [];
-  							for validConfig in validConfigs do 
-  								for possibility in possibilities do
-  										newValidConfigs := newValidConfigs ^ [validConfig munion possibility];
+  							dcl newValidConfigs : set of config := {};
+  							for all validConfig in set validConfigs do 
+  								for all possibility in set possibilities do
+  										newValidConfigs := newValidConfigs union {validConfig munion possibility};
   							validConfigs := newValidConfigs;		
   							);
   						);
@@ -88,29 +80,28 @@ operations
   		public xorParentConfigs: Parent ==> ()
   						xorParentConfigs(parent) ==
   						(
-  							dcl subFeaturesLength : int := parent.subFeaturesLen();
-  							dcl subFeatures : seq of Feature := parent.getSubFeatures();
-  							dcl newValidConfigs : seq of config := [];
-  							for validConfig in validConfigs do (
-  									for	i = 1 to subFeaturesLength do 
+  							dcl subFeatures : set of Feature := parent.getSubFeatures();
+  							dcl newValidConfigs : set of config := {};
+  							for all validConfig in set validConfigs do (
+  									for	all subFeaturesI in set subFeatures do 
   									(
   										dcl elements : config := {|->};
-  												for j = 1 to subFeaturesLength do 
+  												for all subFeaturesJ in set subFeatures do 
 		  										(
-				  										dcl subFeature : Feature := subFeatures(j);
+				  										dcl subFeature : Feature := subFeaturesJ;
 				  										dcl element : config := {subFeature.getName() |-> false };
-				  										if (i = j) then element := {subFeature.getName() |-> true };
+				  										if (subFeaturesI = subFeaturesJ) then element := {subFeature.getName() |-> true };
 				  										elements := elements munion element;
 		  										);
-		  								newValidConfigs := newValidConfigs ^ [validConfig munion elements];
+		  								newValidConfigs := newValidConfigs union {validConfig munion elements};
 		  								);
 		  								if not parent.isMandatory() and 
 		  								Utilities`mapToSet({parent.getName() |-> false}) subset Utilities`mapToSet(validConfig) then
 					  					 (
 					  					 dcl elements : config := {|->};
-					  					 for subFeature in subFeatures do
+					  					 for all subFeature in set subFeatures do
 					  								elements := elements munion {subFeature.getName() |-> false};
-					  					 newValidConfigs := newValidConfigs ^ [validConfig munion elements];
+					  					 newValidConfigs := newValidConfigs union {validConfig munion elements};
 					  					 );
 		  					);
 		  					validConfigs := newValidConfigs;
@@ -123,12 +114,12 @@ operations
   						(
   							dcl subFeatures : set of string := parent.getSubFeaturesNames();
   							dcl possibilities : seq of set of config := [];
-  							dcl validPossibilities : seq of config := [];
+  							dcl validPossibilities : set of config := {};
   							for all subFeature in set subFeatures do 
   							 		possibilities := possibilities ^ [{{subFeature |-> b2} | b2 in set {true, false}}];
   							for element in consumeOrPossibilities(parent, possibilities, len possibilities) do
-  									for validConfig in validConfigs do
-  											validPossibilities := validPossibilities ^ [validConfig munion element];
+  									for all validConfig in set validConfigs do
+  											validPossibilities := validPossibilities union {validConfig munion element};
   							validConfigs := validPossibilities;
   						);
   						
@@ -166,10 +157,10 @@ operations
   								dcl newValidConfigs : set of config := {};
   								for i = 1 to len optionalParents do (
   									dcl invalidConfig : config := {optionalParents(i) |-> false, feature.getName() |-> true};
-  									if i = 1 then newValidConfigs := { elem | elem in seq validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
-  									else newValidConfigs := newValidConfigs inter { elem | elem in seq validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
+  									if i = 1 then newValidConfigs := { elem | elem in set validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
+  									else newValidConfigs := newValidConfigs inter { elem | elem in set validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
   								);
-  							if newValidConfigs <> {} then validConfigs := setToSeq(newValidConfigs);
+  							if newValidConfigs <> {} then validConfigs := newValidConfigs;
   												
   						);
 end ConfigSearcher

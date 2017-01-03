@@ -30,19 +30,19 @@ operations
       -- tests parents sub features
       -- 1st arg: Parent to be tested
       -- 2nd arg: Expected sub features     
-      protected testSubFeatures: Parent * seq of Feature ==> ()
+      protected testSubFeatures: Parent * set of Feature ==> ()
       					testSubFeatures(parent, subFeatures) == assertTrue(parent.getSubFeatures() = subFeatures);
       					
       -- tests feature requirements
       -- 1st arg: Feature to be tested
       -- 2nd arg: Expected requirements    
-      protected testRequirements: Feature * seq of Feature ==> ()
+      protected testRequirements: Feature * set of Feature ==> ()
       					testRequirements(feature, requirements) == assertTrue(feature.getRequirements() = requirements);
       
       -- tests feature exclusions
       -- 1st arg: Feature to be tested
       -- 2nd arg: Expected exclusions    
-      protected testExclusions: Feature * seq of Feature ==> ()
+      protected testExclusions: Feature * set of Feature ==> ()
       					testExclusions(feature, exclusions) == assertTrue(feature.getExclusions() = exclusions); 
       									
       -- tests model features count
@@ -69,7 +69,8 @@ operations
       protected testGeneratedValidConfigs: Model * set of config ==> ()
       				 testGeneratedValidConfigs(model, validSet) == 
       				 (
-      				 dcl generatedSet : set of config := Utilities`seqToSet(model.generateValidConfigs());
+      				 dcl generatedSet : set of config := model.generateValidConfigs();
+      				 --for all config in set generatedSet do IO`println(config);
       				 assertTrue(validSet union generatedSet = validSet);
       				 );
       					
@@ -89,8 +90,8 @@ operations
 
       						let feature1 = new Feature("feature1"),
       								feature2 = new Feature("feature2") in
-      								(feature1.setRequirements([feature2]);
-      								feature1.setExclusions([feature2]);
+      								(feature1.setRequirements({feature2});
+      								feature1.setExclusions({feature2});
       								);	
       					);
       					
@@ -101,8 +102,8 @@ operations
 
       						let feature1 = new Feature("feature1"),
       								feature2 = new Feature("feature2") in
-      								(feature1.setExclusions([feature2]);
-      								feature1.setRequirements([feature2]);
+      								(feature1.setExclusions({feature2});
+      								feature1.setRequirements({feature2});
       								);	
       					);
       					

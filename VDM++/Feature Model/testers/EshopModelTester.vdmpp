@@ -17,18 +17,22 @@ operations
 			public createModel: () ==> Model
 							createModel() == 
 							(
+										dcl model : Model := new Model(eshop);
+										
 										payment.setParentType(<orParent>);
                 		security.setParentType(<xorParent>);
                 		
-                		payment.setSubFeatures([bankTransfer, creditCard]);
-                		security.setSubFeatures([high, standard]);
-                		eshop.setSubFeatures([catalogue, payment, security, search]);
+                		payment.setSubFeatures({bankTransfer, creditCard});
+                		security.setSubFeatures({high, standard});
+                		eshop.setSubFeatures({catalogue, payment, security, search});
                 		
                 		search.setMandatory(false);
                 		
-                		creditCard.setRequirements([high]);
+                		creditCard.setRequirements({high});
                 		
-                		return new Model(eshop);
+                		model.setFeatures();
+                		
+                		return model;
 							);
 							
 			-- Tests the E-shop Model
@@ -50,9 +54,9 @@ operations
                 			-- Sub features tests
                 			-- description: Each parent should have the respective features as subFeatures
                 			
-                			testSubFeatures(payment, [bankTransfer, creditCard]);
-                			testSubFeatures(security, [high, standard]);
-                			testSubFeatures(eshop, [catalogue, payment, security, search]);
+                			testSubFeatures(payment, {bankTransfer, creditCard});
+                			testSubFeatures(security, {high, standard});
+                			testSubFeatures(eshop, {catalogue, payment, security, search});
                 			
                 			-- Mandatory and optional features tests 
                 			-- description: The default operation is to set any feature as mandatory, the "search" and features with xor and or parents should be optional
@@ -70,28 +74,28 @@ operations
                 			-- Requirements tests
                 			-- description: By default a Feature doesn't have requirements, so only the "creditCard" should have the "high" feature as requirement
                 			
-                			testRequirements(eshop, []);
-                			testRequirements(catalogue, []);
-                			testRequirements(payment, []);
-                			testRequirements(security, []);
-                			testRequirements(search, []);
-                			testRequirements(bankTransfer, []);
-                			testRequirements(creditCard, [high]);
-                			testRequirements(high, []);
-                			testRequirements(standard, []);
+                			testRequirements(eshop, {});
+                			testRequirements(catalogue, {});
+                			testRequirements(payment, {});
+                			testRequirements(security, {});
+                			testRequirements(search, {});
+                			testRequirements(bankTransfer, {});
+                			testRequirements(creditCard, {high});
+                			testRequirements(high, {});
+                			testRequirements(standard, {});
                 			
                 			-- Exclusions tests
                 			-- description: By default a Feature doesn't have exclusions
                 					
-                			testExclusions(eshop, []);
-                			testExclusions(catalogue, []);
-                			testExclusions(payment, []);
-                			testExclusions(security, []);
-                			testExclusions(search, []);
-                			testExclusions(bankTransfer, []);
-                			testExclusions(creditCard, []);
-                			testExclusions(high, []);
-                			testExclusions(standard, []);
+                			testExclusions(eshop, {});
+                			testExclusions(catalogue, {});
+                			testExclusions(payment, {});
+                			testExclusions(security, {});
+                			testExclusions(search, {});
+                			testExclusions(bankTransfer, {});
+                			testExclusions(creditCard, {});
+                			testExclusions(high, {});
+                			testExclusions(standard, {});
                 			
                 			-- Model tests
                 			-- description: By default a Feature doesn't have requirements, so only the "creditCard" should have the "high" feature as requirement
@@ -104,6 +108,18 @@ operations
                       invalidModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> false,
                         						"payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, 
                         						"security" |-> true, "high" |-> true, "standard" |-> true, "search" |-> false });
-                			testGeneratedValidConfigs(eshopModel, Utilities`eshopValidConfigs());
+                			testGeneratedValidConfigs(eshopModel, eshopValidConfigs());
                 );
+functions
+		-- All Eshop Model valid configurations
+		-- Return: Set of Eshop Model valid configurations
+		public eshopValidConfigs: () -> set of config
+							eshopValidConfigs() == {{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> true},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
+																			{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true}};
 end EshopModelTester
