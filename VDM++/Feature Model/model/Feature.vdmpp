@@ -90,7 +90,7 @@ operations
 							
 			-- Checks if a Requirement is an Exclusion at the same time
 			-- Return: Boolean related with mandatory status
-			pure public isRespectingReqAndExc: config ==> bool
+			public isRespectingReqAndExc: config ==> bool
 							isRespectingReqAndExc(c) == 
 							(
 							dcl configuredFeatures : set of string := dom (c :> {true});
@@ -103,10 +103,20 @@ operations
 			
 			-- Checks if a configuration is valid in this feature
 			-- Return: Boolean related with validation status
-			pure public isValidConfiguration: config ==> bool
+			public isValidConfiguration: config ==> bool
 							isValidConfiguration(c) == 
 							(
 							if mandatory and not Utilities`isNameConfigured(name, c) then return false;
 							return isRespectingReqAndExc(c);
 							);
+							
+			
+			-- Checks if an optional parent has optional sub features
+			-- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
+			-- Return: Boolean with validation status
+			pure protected optionalHasOptionalSubFeatures: bool ==> bool
+										optionalHasOptionalSubFeatures(firstElement) == 
+										(
+											return not mandatory and firstElement = false;
+										);
 end Feature

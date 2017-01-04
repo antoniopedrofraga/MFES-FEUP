@@ -70,7 +70,6 @@ operations
       				 testGeneratedValidConfigs(model, validSet) == 
       				 (
       				 dcl generatedSet : set of config := model.generateValidConfigs();
-      				 --for all config in set generatedSet do IO`println(config);
       				 assertTrue(validSet union generatedSet = validSet);
       				 );
       					

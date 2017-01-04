@@ -6,7 +6,7 @@ instance variables
 			private subFeatures: set of Feature := {};
 			private type: parentType := <defaultParent>;
 			
-			inv type in set {<defaultParent>, <orParent>, <xorParent>};
+			inv optionalHasOptionalSubFeatures(true);
 operations
 
 			-- Parent constructor 
@@ -98,7 +98,7 @@ operations
 			
 			-- Checks if a config is valid
 			-- Return: Boolean with valid status
-			pure public isValidConfiguration: config ==> bool
+			public isValidConfiguration: config ==> bool
 							isValidConfiguration(c) == 
 							(
 							dcl configuredSubFeatures : int := 0;
@@ -114,4 +114,18 @@ operations
 											(type = <orParent> and configuredSubFeatures = 0) and not
 											(type = <xorParent> and not configuredSubFeatures = 1);
 							);
+			
+			-- Checks if an optional parent has optional sub features
+			-- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
+			-- Return: Boolean with validation status
+			pure protected optionalHasOptionalSubFeatures: bool ==> bool
+										optionalHasOptionalSubFeatures(firstElement) == 
+										(
+											if not mandatory and not firstElement then (
+													for all subFeature in set subFeatures do
+															if subFeature.optionalHasOptionalSubFeatures(false) then return true;
+											);
+											return firstElement;
+										);				 
+										
 end Parent

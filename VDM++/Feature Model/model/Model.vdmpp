@@ -6,14 +6,15 @@ types
 instance variables
 			protected root: Feature;
 			private features : set of string := {};
-			private configGenerator : ConfigGenerator := new ConfigGenerator();
+			private configGenerator : ConfigGenerator;
 			
+			inv isofclass(Feature, root);
 operations
 
 			-- Model constructor
 			-- 1st arg: Root feature
 			public Model: Feature ==> Model
-							Model(r) == (root := r; return self;)
+							Model(r) == (root := r; configGenerator := new ConfigGenerator(self); return self;)
 							post root = r;
 							
 			-- Gets model root
@@ -35,7 +36,7 @@ operations
 			-- Checks if a config is valid
 			-- 1st arg: Config to be tested
 			-- Return: Boolean with validation status
-			pure public isValidConfiguration: config ==> bool
+			public isValidConfiguration: config ==> bool
 							isValidConfiguration(config) == 
 								(
 								if not root.isValidConfiguration(config) then return false;
@@ -46,6 +47,6 @@ operations
 			-- Generates all valid configurations
 			-- Return: Sequence of configs
 			public generateValidConfigs: () ==> set of config
-							generateValidConfigs() == (setFeatures(); return configGenerator.generateValidConfigs(self));
+							generateValidConfigs() == (setFeatures(); return configGenerator.generateValidConfigs());
 								
 end Model

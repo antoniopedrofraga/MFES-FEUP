@@ -3,13 +3,23 @@ class ConfigGenerator
 types
 			public string = Utilities`string;
 			public config = Utilities`config;
+instance variables
+			model : Model;
+			
+			inv isofclass(Model, model);
 operations
+		
+		-- ConfigGenerator constructor 
+		-- 1st arg: Model to be associated with the generator
+		public ConfigGenerator: Model ==> ConfigGenerator
+			ConfigGenerator(m) == (model := m; return self;)
+			post model = m;
 
 		-- Generates valid configurations of a model
 		-- 1st arg: Given model
 		-- Return: Set of all valid configurations
-		public generateValidConfigs: Model ==> set of config 
-						generateValidConfigs(model) == 
+		public generateValidConfigs: () ==> set of config 
+						generateValidConfigs() == 
 						(
 								dcl root : Feature := model.getRoot();
 								dcl searcher : ConfigSearcher := new ConfigSearcher(root);

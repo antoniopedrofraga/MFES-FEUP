@@ -19,6 +19,8 @@ operations
 							(
 										dcl model : Model := new Model(eshop);
 										
+										eshop.setMandatory(false);
+										
 										payment.setParentType(<orParent>);
                 		security.setParentType(<xorParent>);
                 		
@@ -61,7 +63,7 @@ operations
                 			-- Mandatory and optional features tests 
                 			-- description: The default operation is to set any feature as mandatory, the "search" and features with xor and or parents should be optional
                 			
-                			testMandatoryFeature(eshop, true);
+                			testMandatoryFeature(eshop, false);
                 			testMandatoryFeature(catalogue, true);
                 			testMandatoryFeature(payment, true);
                 			testMandatoryFeature(security, true);
@@ -105,10 +107,10 @@ operations
                 			validModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> true,
                         						"payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, 
                         						"security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false });
-                      invalidModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> false,
-                        						"payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, 
-                        						"security" |-> true, "high" |-> true, "standard" |-> true, "search" |-> false });
-                			testGeneratedValidConfigs(eshopModel, eshopValidConfigs());
+                      invalidModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> true,
+                        						"payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, 
+                        						"security" |-> true, "high" |-> false, "standard" |-> false, "search" |-> false });
+                			 testGeneratedValidConfigs(eshopModel, eshopValidConfigs());
                 );
 functions
 		-- All Eshop Model valid configurations

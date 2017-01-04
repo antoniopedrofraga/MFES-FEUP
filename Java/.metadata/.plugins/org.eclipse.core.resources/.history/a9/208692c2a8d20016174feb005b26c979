@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -28,7 +29,7 @@ public class GraphPanel extends JPanel{
 
 	GraphPanel() {
 		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
-		this.setLayout(new GridLayout(1, 2));
+		this.setLayout(new GridLayout(2, 1));
 		this.setPreferredSize(new Dimension(640, 480));
 		GraphPanel.instance = this;
 		this.graph = new MultiGraph("Model Viewer");

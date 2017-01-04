@@ -8,6 +8,8 @@ instance variables
 		private nodeCount : nat;
 		private restrictedInvalidSubsets : set of config;
 		private validConfigs : set of config := {};
+		
+		inv isofclass(Parent, root);
 operations
 
 		-- ConfigSearcher Constructor
@@ -59,8 +61,8 @@ operations
   		
   		-- Generates valid configurations of a feature with a <defaultParent>
   		-- 1st arg: Feature related with valid configurations
-  		public defaultParentConfigs: (Feature | Parent) ==> ()
-  						defaultParentConfigs(feature) ==
+  		public defaultParentConfigs: (Feature | Parent ) ==> ()
+  						defaultParentConfigs(feature)  ==
   						(
   							dcl possibilities : set of config := {};
   							if feature.isMandatory() then possibilities := {{feature.getName() |-> true}}
@@ -68,9 +70,10 @@ operations
   							if (card validConfigs = 0) then (validConfigs := possibilities)
   							else ( 
   							dcl newValidConfigs : set of config := {};
-  							for all validConfig in set validConfigs do 
+  							for all validConfig in set validConfigs do (  								
   								for all possibility in set possibilities do
   										newValidConfigs := newValidConfigs union {validConfig munion possibility};
+  							);
   							validConfigs := newValidConfigs;		
   							);
   						);
@@ -155,9 +158,10 @@ operations
   						checkOptionalParents(feature, optionalParents) == 
   						(	
   								dcl newValidConfigs : set of config := {};
-  								for i = 1 to len optionalParents do (
-  									dcl invalidConfig : config := {optionalParents(i) |-> false, feature.getName() |-> true};
-  									if i = 1 then newValidConfigs := { elem | elem in set validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
+  									
+  								for optionalParent in optionalParents do (
+  									dcl invalidConfig : config := {optionalParent |-> false, feature.getName() |-> true};
+  									if newValidConfigs = {} then newValidConfigs := { elem | elem in set validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
   									else newValidConfigs := newValidConfigs inter { elem | elem in set validConfigs & not Utilities`mapToSet(invalidConfig) subset Utilities`mapToSet(elem) }
   								);
   							if newValidConfigs <> {} then validConfigs := newValidConfigs;
