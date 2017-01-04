@@ -1,0 +1,86 @@
+{
+	"root" : "eshop",
+	"features": [{
+		"name": "eshop",
+		"mandatory": true,
+		"type": "defaultParent",
+		"subFeatures": [
+			{"name": "catalogue"},
+			{"name": "payment"},
+			{"name": "security"},
+			{"name": "search"}
+		],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "catalogue",
+		"mandatory": true,
+		"type": "leaf",
+		"subFeatures": [],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "payment",
+		"mandatory": true,
+		"type": "orParent",
+		"subFeatures": [
+			{"name": "bank transfer"},
+			{"name": "credit card"}
+		],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "security",
+		"mandatory": true,
+		"type": "xorParent",
+		"subFeatures": [
+			{"name": "high"},
+			{"name": "standard"}
+		],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "search",
+		"mandatory": true,
+		"type": "leaf",
+		"subFeatures": [],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "bank transfer",
+		"mandatory": false,
+		"type": "leaf",
+		"subFeatures": [],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "credit card",
+		"mandatory": true,
+		"type": "leaf",
+		"subFeatures": [],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "high",
+		"mandatory": true,
+		"type": "leaf",
+		"subFeatures": [],
+		"exclusions" : [],
+		"requirements" : []
+	},
+	{
+		"name": "standard",
+		"mandatory": true,
+		"type": "leaf",
+		"subFeatures": [],
+		"exclusions" : [],
+		"requirements" : []
+	}]
+}

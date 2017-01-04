@@ -1,0 +1,12 @@
+package gui;
+
+import javax.swing.JPanel;
+
+public class GraphPanel extends JPanel{
+
+	private static final long serialVersionUID = -8632379117522107537L;
+
+	GraphPanel() {
+		
+	}
+}

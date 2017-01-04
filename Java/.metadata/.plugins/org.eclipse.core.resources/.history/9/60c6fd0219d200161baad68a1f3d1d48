@@ -1,0 +1,51 @@
+package gui;
+
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.HeadlessException;
+
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+
+
+import vdmpp.EshopModelTester;
+
+public class GraphGUI extends JFrame {
+
+	private static final long serialVersionUID = -5557695447991471706L;
+
+	GraphGUI(String name) {
+		super(name);
+		this.setLayout(new FlowLayout());
+		
+		addFileChooser();
+		addGraphPanel();
+		
+		super.pack();
+		super.setVisible(true);
+		super.setAlwaysOnTop(true);
+	    super.toFront();
+	    super.requestFocus();
+	    super.setAlwaysOnTop(false);
+	}
+	private void addFileChooser() {
+		JFileChooser fileChooser = new JFileChooser("Open model to load") {
+            @Override
+            protected JDialog createDialog(Component parent)
+                    throws HeadlessException {
+                JDialog dialog = super.createDialog(parent);
+                dialog.setLocationByPlatform(true);
+                dialog.setAlwaysOnTop(true);
+                return dialog;
+            }
+
+        };
+		int returnVal = fileChooser.showOpenDialog(null);
+	}
+	private void addGraphPanel() {
+		GraphPanel graphPanel = new GraphPanel();
+		graphPanel.displayModel(new EshopModelTester().createModel());
+		this.add(graphPanel);
+	}
+}

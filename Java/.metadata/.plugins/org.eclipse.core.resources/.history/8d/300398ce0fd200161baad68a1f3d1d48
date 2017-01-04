@@ -1,0 +1,48 @@
+package gui;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class InAppCli {
+	Scanner input = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		InAppCli cli = new InAppCli();
+		cli.displayTitle();
+		cli.displayOptions();
+		cli.listenInput();
+	}
+
+	private void displayTitle() {
+		System.out.println("*************************************");
+		System.out.println("*                                   *");
+		System.out.println("*          Features Model           *");
+		System.out.println("*                                   *");
+		System.out.println("*************************************");
+		System.out.println();
+		System.out.println("by Antonio Pedro Fraga, Francisco Rodrigues and Filipa Barroso");
+		System.out.println();
+		System.out.println();
+	}
+	private void displayOptions() {
+		System.out.println("1. Load Feature Model");
+		System.out.println("2. Generate valid configs");
+		System.out.println("3. Validate config");
+		System.out.println();
+	}
+	private void listenInput() {
+		System.out.println("Insert option followed by enter: ");
+		int option = 0;
+		try {
+			option = Character.getNumericValue(System.in.read());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (option < 1 || option > 3){
+			System.out.println("Not a valid selection");
+			listenInput();
+		} else {
+			
+		}
+	}
+}
