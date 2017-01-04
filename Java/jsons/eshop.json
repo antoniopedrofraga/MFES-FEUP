@@ -65,7 +65,7 @@
 		"type": "leaf",
 		"subFeatures": [],
 		"exclusions" : [],
-		"requirements" : []
+		"requirements" : [{"name": "high"}]
 	},
 	{
 		"name": "high",

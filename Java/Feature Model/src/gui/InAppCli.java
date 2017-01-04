@@ -51,7 +51,12 @@ public class InAppCli {
 	private void handleSelection(int option) {
 		switch (option) {
 		case 1:
-			new GraphGUI("Graph Viewer");
+			new GraphGUI("Graph Viewer", option);
+			break;
+		case 2:
+			break;
+		case 3:
+			new GraphGUI("Validate Configuration", option);
 			break;
 		case 4:
 			System.exit(1);

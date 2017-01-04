@@ -28,4 +28,6 @@
 <fullyQualifiedTypeName name="org.overture.codegen.runtime.VDMSet"/>
 <fullyQualifiedTypeName name="vdmpp.Feature"/>
 <fullyQualifiedTypeName name="vdmpp.Model"/>
+<fullyQualifiedTypeName name="quotes.orParentQuote"/>
+<fullyQualifiedTypeName name="quotes.xorParentQuote"/>
 </qualifiedTypeNameHistroy>

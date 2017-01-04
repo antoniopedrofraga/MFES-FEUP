@@ -1,0 +1,48 @@
+package gui;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+
+import org.overture.codegen.runtime.MapUtil;
+
+import vdmpp.Model;
+
+public class GraphGUI extends JFrame {
+
+	private static final long serialVersionUID = -5557695447991471706L;
+
+	GraphGUI(String name, int mode) {
+		super(name);
+		this.setLayout(new FlowLayout());
+		addFileChooser(mode);
+		
+	}
+	private void addFileChooser(int mode) {
+		UIManager.put("FileChooser.openDialogTitleText", "Choose model to be loaded");
+		
+		JSONChooser jsonChooser = new JSONChooser();
+		Model model = jsonChooser.getModel();
+		VDMMap map = null;
+		
+		if (mode == 2) { 
+			UIManager.put("FileChooser.openDialogTitleText", "Choose configuration to be loaded");
+			map = jsonChooser.getConfiguration();
+		}
+		if (model != null) { addGraphPanel(model); } else { System.out.println("There was a problem while loading the file"); return; }
+		
+		
+		this.pack();
+		this.setVisible(true);
+		this.setAlwaysOnTop(true);
+	    this.toFront();
+	    this.requestFocus();
+	    this.setAlwaysOnTop(false);
+	}
+	private void addGraphPanel(Model model) {
+		GraphPanel graphPanel = new GraphPanel();
+		graphPanel.displayModel(model);
+		this.add(graphPanel);
+	}
+}

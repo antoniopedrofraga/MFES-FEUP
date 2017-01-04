@@ -1,0 +1,11 @@
+[
+{"name": "eshop", "status": true},
+{"name": "catalogue", "status": true},
+{"name": "security", "status": true},
+{"name": "search", "status": false},
+{"name": "payment", "status": true},
+{"name": "bank transfer", "status": true},
+{"name": "credit card", "status": false},
+{"name": "high", "status": true},
+{"name": "standard", "status": false},
+]
