@@ -122,6 +122,7 @@ public class JSONChooser extends JFileChooser {
 	protected JDialog createDialog(Component parent)
 			throws HeadlessException {
 		JDialog dialog = super.createDialog(parent);
+		dialog.setLocationRelativeTo(null);
 		dialog.setLocationByPlatform(true);
 		dialog.setAlwaysOnTop(true);
 		return dialog;

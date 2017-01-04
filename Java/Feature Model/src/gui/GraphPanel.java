@@ -23,15 +23,26 @@ import vdmpp.Parent;
 public class GraphPanel extends JPanel{
 
 	private static final long serialVersionUID = -8632379117522107537L;
+	private static GraphPanel instance;
+	private Graph graph;
 
 	GraphPanel() {
 		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 		this.setLayout(new BorderLayout());
 		this.setPreferredSize(new Dimension(640, 480));
+		GraphPanel.instance = this;
+		this.graph = new MultiGraph("Model Viewer");
+		
+		Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+		View view = viewer.addDefaultView(false);
+		viewer.disableAutoLayout();
+
+		this.add((Component) view);
 	}
 
 	protected void displayModel(Model model, VDMMap map) {
-		Graph graph = new MultiGraph("Model Viewer");
+		graph.clear();
+		
 		String bodyStyle = "";
 		if (map != null) {
 			Boolean isValidConfig = model.isValidConfiguration(map);
@@ -44,11 +55,6 @@ public class GraphPanel extends JPanel{
 		int nodeCount = model.nodeCount().intValue();
 		displayFromRoot(graph, map, null, model.getRoot(), 0, 1, nodeCount);
 
-		Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
-		View view = viewer.addDefaultView(false);
-		viewer.disableAutoLayout();
-
-		this.add((Component) view);
 	}
 
 	private void displayFromRoot(Graph graph, VDMMap map, Parent parent, Feature feature, float x, float y, float xSpace) {
@@ -57,7 +63,7 @@ public class GraphPanel extends JPanel{
 		Node node = graph.getNode(feature.getName());
 
 		String name = !feature.isMandatory() &&
-				!(parent.isOrParent() || parent.isXorParent()) ? feature.getName() + " (Optional)" : feature.getName();
+				(parent == null || !(parent.isOrParent() || parent.isXorParent())) ? feature.getName() + " (Optional)" : feature.getName();
 		node.addAttribute("ui.label", name);
 		node.setAttribute("y", y);
 		node.setAttribute("x", x);
@@ -84,5 +90,9 @@ public class GraphPanel extends JPanel{
 				displayFromRoot(graph, map, (Parent) feature, subFeature, newx + xDelta * i + xDelta / 2, y - 1, xDelta);
 			}
 		}
+	}
+
+	public static GraphPanel getInstance() {
+		return instance;
 	}
 }

@@ -26,16 +26,22 @@ public class GraphGUI extends JFrame {
 		Model model = jsonChooser.getModel();
 		VDMMap map = null;
 		
-		if (mode == Utilities.VALIDATE) { 
+		if (mode == Utilities.VALIDATE && model != null) { 
 			UIManager.put("FileChooser.openDialogTitleText", "Choose configuration to be loaded");
 			jsonChooser = new JSONChooser();
 			map = jsonChooser.getConfiguration();
-			if (map == null) return;
+			if (map == null) { System.out.println("There was a problem while loading the configuration file"); return; }
+		} else if (mode == Utilities.GENERATE && model != null) {
+			ConfigIterator configIterator = new ConfigIterator(model);
+			map = configIterator.getMapFromIndex();
+			this.add(configIterator);
 		}
-		if (model != null) { addGraphPanel(model, map); } else { System.out.println("There was a problem while loading the file"); return; }
+		if (model != null) { addGraphPanel(model, map); } else { System.out.println("There was a problem while loading the model file"); return; }
+
 		
 		
 		this.pack();
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 	    this.toFront();
