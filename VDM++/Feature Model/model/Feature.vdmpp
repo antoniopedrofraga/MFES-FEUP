@@ -114,9 +114,9 @@ operations
 			-- Checks if an optional parent has optional sub features
 			-- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
 			-- Return: Boolean with validation status
-			pure protected optionalHasOptionalSubFeatures: bool ==> bool
-										optionalHasOptionalSubFeatures(firstElement) == 
+			pure protected isOptionalSubFeature: () ==> bool
+										isOptionalSubFeature() == 
 										(
-											return not mandatory and firstElement = false;
+											return not mandatory;
 										);
 end Feature

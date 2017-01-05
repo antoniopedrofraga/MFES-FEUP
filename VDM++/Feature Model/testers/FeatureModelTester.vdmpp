@@ -106,14 +106,27 @@ operations
       								);	
       					);
       					
+      -- tests the invariant (optional parents should have optional features)   
+      protected testOptionalParentHasOptionalSubfeatures: () ==> ()
+      					testOptionalParentHasOptionalSubfeatures() ==	
+      					(
+      						dcl feature1 : Feature := new Feature("feature1");
+      						dcl parent1 : Parent := new Parent("parent1");
+      						dcl parent2 : Parent := new Parent("parent2");
+
+      						parent1.setMandatory(false);
+      						parent1.setSubFeatures({parent2});
+      						parent2.setSubFeatures({feature1});
+      					);
       public static main: () ==> ()
                 main() ==
                 (	
-          					dcl eshopModelTester : EshopModelTester := new EshopModelTester();
-										dcl mobilePhoneModelTester: MobilePhoneModelTester := new MobilePhoneModelTester();
-										dcl carModelTester : CarModelTester := new CarModelTester();
-                  	eshopModelTester.testModel();
-                  	mobilePhoneModelTester.testModel();
-                  	carModelTester.testModel();
+          					--dcl eshopModelTester : EshopModelTester := new EshopModelTester();
+										--dcl mobilePhoneModelTester: MobilePhoneModelTester := new MobilePhoneModelTester();
+										--dcl carModelTester : CarModelTester := new CarModelTester();
+                  	--eshopModelTester.testModel();
+                  	--mobilePhoneModelTester.testModel();
+                  	--carModelTester.testModel();
+                  	new FeatureModelTester().testOptionalParentHasOptionalSubfeatures();
                 );
 end FeatureModelTester
