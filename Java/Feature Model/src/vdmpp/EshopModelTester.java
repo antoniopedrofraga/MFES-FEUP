@@ -83,13 +83,13 @@ public class EshopModelTester extends FeatureModelTester {
         eshopModel,
         MapUtil.map(
             new Maplet("e-shop", true),
-            new Maplet("catalogue", false),
+            new Maplet("catalogue", true),
             new Maplet("payment", true),
             new Maplet("bank transfer", true),
-            new Maplet("credit card", false),
+            new Maplet("credit card", true),
             new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", true),
+            new Maplet("high", false),
+            new Maplet("standard", false),
             new Maplet("search", false)));
     testGeneratedValidConfigs(eshopModel, eshopValidConfigs());
   }

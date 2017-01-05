@@ -1,3 +1,5 @@
 1483483718989	Move compilation units
 1483488241340	Rename type 'InAppGUI'
 1483497619837	Infer generic type arguments
+1483582808143	Rename package 'vdmpp'
+1483582843036	Rename package 'vdmpps'

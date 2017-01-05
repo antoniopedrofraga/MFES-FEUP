@@ -24,13 +24,15 @@ public class CarModelTester extends FeatureModelTester {
     pullsTrailler.setParentType(quotes.xorParentQuote.getInstance());
     transmission.setParentType(quotes.xorParentQuote.getInstance());
     engine.setParentType(quotes.orParentQuote.getInstance());
+    armor.setMandatory(false);
+    pullsTrailler.setMandatory(false);
+    lightTrailler.setMandatory(false);
+    heavyTrailler.setMandatory(false);
     car.setSubFeatures(SetUtil.set(body, transmission, pullsTrailler, engine));
     transmission.setSubFeatures(SetUtil.set(automatic, manual));
     engine.setSubFeatures(SetUtil.set(gasoline, electric));
     pullsTrailler.setSubFeatures(SetUtil.set(lightTrailler, heavyTrailler));
     heavyTrailler.setSubFeatures(SetUtil.set(armor));
-    pullsTrailler.setMandatory(false);
-    armor.setMandatory(false);
     model.setFeatures();
     return model;
   }

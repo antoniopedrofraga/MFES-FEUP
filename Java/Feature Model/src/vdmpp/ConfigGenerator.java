@@ -5,7 +5,20 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class ConfigGenerator {
-  public VDMSet generateValidConfigs(final Model model) {
+  private Model model;
+
+  public void cg_init_ConfigGenerator_1(final Model m) {
+
+    model = m;
+    return;
+  }
+
+  public ConfigGenerator(final Model m) {
+
+    cg_init_ConfigGenerator_1(m);
+  }
+
+  public VDMSet generateValidConfigs() {
 
     Feature root = model.getRoot();
     ConfigSearcher searcher = new ConfigSearcher(root);
@@ -17,6 +30,6 @@ public class ConfigGenerator {
 
   public String toString() {
 
-    return "ConfigGenerator{}";
+    return "ConfigGenerator{" + "model := " + Utils.toString(model) + "}";
   }
 }

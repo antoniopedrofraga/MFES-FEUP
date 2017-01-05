@@ -34,8 +34,8 @@ public class ConfigSearcher {
 
     VDMSet newValidConfigs = SetUtil.set();
     Boolean firstIteration = true;
-    for (Iterator iterator_10 = restrictedInvalidSubsets.iterator(); iterator_10.hasNext(); ) {
-      VDMMap restrictedInvalidSubset = (VDMMap) iterator_10.next();
+    for (Iterator iterator_11 = restrictedInvalidSubsets.iterator(); iterator_11.hasNext(); ) {
+      VDMMap restrictedInvalidSubset = (VDMMap) iterator_11.next();
       if (firstIteration) {
         VDMSet setCompResult_1 = SetUtil.set();
         VDMSet set_1 = Utils.copy(validConfigs);
@@ -132,8 +132,8 @@ public class ConfigSearcher {
         throw new RuntimeException("Missing member: getSubFeatures");
       }
 
-      for (Iterator iterator_11 = apply_5.iterator(); iterator_11.hasNext(); ) {
-        Feature subFeature = (Feature) iterator_11.next();
+      for (Iterator iterator_12 = apply_5.iterator(); iterator_12.hasNext(); ) {
+        Feature subFeature = (Feature) iterator_12.next();
         Boolean apply_6 = null;
         if (feature instanceof Parent) {
           apply_6 = ((Parent) feature).isDefaultParent();
@@ -199,10 +199,10 @@ public class ConfigSearcher {
 
     } else {
       VDMSet newValidConfigs = SetUtil.set();
-      for (Iterator iterator_12 = validConfigs.iterator(); iterator_12.hasNext(); ) {
-        VDMMap validConfig = (VDMMap) iterator_12.next();
-        for (Iterator iterator_13 = possibilities.iterator(); iterator_13.hasNext(); ) {
-          VDMMap possibility = (VDMMap) iterator_13.next();
+      for (Iterator iterator_13 = validConfigs.iterator(); iterator_13.hasNext(); ) {
+        VDMMap validConfig = (VDMMap) iterator_13.next();
+        for (Iterator iterator_14 = possibilities.iterator(); iterator_14.hasNext(); ) {
+          VDMMap possibility = (VDMMap) iterator_14.next();
           newValidConfigs =
               SetUtil.union(
                   Utils.copy(newValidConfigs),
@@ -217,13 +217,13 @@ public class ConfigSearcher {
 
     VDMSet subFeatures = parent.getSubFeatures();
     VDMSet newValidConfigs = SetUtil.set();
-    for (Iterator iterator_14 = validConfigs.iterator(); iterator_14.hasNext(); ) {
-      VDMMap validConfig = (VDMMap) iterator_14.next();
-      for (Iterator iterator_15 = subFeatures.iterator(); iterator_15.hasNext(); ) {
-        Feature subFeaturesI = (Feature) iterator_15.next();
+    for (Iterator iterator_15 = validConfigs.iterator(); iterator_15.hasNext(); ) {
+      VDMMap validConfig = (VDMMap) iterator_15.next();
+      for (Iterator iterator_16 = subFeatures.iterator(); iterator_16.hasNext(); ) {
+        Feature subFeaturesI = (Feature) iterator_16.next();
         VDMMap elements = MapUtil.map();
-        for (Iterator iterator_16 = subFeatures.iterator(); iterator_16.hasNext(); ) {
-          Feature subFeaturesJ = (Feature) iterator_16.next();
+        for (Iterator iterator_17 = subFeatures.iterator(); iterator_17.hasNext(); ) {
+          Feature subFeaturesJ = (Feature) iterator_17.next();
           Feature subFeature = subFeaturesJ;
           VDMMap element = MapUtil.map(new Maplet(subFeature.getName(), false));
           if (Utils.equals(subFeaturesI, subFeaturesJ)) {
@@ -249,8 +249,8 @@ public class ConfigSearcher {
 
       if (andResult_1) {
         VDMMap elements = MapUtil.map();
-        for (Iterator iterator_17 = subFeatures.iterator(); iterator_17.hasNext(); ) {
-          Feature subFeature = (Feature) iterator_17.next();
+        for (Iterator iterator_18 = subFeatures.iterator(); iterator_18.hasNext(); ) {
+          Feature subFeature = (Feature) iterator_18.next();
           elements =
               MapUtil.munion(
                   Utils.copy(elements), MapUtil.map(new Maplet(subFeature.getName(), false)));
@@ -269,8 +269,8 @@ public class ConfigSearcher {
     VDMSet subFeatures = parent.getSubFeaturesNames();
     VDMSeq possibilities = SeqUtil.seq();
     VDMSet validPossibilities = SetUtil.set();
-    for (Iterator iterator_18 = subFeatures.iterator(); iterator_18.hasNext(); ) {
-      String subFeature = (String) iterator_18.next();
+    for (Iterator iterator_19 = subFeatures.iterator(); iterator_19.hasNext(); ) {
+      String subFeature = (String) iterator_19.next();
       VDMSet setCompResult_3 = SetUtil.set();
       VDMSet set_3 = SetUtil.set(true, false);
       for (Iterator iterator_3 = set_3.iterator(); iterator_3.hasNext(); ) {
@@ -280,14 +280,14 @@ public class ConfigSearcher {
       possibilities =
           SeqUtil.conc(Utils.copy(possibilities), SeqUtil.seq(Utils.copy(setCompResult_3)));
     }
-    for (Iterator iterator_19 =
+    for (Iterator iterator_20 =
             consumeOrPossibilities(parent, Utils.copy(possibilities), possibilities.size())
                 .iterator();
-        iterator_19.hasNext();
+        iterator_20.hasNext();
         ) {
-      VDMMap element = (VDMMap) iterator_19.next();
-      for (Iterator iterator_20 = validConfigs.iterator(); iterator_20.hasNext(); ) {
-        VDMMap validConfig = (VDMMap) iterator_20.next();
+      VDMMap element = (VDMMap) iterator_20.next();
+      for (Iterator iterator_21 = validConfigs.iterator(); iterator_21.hasNext(); ) {
+        VDMMap validConfig = (VDMMap) iterator_21.next();
         validPossibilities =
             SetUtil.union(
                 Utils.copy(validPossibilities),
@@ -302,26 +302,26 @@ public class ConfigSearcher {
 
     VDMSeq validPossibilities = SeqUtil.seq();
     if (Utils.equals(possibilities.size(), 1L)) {
-      for (Iterator iterator_21 = ((VDMSet) Utils.get(possibilities, 1L)).iterator();
-          iterator_21.hasNext();
+      for (Iterator iterator_22 = ((VDMSet) Utils.get(possibilities, 1L)).iterator();
+          iterator_22.hasNext();
           ) {
-        VDMMap possibility = (VDMMap) iterator_21.next();
+        VDMMap possibility = (VDMMap) iterator_22.next();
         validPossibilities =
             SeqUtil.conc(Utils.copy(validPossibilities), SeqUtil.seq(Utils.copy(possibility)));
       }
     } else {
       if (possibilities.size() > 1L) {
-        for (Iterator iterator_22 = ((VDMSet) Utils.get(possibilities, 1L)).iterator();
-            iterator_22.hasNext();
+        for (Iterator iterator_23 = ((VDMSet) Utils.get(possibilities, 1L)).iterator();
+            iterator_23.hasNext();
             ) {
-          VDMMap possibility = (VDMMap) iterator_22.next();
-          for (Iterator iterator_23 =
+          VDMMap possibility = (VDMMap) iterator_23.next();
+          for (Iterator iterator_24 =
                   consumeOrPossibilities(
                           parent, SeqUtil.tail(Utils.copy(possibilities)), originalLength)
                       .iterator();
-              iterator_23.hasNext();
+              iterator_24.hasNext();
               ) {
-            VDMMap element = (VDMMap) iterator_23.next();
+            VDMMap element = (VDMMap) iterator_24.next();
             {
               VDMMap conf = MapUtil.munion(Utils.copy(possibility), Utils.copy(element));
               Boolean andResult_2 = false;
@@ -358,39 +358,38 @@ public class ConfigSearcher {
   public void checkOptionalParents(final Feature feature, final VDMSeq optionalParents) {
 
     VDMSet newValidConfigs = SetUtil.set();
-    long toVar_1 = optionalParents.size();
-
-    for (Long i = 1L; i <= toVar_1; i++) {
-      VDMMap invalidConfig =
-          MapUtil.map(
-              new Maplet(((String) Utils.get(optionalParents, i)), false),
-              new Maplet(feature.getName(), true));
-      if (Utils.equals(i, 1L)) {
-        VDMSet setCompResult_4 = SetUtil.set();
-        VDMSet set_4 = Utils.copy(validConfigs);
-        for (Iterator iterator_4 = set_4.iterator(); iterator_4.hasNext(); ) {
-          VDMMap elem = ((VDMMap) iterator_4.next());
-          if (!(SetUtil.subset(
-              Utilities.mapToSet(Utils.copy(invalidConfig)),
-              Utilities.mapToSet(Utils.copy(elem))))) {
-            setCompResult_4.add(Utils.copy(elem));
+    for (Iterator iterator_25 = optionalParents.iterator(); iterator_25.hasNext(); ) {
+      String optionalParent = (String) iterator_25.next();
+      {
+        VDMMap invalidConfig =
+            MapUtil.map(new Maplet(optionalParent, false), new Maplet(feature.getName(), true));
+        if (Utils.empty(newValidConfigs)) {
+          VDMSet setCompResult_4 = SetUtil.set();
+          VDMSet set_4 = Utils.copy(validConfigs);
+          for (Iterator iterator_4 = set_4.iterator(); iterator_4.hasNext(); ) {
+            VDMMap elem = ((VDMMap) iterator_4.next());
+            if (!(SetUtil.subset(
+                Utilities.mapToSet(Utils.copy(invalidConfig)),
+                Utilities.mapToSet(Utils.copy(elem))))) {
+              setCompResult_4.add(Utils.copy(elem));
+            }
           }
-        }
-        newValidConfigs = Utils.copy(setCompResult_4);
+          newValidConfigs = Utils.copy(setCompResult_4);
 
-      } else {
-        VDMSet setCompResult_5 = SetUtil.set();
-        VDMSet set_5 = Utils.copy(validConfigs);
-        for (Iterator iterator_5 = set_5.iterator(); iterator_5.hasNext(); ) {
-          VDMMap elem = ((VDMMap) iterator_5.next());
-          if (!(SetUtil.subset(
-              Utilities.mapToSet(Utils.copy(invalidConfig)),
-              Utilities.mapToSet(Utils.copy(elem))))) {
-            setCompResult_5.add(Utils.copy(elem));
+        } else {
+          VDMSet setCompResult_5 = SetUtil.set();
+          VDMSet set_5 = Utils.copy(validConfigs);
+          for (Iterator iterator_5 = set_5.iterator(); iterator_5.hasNext(); ) {
+            VDMMap elem = ((VDMMap) iterator_5.next());
+            if (!(SetUtil.subset(
+                Utilities.mapToSet(Utils.copy(invalidConfig)),
+                Utilities.mapToSet(Utils.copy(elem))))) {
+              setCompResult_5.add(Utils.copy(elem));
+            }
           }
+          newValidConfigs =
+              SetUtil.intersect(Utils.copy(newValidConfigs), Utils.copy(setCompResult_5));
         }
-        newValidConfigs =
-            SetUtil.intersect(Utils.copy(newValidConfigs), Utils.copy(setCompResult_5));
       }
     }
     if (!(Utils.empty(newValidConfigs))) {

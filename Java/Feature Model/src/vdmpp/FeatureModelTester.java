@@ -91,6 +91,30 @@ public class FeatureModelTester {
     }
   }
 
+  protected void testOptionalParentHasOptionalSubfeatures() {
+
+    {
+      final Feature feature1 = new Feature("feature1");
+      final Parent parent1 = new Parent("parent1");
+      final Parent parent2 = new Parent("parent2");
+      {
+        parent1.setMandatory(false);
+        parent1.setSubFeatures(SetUtil.set(parent2));
+        parent2.setSubFeatures(SetUtil.set(feature1));
+      }
+    }
+  }
+
+  protected Feature testBlankNameFeature() {
+
+    return new Feature();
+  }
+
+  protected ConfigGenerator testNoModelToConfigGenerator() {
+
+    return new ConfigGenerator();
+  }
+
   public static void main() {
 
     EshopModelTester eshopModelTester = new EshopModelTester();

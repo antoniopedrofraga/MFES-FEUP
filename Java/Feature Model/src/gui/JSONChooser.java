@@ -19,8 +19,8 @@ import org.overture.codegen.runtime.VDMMap;
 import org.overture.codegen.runtime.VDMSet;
 
 import vdmpp.Feature;
-import vdmpp.Parent;
 import vdmpp.Model;
+import vdmpp.Parent;
 
 
 public class JSONChooser extends JFileChooser {

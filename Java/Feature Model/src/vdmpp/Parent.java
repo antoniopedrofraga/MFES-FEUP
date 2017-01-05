@@ -73,8 +73,8 @@ public class Parent extends Feature {
 
   public void setSubFeaturesOptional() {
 
-    for (Iterator iterator_28 = subFeatures.iterator(); iterator_28.hasNext(); ) {
-      Feature subFeature = (Feature) iterator_28.next();
+    for (Iterator iterator_30 = subFeatures.iterator(); iterator_30.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_30.next();
       subFeature.setMandatory(false);
     }
   }
@@ -98,8 +98,8 @@ public class Parent extends Feature {
   public VDMSet features() {
 
     VDMSet parentFeatures = SetUtil.set(name);
-    for (Iterator iterator_29 = subFeatures.iterator(); iterator_29.hasNext(); ) {
-      Feature subFeature = (Feature) iterator_29.next();
+    for (Iterator iterator_31 = subFeatures.iterator(); iterator_31.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_31.next();
       parentFeatures = SetUtil.union(Utils.copy(parentFeatures), subFeature.features());
     }
     return Utils.copy(parentFeatures);
@@ -108,8 +108,8 @@ public class Parent extends Feature {
   public VDMSet invalidSubsets() {
 
     VDMSet restrictions = getReqAndExcRestrictions();
-    for (Iterator iterator_30 = subFeatures.iterator(); iterator_30.hasNext(); ) {
-      Feature subFeature = (Feature) iterator_30.next();
+    for (Iterator iterator_32 = subFeatures.iterator(); iterator_32.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_32.next();
       restrictions = SetUtil.union(Utils.copy(restrictions), subFeature.invalidSubsets());
     }
     return Utils.copy(restrictions);
@@ -118,8 +118,8 @@ public class Parent extends Feature {
   public Number nodeCount() {
 
     Number childNodeCount = 1L;
-    for (Iterator iterator_31 = subFeatures.iterator(); iterator_31.hasNext(); ) {
-      Feature subFeature = (Feature) iterator_31.next();
+    for (Iterator iterator_33 = subFeatures.iterator(); iterator_33.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_33.next();
       childNodeCount = childNodeCount.longValue() + subFeature.nodeCount().longValue();
     }
     return childNodeCount;
@@ -140,8 +140,8 @@ public class Parent extends Feature {
       return false;
     }
 
-    for (Iterator iterator_32 = subFeatures.iterator(); iterator_32.hasNext(); ) {
-      Feature subFeature = (Feature) iterator_32.next();
+    for (Iterator iterator_34 = subFeatures.iterator(); iterator_34.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_34.next();
       if (Utilities.isNameConfigured(subFeature.name, Utils.copy(c))) {
         configuredSubFeatures = configuredSubFeatures.longValue() + 1L;
       }
@@ -185,7 +185,49 @@ public class Parent extends Feature {
     return andResult_8;
   }
 
+  public Boolean optionalSubFeatures() {
+
+    if (mandatory) {
+      return true;
+    }
+
+    for (Iterator iterator_35 = subFeatures.iterator(); iterator_35.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_35.next();
+      if (!(subFeature.isOptionalSubFeature())) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public Boolean isOptionalSubFeature() {
+
+    for (Iterator iterator_36 = subFeatures.iterator(); iterator_36.hasNext(); ) {
+      Feature subFeature = (Feature) iterator_36.next();
+      if (!(subFeature.isOptionalSubFeature())) {
+        return false;
+      }
+    }
+    if (Utils.equals(mandatory, false)) {
+      return true;
+
+    } else {
+      return false;
+    }
+  }
+
   public Parent() {}
+
+  public static Boolean optionalHasOptionalSubFeatures(final VDMSet subFeatures_1) {
+
+    VDMSet setCompResult_8 = SetUtil.set();
+    VDMSet set_8 = Utils.copy(subFeatures_1);
+    for (Iterator iterator_8 = set_8.iterator(); iterator_8.hasNext(); ) {
+      Feature elem = ((Feature) iterator_8.next());
+      setCompResult_8.add(elem.isOptionalSubFeature());
+    }
+    return !(SetUtil.subset(SetUtil.set(false), setCompResult_8));
+  }
 
   public String toString() {
 

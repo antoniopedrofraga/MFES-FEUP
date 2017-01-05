@@ -7,11 +7,12 @@ import org.overture.codegen.runtime.*;
 public class Model {
   protected Feature root;
   private VDMSet features = SetUtil.set();
-  private ConfigGenerator configGenerator = new ConfigGenerator();
+  private ConfigGenerator configGenerator;
 
   public void cg_init_Model_1(final Feature r) {
 
     root = r;
+    configGenerator = new ConfigGenerator(this);
     return;
   }
 
@@ -47,7 +48,7 @@ public class Model {
   public VDMSet generateValidConfigs() {
 
     setFeatures();
-    return configGenerator.generateValidConfigs(this);
+    return configGenerator.generateValidConfigs();
   }
 
   public Model() {}
