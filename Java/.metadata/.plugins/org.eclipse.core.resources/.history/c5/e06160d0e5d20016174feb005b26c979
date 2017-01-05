@@ -51,10 +51,7 @@ public class JSONChooser extends JFileChooser {
             	JSONObject featurejson = iterator.next();
             	String name = (String) featurejson.get("name");
             	String type = (String) featurejson.get("type");
-            	Boolean mandatory = (Boolean) featurejson.get("mandatory");
-
             	Feature feature = type.equals("leaf") ? new Feature(name) : new Parent(name);
-            	if (!mandatory) feature.setMandatory(false);
             	if (type.equals("orParent"))
             		((Parent)feature).setParentType(quotes.orParentQuote.getInstance()); 
         		else if (type.equals("xorParent"))
@@ -66,8 +63,10 @@ public class JSONChooser extends JFileChooser {
             while (iterator.hasNext()) {
             	JSONObject featurejson = iterator.next();
             	String name = (String) featurejson.get("name");
+            	Boolean mandatory = (Boolean) featurejson.get("mandatory");
             	
             	Feature feature = featuresMap.get(name);
+            	if (!mandatory) feature.setMandatory(false);
             	if (feature instanceof Parent) {
             		Parent parent = (Parent) feature;
             		JSONArray subFeatures = (JSONArray) featurejson.get("subFeatures");

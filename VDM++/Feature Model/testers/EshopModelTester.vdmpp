@@ -19,8 +19,6 @@ operations
 							(
 										dcl model : Model := new Model(eshop);
 										
-										eshop.setMandatory(false);
-										
 										payment.setParentType(<orParent>);
                 		security.setParentType(<xorParent>);
                 		
@@ -63,7 +61,7 @@ operations
                 			-- Mandatory and optional features tests 
                 			-- description: The default operation is to set any feature as mandatory, the "search" and features with xor and or parents should be optional
                 			
-                			testMandatoryFeature(eshop, false);
+                			testMandatoryFeature(eshop, true);
                 			testMandatoryFeature(catalogue, true);
                 			testMandatoryFeature(payment, true);
                 			testMandatoryFeature(security, true);

@@ -25,6 +25,11 @@ operations
 										pullsTrailler.setParentType(<xorParent>);
 										transmission.setParentType(<xorParent>);
 										engine.setParentType(<orParent>);
+										
+										armor.setMandatory(false);
+                		pullsTrailler.setMandatory(false);
+                		lightTrailler.setMandatory(false);
+                		heavyTrailler.setMandatory(false);
                 		
                 		car.setSubFeatures({body, transmission, pullsTrailler, engine});
 										transmission.setSubFeatures({automatic, manual});
@@ -32,8 +37,6 @@ operations
 										pullsTrailler.setSubFeatures({lightTrailler, heavyTrailler});
 										heavyTrailler.setSubFeatures({armor});
                 		
-                		pullsTrailler.setMandatory(false);
-										armor.setMandatory(false);
 										
 										model.setFeatures();
 										

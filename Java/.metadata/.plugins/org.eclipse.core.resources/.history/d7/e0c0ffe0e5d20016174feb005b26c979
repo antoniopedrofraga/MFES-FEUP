@@ -54,7 +54,6 @@ public class JSONChooser extends JFileChooser {
             	Boolean mandatory = (Boolean) featurejson.get("mandatory");
 
             	Feature feature = type.equals("leaf") ? new Feature(name) : new Parent(name);
-            	if (!mandatory) feature.setMandatory(false);
             	if (type.equals("orParent"))
             		((Parent)feature).setParentType(quotes.orParentQuote.getInstance()); 
         		else if (type.equals("xorParent"))

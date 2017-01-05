@@ -110,23 +110,32 @@ operations
       protected testOptionalParentHasOptionalSubfeatures: () ==> ()
       					testOptionalParentHasOptionalSubfeatures() ==	
       					(
-      						dcl feature1 : Feature := new Feature("feature1");
-      						dcl parent1 : Parent := new Parent("parent1");
-      						dcl parent2 : Parent := new Parent("parent2");
-
+      						let feature1 = new Feature("feature1"),
+      						parent1 = new Parent("parent1"),
+      						parent2 = new Parent("parent2") in
+      						(
       						parent1.setMandatory(false);
       						parent1.setSubFeatures({parent2});
       						parent2.setSubFeatures({feature1});
+      						);
       					);
+      					
+      -- tests the invariant (optional parents should have optional features)   
+      protected testBlankNameFeature: () ==> Feature
+      					testBlankNameFeature() ==	
+      					(
+      						return new Feature();
+      					);
+      					
       public static main: () ==> ()
                 main() ==
                 (	
-          					--dcl eshopModelTester : EshopModelTester := new EshopModelTester();
-										--dcl mobilePhoneModelTester: MobilePhoneModelTester := new MobilePhoneModelTester();
-										--dcl carModelTester : CarModelTester := new CarModelTester();
-                  	--eshopModelTester.testModel();
-                  	--mobilePhoneModelTester.testModel();
-                  	--carModelTester.testModel();
-                  	new FeatureModelTester().testOptionalParentHasOptionalSubfeatures();
+          					dcl eshopModelTester : EshopModelTester := new EshopModelTester();
+										dcl mobilePhoneModelTester: MobilePhoneModelTester := new MobilePhoneModelTester();
+										dcl carModelTester : CarModelTester := new CarModelTester();
+                  	eshopModelTester.testModel();
+                  	mobilePhoneModelTester.testModel();
+                  	carModelTester.testModel();
+                  	--new FeatureModelTester().testOptionalParentHasOptionalSubfeatures();
                 );
 end FeatureModelTester

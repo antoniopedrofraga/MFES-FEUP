@@ -6,7 +6,7 @@ instance variables
 			private subFeatures: set of Feature := {};
 			private type: parentType := <defaultParent>;
 			
-			inv optionalHasOptionalSubFeatures();
+			inv mandatory or optionalHasOptionalSubFeatures(subFeatures);
 operations
 
 			-- Parent constructor 
@@ -116,10 +116,11 @@ operations
 							);
 							
 							
-			pure public optionalHasOptionalSubFeatures: () ==> bool
-										optionalHasOptionalSubFeatures() == 
+			pure public optionalSubFeatures: () ==> bool
+										optionalSubFeatures() == 
 										(
 												if mandatory then return true;
+												
 												for all subFeature in set subFeatures do
 														if not subFeature.isOptionalSubFeature() then return false;
 												
@@ -138,6 +139,11 @@ operations
 											if mandatory = false then return true
 											else return false;
 												 
-										);				 
-										
+										);
+functions
+			public optionalHasOptionalSubFeatures: set of Feature -> bool
+							optionalHasOptionalSubFeatures(subFeatures) == 
+							(
+								not {false} subset {elem.isOptionalSubFeature() | elem in set subFeatures}
+							);
 end Parent
