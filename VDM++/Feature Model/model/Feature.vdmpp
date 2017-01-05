@@ -1,122 +1,122 @@
 -- Feature Class
 class Feature
 types
-			public string = Utilities`string;
-			public config = Utilities`config;
+	public string = Utilities`string;
+	public config = Utilities`config;
 instance variables
-			public name: string;
-			protected mandatory: bool := true;
-			protected requirements: set of Feature := {};
-			protected exclusions: set of Feature := {};
-			
-			inv name <> "";
+	public name: string;
+	protected mandatory: bool := true;
+	protected requirements: set of Feature := {};
+	protected exclusions: set of Feature := {};
+	
+	inv name <> "";
 operations
 
-			-- Feature constructor 
-			-- 1st arg: Name to be associated with the feature
-			public Feature: string ==> Feature
-							Feature(n) == (name := n; return self;)
-							post name = n;
+-- Feature constructor 
+-- 1st arg: Name to be associated with the feature
+public Feature: string ==> Feature
+	Feature(n) == (name := n; return self;)
+	post name = n;
+
+-- Sets Feature as mandatory
+-- 1st arg: Boolean with mandatory status (True as mandatory, False as optional)
+public setMandatory: bool ==> ()
+	setMandatory(b) == mandatory := b;
+				
+-- Sets Feature requirements
+-- 1st arg: Sequence of features as requirements
+public setRequirements: set of Feature ==> ()
+	setRequirements(fs) == (requirements := fs;)
+	post requirements inter exclusions = {};
+
+-- Sets Feature exclusions
+-- 1st arg: Sequence of features as exclusions
+public setExclusions: set of Feature ==> ()
+	setExclusions(fs) == exclusions := fs
+	post {} = {element | element in set exclusions & element.mandatory} and requirements inter exclusions = {};
+				
+-- Gets Feature Requirements
+-- Return: Sequence of features as requirements
+public getRequirements: () ==> set of Feature
+	getRequirements() == return requirements;
 			
-			-- Sets Feature as mandatory
-			-- 1st arg: Boolean with mandatory status (True as mandatory, False as optional)
-			public setMandatory: bool ==> ()
-							setMandatory(b) == mandatory := b;
-							
-			-- Sets Feature requirements
-			-- 1st arg: Sequence of features as requirements
-			public setRequirements: set of Feature ==> ()
-							setRequirements(fs) == (requirements := fs;)
-							post requirements inter exclusions = {};
-			
-			-- Sets Feature exclusions
-			-- 1st arg: Sequence of features as exclusions
-			public setExclusions: set of Feature ==> ()
-							setExclusions(fs) == exclusions := fs
-							post {} = {element | element in set exclusions & element.mandatory} and requirements inter exclusions = {};
-							
-			-- Gets Feature Requirements
-			-- Return: Sequence of features as requirements
-			public getRequirements: () ==> set of Feature
-						getRequirements() == return requirements;
-						
-			-- Gets Feature Exclusions
-			-- Return: Sequence of features as exclusions
-			public getExclusions: () ==> set of Feature
-						getExclusions() == return exclusions;
-			
-			-- Gets Feature name
-			-- Return: String as feature name
-			public getName: () ==> string
-							getName() == return name;
-			
-			-- Gets sub features name (all features of this parent sub tree are included)
-			-- Return: Set of strings	
-			public features: () ==> set of string
-							features() == return {name};
-							
-			-- Gets all invalid subsets of configs associated with this feature (all features of this parent sub tree are included)
-			-- Return: Set of configs
-			public invalidSubsets: () ==> set of config
-							invalidSubsets() == 
-							(
-							dcl restrictions : set of config := getReqAndExcRestrictions();
-							return restrictions;
-							);
-			
-			-- Gets invalid subsets related with requirements and exclusions
-			-- Return: Set of config as invalid subsets
-			public getReqAndExcRestrictions: () ==> set of config
-							getReqAndExcRestrictions() ==
-							(
-							dcl restrictions : set of config := {};
-							if (card requirements + card exclusions > 0) then
-							(
-									for all requirement in set requirements do restrictions := restrictions union {{name |-> true} munion {requirement.getName() |-> false}};
-									for all exclusion in set exclusions do restrictions := restrictions union {{name |-> true} munion {exclusion.getName() |-> true}};
-							);
-							return restrictions;
-							);
-			
-			-- Gets feature node count (since there is no subfeatures its always 1, itself)
-			-- Return: Integer as node count
-			public nodeCount: () ==> int
-							nodeCount() == return 1;
-							
-			-- Checks if a feature is mandatory
-			-- Return: Boolean with mandatory status (True if mandatory, false if optional)
-			public isMandatory: () ==> bool
-							isMandatory() == return mandatory;
-							
-			-- Checks if a Requirement is an Exclusion at the same time
-			-- Return: Boolean related with mandatory status
-			public isRespectingReqAndExc: config ==> bool
-							isRespectingReqAndExc(c) == 
-							(
-							dcl configuredFeatures : set of string := dom (c :> {true});
-							for all requirement in set requirements do 
-									if not (requirement.name in set configuredFeatures) then return false;
-							for all exclusion in set exclusions do 
-									if (exclusion.name in set configuredFeatures) then return false;
-							return true;
-							);
-			
-			-- Checks if a configuration is valid in this feature
-			-- Return: Boolean related with validation status
-			public isValidConfiguration: config ==> bool
-							isValidConfiguration(c) == 
-							(
-							if mandatory and not Utilities`isNameConfigured(name, c) then return false;
-							return isRespectingReqAndExc(c);
-							);
-							
-			
-			-- Checks if an optional parent has optional sub features
-			-- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
-			-- Return: Boolean with validation status
-			pure protected isOptionalSubFeature: () ==> bool
-										isOptionalSubFeature() == 
-										(
-											return not mandatory;
-										);
+-- Gets Feature Exclusions
+-- Return: Sequence of features as exclusions
+public getExclusions: () ==> set of Feature
+	getExclusions() == return exclusions;
+
+-- Gets Feature name
+-- Return: String as feature name
+public getName: () ==> string
+	getName() == return name;
+
+-- Gets sub features name (all features of this parent sub tree are included)
+-- Return: Set of strings	
+public features: () ==> set of string
+	features() == return {name};
+				
+-- Gets all invalid subsets of configs associated with this feature (all features of this parent sub tree are included)
+-- Return: Set of configs
+public invalidSubsets: () ==> set of config
+	invalidSubsets() == 
+	(
+	dcl restrictions : set of config := getReqAndExcRestrictions();
+	return restrictions;
+	);
+
+-- Gets invalid subsets related with requirements and exclusions
+-- Return: Set of config as invalid subsets
+public getReqAndExcRestrictions: () ==> set of config
+	getReqAndExcRestrictions() ==
+	(
+	dcl restrictions : set of config := {};
+	if (card requirements + card exclusions > 0) then
+	(
+			for all requirement in set requirements do restrictions := restrictions union {{name |-> true} munion {requirement.getName() |-> false}};
+			for all exclusion in set exclusions do restrictions := restrictions union {{name |-> true} munion {exclusion.getName() |-> true}};
+	);
+	return restrictions;
+	);
+
+-- Gets feature node count (since there is no subfeatures its always 1, itself)
+-- Return: Integer as node count
+public nodeCount: () ==> int
+	nodeCount() == return 1;
+				
+-- Checks if a feature is mandatory
+-- Return: Boolean with mandatory status (True if mandatory, false if optional)
+public isMandatory: () ==> bool
+	isMandatory() == return mandatory;
+				
+-- Checks if a Requirement is an Exclusion at the same time
+-- Return: Boolean related with mandatory status
+public isRespectingReqAndExc: config ==> bool
+	isRespectingReqAndExc(c) == 
+	(
+	dcl configuredFeatures : set of string := dom (c :> {true});
+	for all requirement in set requirements do 
+			if not (requirement.name in set configuredFeatures) then return false;
+	for all exclusion in set exclusions do 
+			if (exclusion.name in set configuredFeatures) then return false;
+	return true;
+	);
+
+-- Checks if a configuration is valid in this feature
+-- Return: Boolean related with validation status
+public isValidConfiguration: config ==> bool
+	isValidConfiguration(c) == 
+	(
+	if mandatory and not Utilities`isNameConfigured(name, c) then return false;
+	return isRespectingReqAndExc(c);
+	);
+				
+
+-- Checks if an optional parent has optional sub features
+-- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
+-- Return: Boolean with validation status
+pure protected isOptionalSubFeature: () ==> bool
+	isOptionalSubFeature() == 
+	(
+		return not mandatory;
+	);
 end Feature

@@ -1,52 +1,52 @@
 -- Class Model, conatining the root feature
 class Model
 types
-			public config = Utilities`config;
-			public string = Utilities`string;
+	public config = Utilities`config;
+	public string = Utilities`string;
 instance variables
-			protected root: Feature;
-			private features : set of string := {};
-			private configGenerator : ConfigGenerator;
-			
-			inv isofclass(Feature, root);
+	protected root: Feature;
+	private features : set of string := {};
+	private configGenerator : ConfigGenerator;
+	
+	inv isofclass(Feature, root);
 operations
 
 			-- Model constructor
-			-- 1st arg: Root feature
-			public Model: Feature ==> Model
-							Model(r) == (root := r; configGenerator := new ConfigGenerator(self); return self;)
-							post root = r;
-							
-			-- Gets model root
-			-- Return: Root feature
-			public getRoot: () ==> Feature
-							getRoot() == (return root;);
-			
-			-- Gets node count of model tree
-			-- Return: Integer with node count
-			public nodeCount: () ==> int
-							nodeCount() == return root.nodeCount();
-							
-			-- Gets tree features name 
-			public setFeatures: () ==> ()
-							setFeatures() == (
-									features := root.features();
-							);
-							
-			-- Checks if a config is valid
-			-- 1st arg: Config to be tested
-			-- Return: Boolean with validation status
-			public isValidConfiguration: config ==> bool
-							isValidConfiguration(config) == 
-								(
-								if not root.isValidConfiguration(config) then return false;
-								return true;
-								)
-								pre features = dom config;
-								
-			-- Generates all valid configurations
-			-- Return: Sequence of configs
-			public generateValidConfigs: () ==> set of config
-							generateValidConfigs() == (setFeatures(); return configGenerator.generateValidConfigs());
+	-- 1st arg: Root feature
+	public Model: Feature ==> Model
+		Model(r) == (root := r; configGenerator := new ConfigGenerator(self); return self;)
+		post root = r;
+					
+	-- Gets model root
+	-- Return: Root feature
+	public getRoot: () ==> Feature
+		getRoot() == (return root;);
+	
+	-- Gets node count of model tree
+	-- Return: Integer with node count
+	public nodeCount: () ==> int
+		nodeCount() == return root.nodeCount();
+					
+	-- Gets tree features name 
+	public setFeatures: () ==> ()
+		setFeatures() == (
+				features := root.features();
+		);
+					
+	-- Checks if a config is valid
+	-- 1st arg: Config to be tested
+	-- Return: Boolean with validation status
+	public isValidConfiguration: config ==> bool
+		isValidConfiguration(config) == 
+			(
+			if not root.isValidConfiguration(config) then return false;
+			return true;
+			)
+			pre features = dom config;
+						
+	-- Generates all valid configurations
+	-- Return: Sequence of configs
+	public generateValidConfigs: () ==> set of config
+			generateValidConfigs() == (setFeatures(); return configGenerator.generateValidConfigs());
 								
 end Model
