@@ -141,6 +141,9 @@ operations
 												 
 										);
 functions
+			-- Function get inv status
+			-- 1st arg: Set of features to be tested
+			-- Return: Boolean as inv status
 			public optionalHasOptionalSubFeatures: set of Feature -> bool
 							optionalHasOptionalSubFeatures(subFeatures) == 
 							(

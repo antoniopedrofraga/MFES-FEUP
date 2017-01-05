@@ -120,11 +120,18 @@ operations
       						);
       					);
       					
-      -- tests the invariant (optional parents should have optional features)   
+      -- tests the invariant (can not create Features with no name)   
       protected testBlankNameFeature: () ==> Feature
       					testBlankNameFeature() ==	
       					(
       						return new Feature();
+      					);
+      					
+      -- tests the invariant (can not create Config Generator with no model)   
+      protected testNoModelToConfigGenerator: () ==> ConfigGenerator
+      					testNoModelToConfigGenerator() ==	
+      					(
+      						return new ConfigGenerator();
       					);
       					
       public static main: () ==> ()
@@ -136,6 +143,5 @@ operations
                   	eshopModelTester.testModel();
                   	mobilePhoneModelTester.testModel();
                   	carModelTester.testModel();
-                  	--new FeatureModelTester().testOptionalParentHasOptionalSubfeatures();
                 );
 end FeatureModelTester
