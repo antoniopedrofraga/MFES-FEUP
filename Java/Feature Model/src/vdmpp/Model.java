@@ -11,7 +11,7 @@ public class Model {
 
   public void cg_init_Model_1(final Feature r) {
 
-    root = r;
+    root = (Parent) r;
     configGenerator = new ConfigGenerator(this);
     return;
   }

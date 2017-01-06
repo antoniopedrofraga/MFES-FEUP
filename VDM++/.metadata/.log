@@ -301,3 +301,33 @@ Caused by: java.lang.NullPointerException
 
 !ENTRY org.overture.ide.debug 4 0 2017-01-04 23:44:11.189
 !MESSAGE Cannot launch a project (Feature Model) with type errors, please check the problems view
+!SESSION 2017-01-05 17:05:57.024 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.overture.ide.debug.core 4 120 2017-01-05 18:42:06.751
+!MESSAGE internalErrorLoggedFromVdmDebugPluginjava.net.SocketException: Connection reset by peer: socket write error
+!STACK 0
+org.overture.ide.debug.core.dbgp.exceptions.DbgpIOException: java.net.SocketException: Connection reset by peer: socket write error
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:129)
+	at org.overture.ide.debug.core.dbgp.DbgpBaseCommands.communicate(DbgpBaseCommands.java:61)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.execCommand(DbgpContinuationCommands.java:48)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpContinuationCommands.stop(DbgpContinuationCommands.java:78)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpCoreCommands.stop(DbgpCoreCommands.java:186)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpTerminateOperation.process(DbgpTerminateOperation.java:38)
+	at org.overture.ide.debug.core.model.internal.operations.DbgpOperation$1.run(DbgpOperation.java:86)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.net.SocketException: Connection reset by peer: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.flush(Unknown Source)
+	at org.overture.ide.debug.core.dbgp.internal.packets.DbgpPacketSender.sendCommand(DbgpPacketSender.java:63)
+	at org.overture.ide.debug.core.dbgp.internal.DbgpDebugingEngine.sendCommand(DbgpDebugingEngine.java:131)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.sendRequest(DbgpDebuggingEngineCommunicator.java:51)
+	at org.overture.ide.debug.core.dbgp.internal.commands.DbgpDebuggingEngineCommunicator.communicate(DbgpDebuggingEngineCommunicator.java:86)
+	... 7 more

@@ -1,9 +1,0 @@
-package gui;
-
-import javax.swing.JPanel;
-
-public class ConfigIterator extends JPanel {
-	ConfigIterator() {
-		this.setLayout(new GridLayout(gridSize, gridSize, 10, 10)))
-	}
-}

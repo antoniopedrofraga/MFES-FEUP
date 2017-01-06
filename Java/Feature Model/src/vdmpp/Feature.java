@@ -104,18 +104,21 @@ public class Feature {
   public Boolean isRespectingReqAndExc(final VDMMap c) {
 
     VDMSet configuredFeatures = MapUtil.dom(MapUtil.rngResTo(Utils.copy(c), SetUtil.set(true)));
-    for (Iterator iterator_28 = requirements.iterator(); iterator_28.hasNext(); ) {
-      Feature requirement = (Feature) iterator_28.next();
-      if (!(SetUtil.inSet(requirement.name, configuredFeatures))) {
-        return false;
+    if (SetUtil.inSet(name, configuredFeatures)) {
+      for (Iterator iterator_28 = requirements.iterator(); iterator_28.hasNext(); ) {
+        Feature requirement = (Feature) iterator_28.next();
+        if (!(SetUtil.inSet(requirement.name, configuredFeatures))) {
+          return false;
+        }
+      }
+      for (Iterator iterator_29 = exclusions.iterator(); iterator_29.hasNext(); ) {
+        Feature exclusion = (Feature) iterator_29.next();
+        if (SetUtil.inSet(exclusion.name, configuredFeatures)) {
+          return false;
+        }
       }
     }
-    for (Iterator iterator_29 = exclusions.iterator(); iterator_29.hasNext(); ) {
-      Feature exclusion = (Feature) iterator_29.next();
-      if (SetUtil.inSet(exclusion.name, configuredFeatures)) {
-        return false;
-      }
-    }
+
     return true;
   }
 

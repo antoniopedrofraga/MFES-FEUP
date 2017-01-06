@@ -94,10 +94,12 @@ public isRespectingReqAndExc: config ==> bool
 	isRespectingReqAndExc(c) == 
 	(
 	dcl configuredFeatures : set of string := dom (c :> {true});
-	for all requirement in set requirements do 
-			if not (requirement.name in set configuredFeatures) then return false;
-	for all exclusion in set exclusions do 
-			if (exclusion.name in set configuredFeatures) then return false;
+	if name in set configuredFeatures then (
+		for all requirement in set requirements do 
+				if not (requirement.name in set configuredFeatures) then return false;
+		for all exclusion in set exclusions do 
+				if (exclusion.name in set configuredFeatures) then return false;
+	);
 	return true;
 	);
 

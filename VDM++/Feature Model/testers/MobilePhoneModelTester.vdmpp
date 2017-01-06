@@ -1,146 +1,145 @@
 -- Class defined to test the Mobile Phone Model
 class MobilePhoneModelTester is subclass of FeatureModelTester
 instance variables
-    			mobilePhone : Parent := new Parent("mobile phone");
-					calls : Feature := new Feature("calls");
-					gps : Feature := new Feature("gps");
-					screen : Parent := new Parent("screen");
-					media : Parent := new Parent("media");
-					basic : Feature := new Feature("basic");
-					colour : Feature := new Feature("colour");
-					highResolution : Feature := new Feature("high resolution");
-					camera : Feature := new Feature("camera");
-					mp3 : Feature := new Feature("mp3");
+	mobilePhone : Parent := new Parent("mobile phone");
+	calls : Feature := new Feature("calls");
+	gps : Feature := new Feature("gps");
+	screen : Parent := new Parent("screen");
+	media : Parent := new Parent("media");
+	basic : Feature := new Feature("basic");
+	colour : Feature := new Feature("colour");
+	highResolution : Feature := new Feature("high resolution");
+	camera : Feature := new Feature("camera");
+	mp3 : Feature := new Feature("mp3");
 operations
+	
+-- Creates model and defines restrictions
+-- Return: Model as new model
+public createModel: () ==> Model
+	createModel() == 
+	(
+	dcl model : Model := new Model(mobilePhone);
+	
+	media.setParentType(<orParent>);
+	screen.setParentType(<xorParent>);
+	
+	screen.setSubFeatures({basic, colour, highResolution});
+	media.setSubFeatures({camera, mp3});
+	mobilePhone.setSubFeatures({media, calls, gps, screen});
+	
+	gps.setMandatory(false);
+	media.setMandatory(false);
+	screen.setMandatory(false);
+	
+	camera.setRequirements({highResolution});
+	
+	gps.setExclusions({basic});
+	
+	model.setFeatures();
+	
+	return model;
+	);
+			
+-- Tests the Mobile Phone Model
+-- Note: The Mobile Phone Model scheme is part of the report
+public testModel: () ==> ()
+  testModel() ==
+  (
+			
+	dcl mobilePhoneModel: Model := createModel();  
+	
+	-- Parent type tests
 
-					-- Creates model and defines restrictions
-					-- Return: Model as new model
-					public createModel: () ==> Model
-									createModel() == 
-									(
-												dcl model : Model := new Model(mobilePhone);
-												
-												media.setParentType(<orParent>);
-												screen.setParentType(<xorParent>);
-		                		
-		                		screen.setSubFeatures({basic, colour, highResolution});
-												media.setSubFeatures({camera, mp3});
-												mobilePhone.setSubFeatures({media, calls, gps, screen});
-		                		
-		                		gps.setMandatory(false);
-												media.setMandatory(false);
-												screen.setMandatory(false);
-		                		
-		                		camera.setRequirements({highResolution});
-		                		
-		                		gps.setExclusions({basic});
-		                		
-		                		model.setFeatures();
-		                		
-		                		return model;
-									);
-							
-							
-					-- Tests the Mobile Phone Model
-					-- Note: The Mobile Phone Model scheme is part of the report
-					public testModel: () ==> ()
-                testModel() ==
-                (
-                			
-                			dcl mobilePhoneModel: Model := createModel();  
-                			
-											-- Parent type tests
-											
-											testParentType(media, <orParent>);
-                			testParentType(screen, <xorParent>);
-                			testParentType(mobilePhone, <defaultParent>);
-                			
-                			-- Sub features tests
-											
-											testSubFeatures(screen, {basic, colour, highResolution});
-                			testSubFeatures(media, {camera, mp3});
-                			testSubFeatures(mobilePhone, {media, calls, gps, screen});
-											
-											-- Mandatory and optional features tests
-											-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
-											
-											testMandatoryFeature(mobilePhone, true);
-                			testMandatoryFeature(calls, true);
-                			testMandatoryFeature(gps, false);
-                			testMandatoryFeature(screen, false);
-                			testMandatoryFeature(media, false);
-                			testMandatoryFeature(basic, false);
-                			testMandatoryFeature(colour, false);
-                			testMandatoryFeature(highResolution, false);
-                			testMandatoryFeature(camera, false);
-                			testMandatoryFeature(mp3, false);
-											
-											-- Requirements tests
-											
-											testRequirements(mobilePhone, {});
-                			testRequirements(calls, {});
-                			testRequirements(gps, {});
-                			testRequirements(screen, {});
-                			testRequirements(media, {});
-                			testRequirements(basic, {});
-                			testRequirements(colour, {});
-                			testRequirements(highResolution, {});
-                			testRequirements(camera, {highResolution});
-                			testRequirements(mp3, {});
-											
-											-- Exclusions tests
-											
-											testExclusions(mobilePhone, {});
-                			testExclusions(calls, {});
-                			testExclusions(gps, {basic});
-                			testExclusions(screen, {});
-                			testExclusions(media, {});
-                			testExclusions(basic, {});
-                			testExclusions(colour, {});
-                			testExclusions(highResolution, {});
-                			testExclusions(camera, {});
-                			testExclusions(mp3, {});
-                			
-                			-- Model tests
-                			
-                			testModelRoot(mobilePhoneModel, mobilePhone);
-                			testModelFeaturesCount(mobilePhoneModel, 10);
-                			validModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> true, "gps" |-> true,
-                     															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true,
-                     															"media" |-> true, "camera" |-> true, "mp3" |-> true});
-                      invalidModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> false, "gps" |-> true,
-                     															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> false,
-                     															"media" |-> true, "camera" |-> true, "mp3" |-> true});
-                			testGeneratedValidConfigs(mobilePhoneModel, mobilePhoneValidConfigs());
-                );
+	testParentType(media, <orParent>);
+	testParentType(screen, <xorParent>);
+	testParentType(mobilePhone, <defaultParent>);
+	
+	-- Sub features tests
+	
+	testSubFeatures(screen, {basic, colour, highResolution});
+	testSubFeatures(media, {camera, mp3});
+	testSubFeatures(mobilePhone, {media, calls, gps, screen});
+	
+	-- Mandatory and optional features tests
+	-- Note: In order to build strong test cases we're gonna consider the "screen" feature as optional
+	
+	testMandatoryFeature(mobilePhone, true);
+	testMandatoryFeature(calls, true);
+	testMandatoryFeature(gps, false);
+	testMandatoryFeature(screen, false);
+	testMandatoryFeature(media, false);
+	testMandatoryFeature(basic, false);
+	testMandatoryFeature(colour, false);
+	testMandatoryFeature(highResolution, false);
+	testMandatoryFeature(camera, false);
+	testMandatoryFeature(mp3, false);
+	
+	-- Requirements tests
+	
+	testRequirements(mobilePhone, {});
+	testRequirements(calls, {});
+	testRequirements(gps, {});
+	testRequirements(screen, {});
+	testRequirements(media, {});
+	testRequirements(basic, {});
+	testRequirements(colour, {});
+	testRequirements(highResolution, {});
+	testRequirements(camera, {highResolution});
+	testRequirements(mp3, {});
+	
+	-- Exclusions tests
+	
+	testExclusions(mobilePhone, {});
+	testExclusions(calls, {});
+	testExclusions(gps, {basic});
+	testExclusions(screen, {});
+	testExclusions(media, {});
+	testExclusions(basic, {});
+	testExclusions(colour, {});
+	testExclusions(highResolution, {});
+	testExclusions(camera, {});
+	testExclusions(mp3, {});
+	
+	-- Model tests
+	
+	testModelRoot(mobilePhoneModel, mobilePhone);
+	testModelFeaturesCount(mobilePhoneModel, 10);
+	validModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> true, "gps" |-> true,
+ 															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true,
+ 															"media" |-> true, "camera" |-> true, "mp3" |-> true});
+  invalidModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> false, "gps" |-> true,
+ 															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> false,
+ 															"media" |-> true, "camera" |-> true, "mp3" |-> true});
+	testGeneratedValidConfigs(mobilePhoneModel, mobilePhoneValidConfigs());
+	);
 
 functions
-			-- All Mobile Phone Model valid configurations
-			-- Return: Set of Mobile Phone Model valid configurations
-			public mobilePhoneValidConfigs: () -> set of config
-							mobilePhoneValidConfigs() == {{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
-																						{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true}};
+-- All Mobile Phone Model valid configurations
+-- Return: Set of Mobile Phone Model valid configurations
+public mobilePhoneValidConfigs: () -> set of config
+	mobilePhoneValidConfigs() == {{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> false, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> true, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> false, "basic" |-> false, "colour" |-> false, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> false, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> true, "high resolution" |-> false},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> false, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> false, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true},
+		{"mobile phone" |-> true, "media" |-> true, "camera" |-> true, "mp3" |-> true, "calls" |-> true, "gps" |-> true, "screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true}};
 end MobilePhoneModelTester

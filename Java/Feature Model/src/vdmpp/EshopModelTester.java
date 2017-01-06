@@ -76,8 +76,8 @@ public class EshopModelTester extends FeatureModelTester {
             new Maplet("bank transfer", true),
             new Maplet("credit card", false),
             new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
+            new Maplet("high", false),
+            new Maplet("standard", true),
             new Maplet("search", false)));
     invalidModelConfig(
         eshopModel,
