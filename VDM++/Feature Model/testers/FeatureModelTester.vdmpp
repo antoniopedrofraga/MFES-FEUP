@@ -97,7 +97,6 @@ protected testRequirementsBeforeExclusions: () ==> ()
 protected testExclusionsBeforeRequirements: () ==> ()
 	testExclusionsBeforeRequirements() ==	
 	(
-
 		let feature1 = new Feature("feature1"),
 			feature2 = new Feature("feature2") in
 			(feature1.setExclusions({feature2});
@@ -126,12 +125,6 @@ protected testBlankNameFeature: () ==> Feature
 		return new Feature();
 	);
 					
--- tests the invariant (can not create Config Generator with no model)   
-protected testNoModelToConfigGenerator: () ==> ConfigGenerator
-	testNoModelToConfigGenerator() ==	
-	(
-		return new ConfigGenerator();
-	);
 					
 public static main: () ==> ()
   main() ==

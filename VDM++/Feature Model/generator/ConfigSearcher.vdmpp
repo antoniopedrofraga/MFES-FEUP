@@ -166,4 +166,5 @@ public checkOptionalParents: Feature * seq of string ==> ()
 	if newValidConfigs <> {} then validConfigs := newValidConfigs;
 							
 	);
+	
 end ConfigSearcher
