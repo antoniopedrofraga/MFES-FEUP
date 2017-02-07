@@ -6,7 +6,7 @@ types
 instance variables
 	protected root: Feature;
 	private features : set of string := {};
-	
+
 operations
 
 -- Model constructor
@@ -30,7 +30,8 @@ public setFeatures: () ==> ()
 	setFeatures() == (
 			features := root.features();
 	);
-				
+	
+
 -- Checks if a config is valid
 -- 1st arg: Config to be tested
 -- Return: Boolean with validation status
@@ -44,7 +45,7 @@ public isValidConfiguration: config ==> bool
 					
 -- Generates all valid configurations
 -- Return: Sequence of configs
-public generateValidConfigs: () ==> set of config
+public generateValidConfigs: () ==> set of set of string
 		generateValidConfigs() == (setFeatures(); return new ConfigSearcher(root).getValidConfigs());
 							
 end Model
