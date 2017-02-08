@@ -103,12 +103,8 @@ public testModel: () ==> ()
 	
 	testModelRoot(mobilePhoneModel, mobilePhone);
 	testModelFeaturesCount(mobilePhoneModel, 10);
-	validModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> true, "gps" |-> true,
- 															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> true,
- 															"media" |-> true, "camera" |-> true, "mp3" |-> true});
-  invalidModelConfig(mobilePhoneModel, {"mobile phone" |-> true, "calls" |-> false, "gps" |-> true,
- 															"screen" |-> true, "basic" |-> false, "colour" |-> false, "high resolution" |-> false,
- 															"media" |-> true, "camera" |-> true, "mp3" |-> true});
+	validModelConfig(mobilePhoneModel, {"basic", "calls", "mobile phone", "screen"});
+  invalidModelConfig(mobilePhoneModel, {"mobile phone"});
 	testGeneratedValidConfigs(mobilePhoneModel, mobilePhoneValidConfigs());
 	);
 

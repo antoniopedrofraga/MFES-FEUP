@@ -117,12 +117,8 @@ public testModel: () ==> ()
 	
 	testModelRoot(carModel, car);
 	testModelFeaturesCount(carModel, 12);
-	validModelConfig(carModel, {"car" |-> true, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
-		"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
-		"engine" |-> true, "electric" |-> true, "gasoline" |-> true});
-  invalidModelConfig(carModel, {"car" |-> false, "body" |-> true, "transmission" |-> true, "automatic" |-> true, "manual" |-> false,
-		"pullsTrailler" |-> true, "lightTrailler" |-> true, "heavyTrailler" |-> false, "armor" |-> false, 
-		"engine" |-> true, "electric" |-> false, "gasoline" |-> false});
+	validModelConfig(carModel, {"armor", "automatic", "body", "car", "electric", "engine", "gasoline", "heavyTrailler", "pullsTrailler", "transmission"});
+  invalidModelConfig(carModel, {"car"});
 	testGeneratedValidConfigs(carModel, carValidConfigs());
 );
 

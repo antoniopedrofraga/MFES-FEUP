@@ -102,12 +102,8 @@ public testModel: () ==> ()
 
 	testModelRoot(eshopModel, eshop);
 	testModelFeaturesCount(eshopModel, 9);
-	validModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> true,
-		"payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, 
-		"security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> false });
-  invalidModelConfig(eshopModel, {"e-shop" |-> true, "catalogue" |-> true,
-		"payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, 
-		"security" |-> true, "high" |-> false, "standard" |-> false, "search" |-> false });
+	validModelConfig(eshopModel, {"bank transfer", "catalogue", "credit card", "e-shop", "high", "payment", "search", "security"});
+  invalidModelConfig(eshopModel, {"e-shop"});
 	testGeneratedValidConfigs(eshopModel, eshopValidConfigs());
 );
 functions

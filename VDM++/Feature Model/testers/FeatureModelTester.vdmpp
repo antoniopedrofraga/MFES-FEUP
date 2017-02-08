@@ -55,14 +55,14 @@ protected testModelFeaturesCount: Model * nat ==> ()
 -- tests a model valid config
 -- 1st arg: Model to be tested
 -- 2nd arg: Valid config to be tested  
-protected validModelConfig: Model * config ==> ()
-	validModelConfig(model, config) == assertTrue(model.isValidConfiguration(config));
+protected validModelConfig: Model * set of string ==> ()
+	validModelConfig(model, config) == assertTrue(config in set model.generateValidConfigs());
 					
 -- tests a model invalid config
 -- 1st arg: Model to be tested
 -- 2nd arg: Invalid config to be tested    
-protected invalidModelConfig: Model * config ==> ()
-	invalidModelConfig(model, config) == assertFalse(model.isValidConfiguration(config));
+protected invalidModelConfig: Model * set of string ==> ()
+	invalidModelConfig(model, config) == assertFalse(config in set model.generateValidConfigs());
 
 -- tests the valid configs generation of a given model
 -- 1st arg: Model to be tested
@@ -133,8 +133,8 @@ public static main: () ==> ()
 		dcl eshopModelTester : EshopModelTester := new EshopModelTester();
 		dcl mobilePhoneModelTester: MobilePhoneModelTester := new MobilePhoneModelTester();
 		dcl carModelTester : CarModelTester := new CarModelTester();
-  	--eshopModelTester.testModel();
-  	--mobilePhoneModelTester.testModel();
+  	eshopModelTester.testModel();
+  	mobilePhoneModelTester.testModel();
   	carModelTester.testModel();
   );
 end FeatureModelTester
