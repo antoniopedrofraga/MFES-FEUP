@@ -4,4 +4,10 @@ types
 	public string = seq1 of char;
 	public config = map string to bool;
 	public parentType = <orParent> | <xorParent> | <defaultParent>;
+operations
+	public invalidSubsets: config ==> set of string
+	invalidSubsets(c) == 
+	(
+	return {elem | elem in set dom (c :> {true})};
+	);
 end Utilities

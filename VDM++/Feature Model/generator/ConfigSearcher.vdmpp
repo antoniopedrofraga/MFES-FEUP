@@ -98,7 +98,7 @@ public orParentConfigs: Parent ==> ()
 				
 -- Checks if there are optional parents so far, used to generate valid configurations with optional parents
 -- 1st arg: Feature as the related feature
--- 2nd arg: Sequence of strings as optional parents identified so far
+-- 2nd arg: Set of strings as optional parents identified so far
 public checkOptionalParents: Feature * set of string ==> ()
 	checkOptionalParents(feature, optionalParents) == 
 	(	

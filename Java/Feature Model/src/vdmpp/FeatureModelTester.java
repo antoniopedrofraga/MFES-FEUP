@@ -45,14 +45,14 @@ public class FeatureModelTester {
     assertTrue(Utils.equals(model.nodeCount(), count));
   }
 
-  protected void validModelConfig(final Model model, final VDMMap config) {
+  protected void validModelConfig(final Model model, final VDMSet config) {
 
-    assertTrue(model.isValidConfiguration(Utils.copy(config)));
+    assertTrue(SetUtil.inSet(config, model.generateValidConfigs()));
   }
 
-  protected void invalidModelConfig(final Model model, final VDMMap config) {
+  protected void invalidModelConfig(final Model model, final VDMSet config) {
 
-    assertFalse(model.isValidConfiguration(Utils.copy(config)));
+    assertFalse(SetUtil.inSet(config, model.generateValidConfigs()));
   }
 
   protected void testGeneratedValidConfigs(final Model model, final VDMSet validSet) {
@@ -89,30 +89,6 @@ public class FeatureModelTester {
         feature1.setRequirements(SetUtil.set(feature2));
       }
     }
-  }
-
-  protected void testOptionalParentHasOptionalSubfeatures() {
-
-    {
-      final Feature feature1 = new Feature("feature1");
-      final Parent parent1 = new Parent("parent1");
-      final Parent parent2 = new Parent("parent2");
-      {
-        parent1.setMandatory(false);
-        parent1.setSubFeatures(SetUtil.set(parent2));
-        parent2.setSubFeatures(SetUtil.set(feature1));
-      }
-    }
-  }
-
-  protected Feature testBlankNameFeature() {
-
-    return new Feature();
-  }
-
-  protected ConfigGenerator testNoModelToConfigGenerator() {
-
-    return new ConfigGenerator();
   }
 
   public static void main() {

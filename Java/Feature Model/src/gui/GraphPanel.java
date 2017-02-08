@@ -13,7 +13,7 @@ import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.MultiGraph;
 import org.graphstream.ui.view.View;
 import org.graphstream.ui.view.Viewer;
-import org.overture.codegen.runtime.VDMMap;
+import org.overture.codegen.runtime.SetUtil;
 import org.overture.codegen.runtime.VDMSet;
 
 import vdmpp.Feature;
@@ -32,7 +32,7 @@ public class GraphPanel extends JPanel{
 		this.setPreferredSize(new Dimension(640, 480));
 		GraphPanel.instance = this;
 		this.graph = new MultiGraph("Model Viewer");
-		
+
 		Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
 		View view = viewer.addDefaultView(false);
 		viewer.disableAutoLayout();
@@ -40,12 +40,12 @@ public class GraphPanel extends JPanel{
 		this.add((Component) view);
 	}
 
-	protected void displayModel(Model model, VDMMap map) {
+	protected void displayModel(Model model, VDMSet set) {
 		graph.clear();
-		
+
 		String bodyStyle = "";
-		if (map != null) {
-			Boolean isValidConfig = model.isValidConfiguration(map);
+		if (set != null) {
+			Boolean isValidConfig = SetUtil.inSet(set, model.generateValidConfigs());
 			bodyStyle = isValidConfig ? "graph { fill-color: #e4ffe0; } " : "graph { fill-color: #ffe0e0; } ";
 		}
 		graph.addAttribute("ui.stylesheet", bodyStyle + "node { size: 40px; text-padding: 3px, 2px; text-background-mode: rounded-box; text-background-color: #EB2; text-color: #222; } node .true { fill-color: #71c164; } node .false { fill-color: #c16464; }");
@@ -53,11 +53,11 @@ public class GraphPanel extends JPanel{
 		graph.addAttribute("ui.antialias");
 
 		int nodeCount = model.nodeCount().intValue();
-		displayFromRoot(graph, map, null, model.getRoot(), 0, 1, nodeCount);
+		displayFromRoot(graph, set, null, model.getRoot(), 0, 1, nodeCount);
 
 	}
 
-	private void displayFromRoot(Graph graph, VDMMap map, Parent parent, Feature feature, float x, float y, float xSpace) {
+	private void displayFromRoot(Graph graph, VDMSet set, Parent parent, Feature feature, float x, float y, float xSpace) {
 
 		graph.addNode(feature.getName());
 		Node node = graph.getNode(feature.getName());
@@ -67,9 +67,9 @@ public class GraphPanel extends JPanel{
 		node.addAttribute("ui.label", name);
 		node.setAttribute("y", y);
 		node.setAttribute("x", x);
-		
-		if (map != null) {
-			Boolean status = (Boolean) map.get(feature.getName());
+
+		if (set != null) {
+			Boolean status =	SetUtil.inSet(feature.getName(), set);
 			if (status) { node.addAttribute("ui.class", "true"); } else { node.addAttribute("ui.class", "false"); }
 		}
 
@@ -87,7 +87,7 @@ public class GraphPanel extends JPanel{
 			for (@SuppressWarnings("unchecked")
 			Iterator<Feature> it = subFeatures.iterator(); it.hasNext();i++) {
 				Feature subFeature = it.next();
-				displayFromRoot(graph, map, (Parent) feature, subFeature, newx + xDelta * i + xDelta / 2, y - 1, xDelta);
+				displayFromRoot(graph, set, (Parent) feature, subFeature, newx + xDelta * i + xDelta / 2, y - 1, xDelta);
 			}
 		}
 	}
@@ -95,4 +95,5 @@ public class GraphPanel extends JPanel{
 	public static GraphPanel getInstance() {
 		return instance;
 	}
+
 }

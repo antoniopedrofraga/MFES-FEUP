@@ -66,8 +66,8 @@ public class Feature {
 
     VDMSet restrictions = SetUtil.set();
     if (requirements.size() + exclusions.size() > 0L) {
-      for (Iterator iterator_26 = requirements.iterator(); iterator_26.hasNext(); ) {
-        Feature requirement = (Feature) iterator_26.next();
+      for (Iterator iterator_20 = requirements.iterator(); iterator_20.hasNext(); ) {
+        Feature requirement = (Feature) iterator_20.next();
         restrictions =
             SetUtil.union(
                 Utils.copy(restrictions),
@@ -76,8 +76,8 @@ public class Feature {
                         MapUtil.map(new Maplet(name, true)),
                         MapUtil.map(new Maplet(requirement.getName(), false)))));
       }
-      for (Iterator iterator_27 = exclusions.iterator(); iterator_27.hasNext(); ) {
-        Feature exclusion = (Feature) iterator_27.next();
+      for (Iterator iterator_21 = exclusions.iterator(); iterator_21.hasNext(); ) {
+        Feature exclusion = (Feature) iterator_21.next();
         restrictions =
             SetUtil.union(
                 Utils.copy(restrictions),
@@ -99,49 +99,6 @@ public class Feature {
   public Boolean isMandatory() {
 
     return mandatory;
-  }
-
-  public Boolean isRespectingReqAndExc(final VDMMap c) {
-
-    VDMSet configuredFeatures = MapUtil.dom(MapUtil.rngResTo(Utils.copy(c), SetUtil.set(true)));
-    if (SetUtil.inSet(name, configuredFeatures)) {
-      for (Iterator iterator_28 = requirements.iterator(); iterator_28.hasNext(); ) {
-        Feature requirement = (Feature) iterator_28.next();
-        if (!(SetUtil.inSet(requirement.name, configuredFeatures))) {
-          return false;
-        }
-      }
-      for (Iterator iterator_29 = exclusions.iterator(); iterator_29.hasNext(); ) {
-        Feature exclusion = (Feature) iterator_29.next();
-        if (SetUtil.inSet(exclusion.name, configuredFeatures)) {
-          return false;
-        }
-      }
-    }
-
-    return true;
-  }
-
-  public Boolean isValidConfiguration(final VDMMap c) {
-
-    Boolean andResult_5 = false;
-
-    if (mandatory) {
-      if (!(Utilities.isNameConfigured(name, Utils.copy(c)))) {
-        andResult_5 = true;
-      }
-    }
-
-    if (andResult_5) {
-      return false;
-    }
-
-    return isRespectingReqAndExc(Utils.copy(c));
-  }
-
-  protected Boolean isOptionalSubFeature() {
-
-    return !(mandatory);
   }
 
   public Feature() {}

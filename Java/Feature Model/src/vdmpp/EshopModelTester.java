@@ -69,28 +69,16 @@ public class EshopModelTester extends FeatureModelTester {
     testModelFeaturesCount(eshopModel, 9L);
     validModelConfig(
         eshopModel,
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", false),
-            new Maplet("security", true),
-            new Maplet("high", false),
-            new Maplet("standard", true),
-            new Maplet("search", false)));
-    invalidModelConfig(
-        eshopModel,
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", true),
-            new Maplet("security", true),
-            new Maplet("high", false),
-            new Maplet("standard", false),
-            new Maplet("search", false)));
+        SetUtil.set(
+            "bank transfer",
+            "catalogue",
+            "credit card",
+            "e-shop",
+            "high",
+            "payment",
+            "search",
+            "security"));
+    invalidModelConfig(eshopModel, SetUtil.set("e-shop"));
     testGeneratedValidConfigs(eshopModel, eshopValidConfigs());
   }
 
@@ -99,86 +87,25 @@ public class EshopModelTester extends FeatureModelTester {
   public static VDMSet eshopValidConfigs() {
 
     return SetUtil.set(
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", false),
-            new Maplet("credit card", true),
-            new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
-            new Maplet("search", false)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", false),
-            new Maplet("credit card", true),
-            new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
-            new Maplet("search", true)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", false),
-            new Maplet("security", true),
-            new Maplet("high", false),
-            new Maplet("standard", true),
-            new Maplet("search", false)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", false),
-            new Maplet("security", true),
-            new Maplet("high", false),
-            new Maplet("standard", true),
-            new Maplet("search", true)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", false),
-            new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
-            new Maplet("search", false)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", false),
-            new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
-            new Maplet("search", true)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", true),
-            new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
-            new Maplet("search", false)),
-        MapUtil.map(
-            new Maplet("e-shop", true),
-            new Maplet("catalogue", true),
-            new Maplet("payment", true),
-            new Maplet("bank transfer", true),
-            new Maplet("credit card", true),
-            new Maplet("security", true),
-            new Maplet("high", true),
-            new Maplet("standard", false),
-            new Maplet("search", true)));
+        SetUtil.set(
+            "bank transfer",
+            "catalogue",
+            "credit card",
+            "e-shop",
+            "high",
+            "payment",
+            "search",
+            "security"),
+        SetUtil.set(
+            "bank transfer", "catalogue", "credit card", "e-shop", "high", "payment", "security"),
+        SetUtil.set(
+            "bank transfer", "catalogue", "e-shop", "high", "payment", "search", "security"),
+        SetUtil.set("bank transfer", "catalogue", "e-shop", "high", "payment", "security"),
+        SetUtil.set(
+            "bank transfer", "catalogue", "e-shop", "payment", "search", "security", "standard"),
+        SetUtil.set("bank transfer", "catalogue", "e-shop", "payment", "security", "standard"),
+        SetUtil.set("catalogue", "credit card", "e-shop", "high", "payment", "search", "security"),
+        SetUtil.set("catalogue", "credit card", "e-shop", "high", "payment", "security"));
   }
 
   public String toString() {

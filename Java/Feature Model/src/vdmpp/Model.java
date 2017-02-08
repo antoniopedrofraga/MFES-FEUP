@@ -7,12 +7,10 @@ import org.overture.codegen.runtime.*;
 public class Model {
   protected Feature root;
   private VDMSet features = SetUtil.set();
-  private ConfigGenerator configGenerator;
 
   public void cg_init_Model_1(final Feature r) {
 
-    root = (Parent) r;
-    configGenerator = new ConfigGenerator(this);
+    root = r;
     return;
   }
 
@@ -36,19 +34,10 @@ public class Model {
     features = root.features();
   }
 
-  public Boolean isValidConfiguration(final VDMMap config) {
-
-    if (!(root.isValidConfiguration(Utils.copy(config)))) {
-      return false;
-    }
-
-    return true;
-  }
-
   public VDMSet generateValidConfigs() {
 
     setFeatures();
-    return configGenerator.generateValidConfigs();
+    return new ConfigSearcher(root).getValidConfigs();
   }
 
   public Model() {}
@@ -60,8 +49,6 @@ public class Model {
         + Utils.toString(root)
         + ", features := "
         + Utils.toString(features)
-        + ", configGenerator := "
-        + Utils.toString(configGenerator)
         + "}";
   }
 }

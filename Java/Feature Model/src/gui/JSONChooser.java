@@ -15,7 +15,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.overture.codegen.runtime.VDMMap;
 import org.overture.codegen.runtime.VDMSet;
 
 import vdmpp.Feature;
@@ -131,7 +130,7 @@ public class JSONChooser extends JFileChooser {
 		return dialog;
 	}
 	
-	public VDMMap getConfiguration() {
+	public VDMSet getConfiguration() {
 		int returnVal = this.showOpenDialog(null);
 		if(returnVal == JFileChooser.APPROVE_OPTION){
 			String path = this.getSelectedFile().getAbsolutePath();
@@ -141,18 +140,20 @@ public class JSONChooser extends JFileChooser {
 		}
 	}
 	@SuppressWarnings("unchecked")
-	private VDMMap getConfigFromJson(String path) {
+	private VDMSet getConfigFromJson(String path) {
 		JSONParser parser = new JSONParser();
 		try {
 			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(path));
-			VDMMap map = new VDMMap();
+			VDMSet set = new VDMSet();
 			for (int i = 0; i < jsonArray.size(); i++) {
 				JSONObject jsonObject = (JSONObject) jsonArray.get(i);
 				String name = (String) jsonObject.get("name");
 				Boolean status = (Boolean) jsonObject.get("status");
-				map.put(name, status);
+				if (status) {
+					set.add(name);
+				}
 			}
-			return map;
+			return set;
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}

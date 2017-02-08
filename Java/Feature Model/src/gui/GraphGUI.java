@@ -5,7 +5,7 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import org.overture.codegen.runtime.VDMMap;
+import org.overture.codegen.runtime.VDMSet;
 
 import vdmpp.Model;
 
@@ -24,19 +24,19 @@ public class GraphGUI extends JFrame {
 		
 		JSONChooser jsonChooser = new JSONChooser();
 		Model model = jsonChooser.getModel();
-		VDMMap map = null;
+		VDMSet set = null;
 		
 		if (mode == Utilities.VALIDATE && model != null) { 
 			UIManager.put("FileChooser.openDialogTitleText", "Choose configuration to be loaded");
 			jsonChooser = new JSONChooser();
-			map = jsonChooser.getConfiguration();
-			if (map == null) { System.out.println("There was a problem while loading the configuration file"); return; }
+			set = jsonChooser.getConfiguration();
+			if (set == null) { System.out.println("There was a problem while loading the configuration file"); return; }
 		} else if (mode == Utilities.GENERATE && model != null) {
 			ConfigIterator configIterator = new ConfigIterator(model);
-			map = configIterator.getMapFromIndex();
+			set = configIterator.getSetFromIndex();
 			this.add(configIterator);
 		}
-		if (model != null) { addGraphPanel(model, map); } else { System.out.println("There was a problem while loading the model file"); return; }
+		if (model != null) { addGraphPanel(model, set); } else { System.out.println("There was a problem while loading the model file"); return; }
 
 		
 		
@@ -48,9 +48,9 @@ public class GraphGUI extends JFrame {
 	    this.requestFocus();
 	    this.setAlwaysOnTop(false);
 	}
-	private void addGraphPanel(Model model, VDMMap map) {
+	private void addGraphPanel(Model model, VDMSet set) {
 		GraphPanel graphPanel = new GraphPanel();
-		graphPanel.displayModel(model, map);
+		graphPanel.displayModel(model, set);
 		this.add(graphPanel);
 	}
 }

@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.overture.codegen.runtime.VDMMap;
 import org.overture.codegen.runtime.VDMSet;
 
 import vdmpp.Model;
@@ -61,10 +60,10 @@ public class ConfigIterator extends JPanel {
 	}
 	
 	protected void updateGraph() {
-		VDMMap map = getMapFromIndex();
+		VDMSet set = getSetFromIndex();
 		
 		GraphPanel graphPanel = GraphPanel.getInstance();
-		graphPanel.displayModel(model, map);
+		graphPanel.displayModel(model, set);
 	}
 
 	private void updateButtons() {
@@ -81,11 +80,11 @@ public class ConfigIterator extends JPanel {
 		text.setText(iterator + " of " + size);
 	} 
 
-	protected VDMMap getMapFromIndex() {
+	protected VDMSet getSetFromIndex() {
 		int index = 1;
 		for (Iterator<?> i = validConfigs.iterator(); i.hasNext();) {
-			VDMMap map = (VDMMap) i.next();
-			if (index == iterator) return map;
+			VDMSet set = (VDMSet) i.next();
+			if (index == iterator) return set;
 			index++;
 		}
 		return null;
