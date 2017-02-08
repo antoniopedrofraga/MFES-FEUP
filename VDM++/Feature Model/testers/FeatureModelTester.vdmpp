@@ -67,13 +67,11 @@ protected invalidModelConfig: Model * config ==> ()
 -- tests the valid configs generation of a given model
 -- 1st arg: Model to be tested
 -- 2nd arg: Set of possible configs   
-protected testGeneratedValidConfigs: Model * set of config ==> ()
+protected testGeneratedValidConfigs: Model * set of set of string ==> ()
  testGeneratedValidConfigs(model, validSet) == 
  (
 	 dcl generatedSet : set of set of string := model.generateValidConfigs();
-	 for all sets in set generatedSet do
-	 		IO`println(sets);
-	 --assertTrue(validSet union generatedSet = validSet);
+	 assertTrue(validSet union generatedSet = validSet);
  );
 					
 -- tests model root
@@ -135,8 +133,8 @@ public static main: () ==> ()
 		dcl eshopModelTester : EshopModelTester := new EshopModelTester();
 		dcl mobilePhoneModelTester: MobilePhoneModelTester := new MobilePhoneModelTester();
 		dcl carModelTester : CarModelTester := new CarModelTester();
-  	eshopModelTester.testModel();
+  	--eshopModelTester.testModel();
   	--mobilePhoneModelTester.testModel();
-  	--carModelTester.testModel();
+  	carModelTester.testModel();
   );
 end FeatureModelTester

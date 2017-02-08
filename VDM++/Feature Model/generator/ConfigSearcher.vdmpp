@@ -27,10 +27,7 @@ public getValidConfigs: () ==> set of set of string
 -- Applies all restrictions related with the model to be tested
 public applyRestrictions: () ==> ()
 	applyRestrictions() ==
-	(
-		--for all restriction in set restrictedInvalidSubsets do
-			--IO`println(dom (restriction :> {true}));
-		
+	(	
 		validConfigs := 
    	{elem | elem in set validConfigs & not exists restriction in set restrictedInvalidSubsets & 
    	-- requirements
@@ -81,7 +78,10 @@ public xorParentConfigs: Parent ==> ()
 	xorParentConfigs(parent) ==
 	(
 		dcl subFeatures : set of string := parent.getSubFeaturesNames();
-		validConfigs := { validConfig union possibility | validConfig in set validConfigs, possibility in set {elem | elem in set power subFeatures & card elem = 1}};
+		dcl configsWithoutParent : set of set of string := {validConfig | validConfig in set validConfigs & parent.getName() not in set validConfig};
+		dcl configsWithParent : set of set of string := {validConfig | validConfig in set validConfigs & parent.getName() in set validConfig};
+		
+		validConfigs := {config union possibility | config in set configsWithParent, possibility in set {elem | elem in set power subFeatures & card elem = 1}} union configsWithoutParent;
 	);
 
 -- Generates valid configurations of a feature with an <orParent>
@@ -90,17 +90,20 @@ public orParentConfigs: Parent ==> ()
 	orParentConfigs(parent) ==
 	(
 		dcl subFeatures : set of string := parent.getSubFeaturesNames();
-		validConfigs := { validConfig union possibility | validConfig in set validConfigs, possibility in set {elem | elem in set power subFeatures & elem <> {}}};
+		dcl configsWithoutParent : set of set of string := {validConfig | validConfig in set validConfigs & parent.getName() not in set validConfig};
+		dcl configsWithParent : set of set of string := {validConfig | validConfig in set validConfigs & parent.getName() in set validConfig};
+		
+		validConfigs := {config union possibility | config in set configsWithParent, possibility in set {elem | elem in set power subFeatures & elem <> {}}} union configsWithoutParent;
 	);
 				
--- Checks if there are optional parents so far, used to generate valid configuratios with optional parents
+-- Checks if there are optional parents so far, used to generate valid configurations with optional parents
 -- 1st arg: Feature as the related feature
 -- 2nd arg: Sequence of strings as optional parents identified so far
 public checkOptionalParents: Feature * set of string ==> ()
 	checkOptionalParents(feature, optionalParents) == 
 	(	
 		validConfigs := 
-   	{elem | elem in set validConfigs & not exists optionalParent in set optionalParents & (not optionalParent in set elem and feature.getName() in set elem)};			
+   	{elem | elem in set validConfigs & not exists optionalParent in set optionalParents & ((not optionalParent in set elem) and feature.getName() in set elem)};
 	);
 	
 end ConfigSearcher

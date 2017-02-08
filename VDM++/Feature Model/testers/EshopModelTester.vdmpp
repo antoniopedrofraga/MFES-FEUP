@@ -113,13 +113,13 @@ public testModel: () ==> ()
 functions
 -- All Eshop Model valid configurations
 -- Return: Set of Eshop Model valid configurations
-public eshopValidConfigs: () -> set of config
-	eshopValidConfigs() == {{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> false, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> false},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> false, "standard" |-> true, "search" |-> true},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> false, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> false},
-		{"e-shop" |-> true, "catalogue" |-> true, "payment" |-> true, "bank transfer" |-> true, "credit card" |-> true, "security" |-> true, "high" |-> true, "standard" |-> false, "search" |-> true}};
+public eshopValidConfigs: () -> set of set of string
+	eshopValidConfigs() == {{"bank transfer", "catalogue", "credit card", "e-shop", "high", "payment", "search", "security"},
+{"bank transfer", "catalogue", "credit card", "e-shop", "high", "payment", "security"},
+{"bank transfer", "catalogue", "e-shop", "high", "payment", "search", "security"},
+{"bank transfer", "catalogue", "e-shop", "high", "payment", "security"},
+{"bank transfer", "catalogue", "e-shop", "payment", "search", "security", "standard"},
+{"bank transfer", "catalogue", "e-shop", "payment", "security", "standard"},
+{"catalogue", "credit card", "e-shop", "high", "payment", "search", "security"},
+{"catalogue", "credit card", "e-shop", "high", "payment", "security"}};
 end EshopModelTester
