@@ -103,29 +103,7 @@ protected testExclusionsBeforeRequirements: () ==> ()
 			(feature1.setExclusions({feature2});
 			feature1.setRequirements({feature2});
 			);	
-	);
-					
--- tests the invariant (optional parents should have optional features)   
-protected testOptionalParentHasOptionalSubfeatures: () ==> ()
-	testOptionalParentHasOptionalSubfeatures() ==	
-	(
-		let feature1 = new Feature("feature1"),
-		parent1 = new Parent("parent1"),
-		parent2 = new Parent("parent2") in
-		(
-		parent1.setMandatory(false);
-		parent1.setSubFeatures({parent2});
-		parent2.setSubFeatures({feature1});
-		);
-	);
-					
--- tests the invariant (can not create Features with no name)   
-protected testBlankNameFeature: () ==> Feature
-	testBlankNameFeature() ==	
-	(
-		return new Feature();
-	);
-					
+	);		
 					
 public static main: () ==> ()
   main() ==

@@ -30,19 +30,7 @@ public setFeatures: () ==> ()
 	setFeatures() == (
 			features := root.features();
 	);
-	
-
--- Checks if a config is valid
--- 1st arg: Config to be tested
--- Return: Boolean with validation status
-public isValidConfiguration: config ==> bool
-	isValidConfiguration(config) == 
-		(
-		if not root.isValidConfiguration(config) then return false;
-		return true;
-		)
-		pre features = dom config;
-					
+		
 -- Generates all valid configurations
 -- Return: Sequence of configs
 public generateValidConfigs: () ==> set of set of string

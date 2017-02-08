@@ -87,38 +87,5 @@ public nodeCount: () ==> int
 -- Return: Boolean with mandatory status (True if mandatory, false if optional)
 public isMandatory: () ==> bool
 	isMandatory() == return mandatory;
-				
--- Checks if a Requirement is an Exclusion at the same time
--- Return: Boolean related with mandatory status
-public isRespectingReqAndExc: config ==> bool
-	isRespectingReqAndExc(c) == 
-	(
-	dcl configuredFeatures : set of string := dom (c :> {true});
-	if name in set configuredFeatures then (
-		for all requirement in set requirements do 
-				if not (requirement.name in set configuredFeatures) then return false;
-		for all exclusion in set exclusions do 
-				if (exclusion.name in set configuredFeatures) then return false;
-	);
-	return true;
-	);
 
--- Checks if a configuration is valid in this feature
--- Return: Boolean related with validation status
-public isValidConfiguration: config ==> bool
-	isValidConfiguration(c) == 
-	(
-	if mandatory and not Utilities`isNameConfigured(name, c) then return false;
-	return isRespectingReqAndExc(c);
-	);
-				
-
--- Checks if an optional parent has optional sub features
--- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
--- Return: Boolean with validation status
-pure protected isOptionalSubFeature: () ==> bool
-	isOptionalSubFeature() == 
-	(
-		return not mandatory;
-	);
 end Feature

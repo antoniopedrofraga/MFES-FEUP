@@ -6,7 +6,6 @@ instance variables
 	private subFeatures: set of Feature := {};
 	private type: parentType := <defaultParent>;
 	
-	inv mandatory or optionalHasOptionalSubFeatures(subFeatures);
 operations
 
 -- Parent constructor 
@@ -96,57 +95,4 @@ public nodeCount: () ==> int
 						childNodeCount := childNodeCount + subFeature.nodeCount();
 	return childNodeCount;);
 
--- Checks if a config is valid
--- Return: Boolean with valid status
-public isValidConfiguration: config ==> bool
-	isValidConfiguration(c) == 
-	(
-	dcl configuredSubFeatures : int := 0;
-	if mandatory and not Utilities`isNameConfigured(name, c) then return false;
-	for all subFeature in set subFeatures do
-	(
-		if (Utilities`isNameConfigured(subFeature.name, c)) then
-			configuredSubFeatures := configuredSubFeatures + 1;
-		if not subFeature.isValidConfiguration(c) then 
-			return false;
-	);
-	return isRespectingReqAndExc(c) and not
-		(type = <orParent> and configuredSubFeatures = 0) and not
-		(type = <xorParent> and not configuredSubFeatures = 1);
-	);
-				
-				
-pure public optionalSubFeatures: () ==> bool
-	optionalSubFeatures() == 
-	(
-		if mandatory then return true;
-		
-		for all subFeature in set subFeatures do
-		if not subFeature.isOptionalSubFeature() then return false;
-		
-		return true;
-	);
-
--- Checks if an optional parent has optional sub features
--- 1st arg: Boolean as firstElement (true if its the first element to be checked, false if its not)
--- Return: Boolean with validation status
-pure public isOptionalSubFeature: () ==> bool
-	isOptionalSubFeature() == 
-	(
-		for all subFeature in set subFeatures do
-			if not subFeature.isOptionalSubFeature() then return false;
-								
-		if mandatory = false then return true
-		else return false;
-			 
-	);
-functions
--- Function get inv status
--- 1st arg: Set of features to be tested
--- Return: Boolean as inv status
-public optionalHasOptionalSubFeatures: set of Feature -> bool
-	optionalHasOptionalSubFeatures(subFeatures) == 
-	(
-		not {false} subset {elem.isOptionalSubFeature() | elem in set subFeatures}
-	);
 end Parent

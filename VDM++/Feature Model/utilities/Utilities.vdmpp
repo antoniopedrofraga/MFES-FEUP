@@ -4,17 +4,4 @@ types
 	public string = seq1 of char;
 	public config = map string to bool;
 	public parentType = <orParent> | <xorParent> | <defaultParent>;
-functions
--- Converts a Map of Configs into a Set of Configs
--- 1st arg: Map to be converted
--- Return: Converted Set
-public mapToSet : config -> set of config
-	mapToSet(c) == {{a |-> b} | a in set dom c, b in set rng c & b = c(a)};
-				
--- Checks if a Feature is configured
--- 1st arg: Name to be checked
--- 2nd arg: Config to be checked
--- Return: Boolean result
-public isNameConfigured: string * config -> bool
-	isNameConfigured(n, c) == ({n} <: c = {n |-> true});
 end Utilities
